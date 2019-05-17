@@ -1,5 +1,5 @@
 # Chirp
-A modern low-level programming language written in C++, to replace C++ and other old languages. 
+A modern low-level programming language written in C++, to replace C++ and other old languages, but it's still pretty bad right now.
 
 # Simple Example
 ```chirp
