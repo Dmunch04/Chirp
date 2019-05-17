@@ -1,6 +1,7 @@
 #pragma once
 
-#include "Parser/Parser.h"
-#include "Parser/Assembly.h"
+#define Version 0.1
+
+#include "Console/Commands.h"
 
 #include <iostream>

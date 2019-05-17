@@ -1,19 +1,37 @@
 #include "Parser.h"
 
 //===CLASS DEFINITON
+
+/*
+Keyword constructor function. Does nothing.
+*/
 Keyword::Keyword()
 {
 
 }
+/*
+Constructor function for the Parsed class, maybe we should move all the code from Parser::Parse()
+to here?
+*/
 Parsed::Parsed()
 {
 	
 }
+
+/*
+Actually parses the words in the Parsed class then start the whole thing.
+*/
 void Parsed::Classify()
 {
-
+	// Now, here you separate unclassified strings into keywords that will then be analyzed
+	// and made into assembly.
 }
 //===FUNCTION DEFINITIONS
+
+/*
+Creates an automatic "Parsed" class with separated words
+@std::string txt - Text to parse
+*/
 Parsed Parser::Parse(std::string txt)
 {
 	// Ok so basically in here let's seperate words.

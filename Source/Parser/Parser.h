@@ -3,12 +3,19 @@
 #include <vector>
 #include <string>
 
+/*
+Contains all the information about keywords
+*/
 class Keyword
 {
 public:
 	Keyword();
 };
 
+/*
+Most important class for the compiler. Everything is happening here and it's a 
+pretty way to do stuff.
+*/
 class Parsed
 {
 public:
