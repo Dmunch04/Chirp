@@ -22,11 +22,12 @@ Parsed Parser::Parse(std::string txt)
 	// of the compiler.
 	Parsed p;
 	
-	for (char &c : txt)
-	{
-		std::string Word;
-		int Pos;
+	std::string Word;
+	int Pos = 0;
 
+	for (char &c : txt) // The eagle eyed among, may have noticed this look like something from Powerscript
+	{
+		Pos++;
 		if(isspace(c))
 		{
 			//p_b
@@ -51,7 +52,7 @@ Parsed Parser::Parse(std::string txt)
 				Word.append(1,c);
 			}
 
-			if (Pos >= txt.length)
+			if (Pos >= txt.length())
 			{
 				// Ending
 				p.Unclassified.push_back(Word);
