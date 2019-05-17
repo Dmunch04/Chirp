@@ -13,6 +13,11 @@ class Parsed
 {
 public:
 	Parsed();
+	
+	void Classify();
+
+	std::vector<Keyword> Keys; // Or hooks ? That would sound cool
+	std::vector<std::string> Unclassified; // What if it's declassified O_o 
 };
 
 namespace Parser

@@ -9,6 +9,10 @@ Parsed::Parsed()
 {
 	
 }
+void Parsed::Classify()
+{
+
+}
 //===FUNCTION DEFINITIONS
 Parsed Parser::Parse(std::string txt)
 {
@@ -26,6 +30,7 @@ Parsed Parser::Parse(std::string txt)
 		if(isspace(c))
 		{
 			//p_b
+			p.Unclassified.push_back(Word);
 			Word.erase();
 		}
 		else
@@ -37,7 +42,8 @@ Parsed Parser::Parse(std::string txt)
 					Word.clear();
 				}
 				Word.append(1,c);
-				// Maybe push back something here ?
+
+				p.Unclassified.push_back(Word);
 				Word.clear();
 			}
 			else
@@ -48,7 +54,9 @@ Parsed Parser::Parse(std::string txt)
 			if (Pos >= txt.length)
 			{
 				// Ending
+				p.Unclassified.push_back(Word);
 				Word.erase();
+				return p;
 			}
 		}
 	}
