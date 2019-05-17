@@ -1,8 +1,10 @@
 #include "Parser.h"
 
+#include <iostream>
+
 //===CLASS DEFINITON
 
-Token::Token()
+Statement::Statement()
 {
 
 }
@@ -15,6 +17,7 @@ Parsed::Parsed()
 {
 	
 }
+
 /*
 Actually parses the words in the Parsed class then start the whole thing.
 */
@@ -22,6 +25,60 @@ void Parsed::Classify()
 {
 	// Now, here you separate unclassified strings into keywords that will then be analyzed
 	// and made into assembly.
+
+	int Pos = -1;
+
+	for (auto &txt : this->Unclassified)
+	{
+		Pos++;
+
+		Statement s;
+
+		if (txt.compare("int") == 0)
+		{
+			try
+			{
+				if (Unclassified.at(Pos + 1).compare(":") == 0)
+				{
+					// Not a function
+					s.Variable = true;
+					s.Args.push_back(Unclassified.at(Pos));
+					try
+					{
+						if (Unclassified.at(Pos + 3).compare("=") == 0)
+						{
+							s.Args.push_back(Unclassified.at(Pos + 2));
+
+							// Should check if there isn't any other stuff like additions and function return values
+							s.Args.push_back(Unclassified.at(Pos + 4));
+
+							Classified.push_back(s);
+						}
+						else
+						{
+							s.Args.push_back(Unclassified.at(Pos + 2));
+
+							Classified.push_back(s);
+						}
+					}
+					catch (std::out_of_range)
+					{
+						std::cout << "Error B" << std::endl;
+					}
+				}
+				else
+				{
+					// Function stuff, I guess
+				}
+			}
+			catch (std::out_of_range)
+			{
+				std::cout << "Error A" << std::endl;
+			}
+		}
+	}
+	// Should be finished by now
+	this->ParseVar();
 }
 
 //===FUNCTION DEFINITIONS
@@ -47,8 +104,11 @@ Parsed Parser::Parse(std::string txt)
 		if(isspace(c))
 		{
 			//p_b
-			p.Unclassified.push_back(Word);
-			Word.erase();
+			if (Word.compare("") != 0)
+			{
+				p.Unclassified.push_back(Word);
+				Word.erase();
+			}
 		}
 		else
 		{
@@ -56,10 +116,10 @@ Parsed Parser::Parse(std::string txt)
 			{
 				if (Word.compare("") != 0) // hmm
 				{
+					p.Unclassified.push_back(Word);
 					Word.clear();
 				}
 				Word.append(1,c);
-
 				p.Unclassified.push_back(Word);
 				Word.clear();
 			}
