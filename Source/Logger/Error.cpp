@@ -6,7 +6,6 @@ namespace Log
 	{
 		void Defined(int err)
 		{
-
 		}
 	}
 }

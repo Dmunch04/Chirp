@@ -1,5 +1,6 @@
 #include "Commands.h"
 #include "../Parser/Parser.h"
+#include "../Parser/Assembly.h"
 
 #include <iostream>
 #include <fstream>

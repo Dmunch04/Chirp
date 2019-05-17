@@ -11,7 +11,14 @@ Class used to represent variables that can be rewritten in assembly later.
 class Variable
 {
 public:
-	bool Defined;
+	std::string Name;
+
+	int Type; // 0 - int, 1 - float, 2 - character
+	bool Declared;
+
+	int iValue; // Interger value
+	float fValue; // Float value
+	char cValue; // Character value
 };
 
 class Statement
