@@ -17,5 +17,5 @@ public:
 
 namespace Parser
 {
-	Parsed Parse();
+	Parsed Parse(std::string);
 }
