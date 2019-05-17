@@ -2,13 +2,11 @@
 
 //===CLASS DEFINITON
 
-/*
-Keyword constructor function. Does nothing.
-*/
-Keyword::Keyword()
+Token::Token()
 {
 
 }
+
 /*
 Constructor function for the Parsed class, maybe we should move all the code from Parser::Parse()
 to here?
@@ -17,7 +15,6 @@ Parsed::Parsed()
 {
 	
 }
-
 /*
 Actually parses the words in the Parsed class then start the whole thing.
 */
@@ -26,6 +23,7 @@ void Parsed::Classify()
 	// Now, here you separate unclassified strings into keywords that will then be analyzed
 	// and made into assembly.
 }
+
 //===FUNCTION DEFINITIONS
 
 /*
@@ -54,7 +52,7 @@ Parsed Parser::Parse(std::string txt)
 		}
 		else
 		{
-			if (c == '=' || c == '"')
+			if (c == '=' || c == '"' || c == ':')
 			{
 				if (Word.compare("") != 0) // hmm
 				{

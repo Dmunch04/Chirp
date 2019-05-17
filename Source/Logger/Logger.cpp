@@ -2,8 +2,5 @@
 
 namespace Log
 {
-	void Debug()
-	{
 
-	}
 }

@@ -1,8 +1,8 @@
 #pragma once
 
-#include <iostream>
+#include "Error.h"
 
 namespace Log
 {
-	void Debug();
+
 }

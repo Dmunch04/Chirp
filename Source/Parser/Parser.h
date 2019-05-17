@@ -3,13 +3,12 @@
 #include <vector>
 #include <string>
 
-/*
-Contains all the information about keywords
-*/
-class Keyword
+class Token // WeLL TeChNiCaLlY It'S A LExeME
 {
 public:
-	Keyword();
+	Token();
+	int Type;
+	std::vector<std::string> Args;
 };
 
 /*
@@ -23,8 +22,13 @@ public:
 	
 	void Classify();
 
-	std::vector<Keyword> Keys; // Or hooks ? That would sound cool
 	std::vector<std::string> Unclassified; // What if it's declassified O_o 
+	std::vector<Token> Classified;
+	
+	std::string text; // section .text
+	std::string data; // section .data
+
+	std::string output;
 };
 
 namespace Parser

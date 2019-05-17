@@ -114,6 +114,7 @@ namespace Command
 			// Ok we can finally get started on doing real stuff
 			std::string FileData = Read(InputFile);
 			Parsed P = Parser::Parse(FileData);
+			P.Classify();
 		}
 	}
 }
