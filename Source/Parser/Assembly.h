@@ -4,6 +4,6 @@
 
 namespace Assembly
 {
-	void Translate(Parsed*);
-	void Write();
+	void Init(Parsed*);
+	void Write(Parsed*,std::string);
 }

@@ -116,6 +116,8 @@ namespace Command
 			std::string FileData = Read(InputFile);
 			Parsed P = Parser::Parse(FileData);
 			P.Classify();
+			Assembly::Init(&P);
+			Assembly::Write(&P,InputFile.append(".asm"));
 		}
 	}
 }
