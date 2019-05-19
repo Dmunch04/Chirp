@@ -3,6 +3,10 @@
 #include <fstream>
 #include <iostream>
 
+void Parsed::MakeAssembly()
+{
+}
+
 namespace Assembly
 {
 	void Init(Parsed* p)
@@ -21,6 +25,4 @@ namespace Assembly
 
 		write << p->output << std::endl;
 	}
-}
-
-void 
+} 

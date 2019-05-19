@@ -21,12 +21,24 @@ public:
 	char cValue; // Character value
 };
 
+
+class Function
+{
+public:
+	int Type; // 0 - int, 1 - float, 2 - character
+	bool Declared;
+
+	int StartPos; // Position where the scope starts
+	int EndPos; // Position where the scope ends
+};
+
 class Statement
 {
 public:
 	Statement();
 
 	int Type; // 0 - Variable Dec, 1 - Variable Def, 2 - Variable Dec&Def
+	int Identifier; // Should I call id ? Identify in the vector of either Variable or Function depending on the typr
 
 	bool Defined;
 	bool Variable;
@@ -35,7 +47,7 @@ public:
 };
 
 /*
-Most important class for the compiler. Everything is happening here and it's a 
+Most important class for the compiler. Everything is happening here iet's a 
 pretty way to do stuff.
 */
 class Parsed
