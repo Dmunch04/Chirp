@@ -26,6 +26,8 @@ class Statement
 public:
 	Statement();
 
+	int Type; // 0 - Variable Dec, 1 - Variable Def, 2 - Variable Dec&Def
+
 	bool Defined;
 	bool Variable;
 
@@ -43,6 +45,7 @@ public: // Ok so you can see that the lower you go, the later the compiler is go
 	
 	void Classify();
 	void ParseVar(); // Pretty self explanatry wait fuck..
+	void MakeAssembly();
 
 	std::vector<std::string> Unclassified; // What if it's declassified O_o 
 	std::vector<Statement> Classified;
