@@ -19,4 +19,8 @@ print("This works!")
 The Chirp code works much better than the C++ code.
 
 ## Variables
-Chirp like any other programming language has variales. In chirp the variables have 4 types, ``int``,``float``,``char`` and ``string``. Unlike in C/C++ strings are  natives and don't have to be included.
+Chirp like any other programming language has variales. In chirp the variables have 4 types, ``int``,``float``,``char`` and ``string``. Unlike in C/C++ strings are  natives and don't have to be imported.
+```
+int: a = 13
+```
+As you can see, the code above is **weird**, but I like it.
