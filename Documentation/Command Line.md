@@ -16,4 +16,6 @@ Right now, the only working and designed arguments are the following with exampl
 ```-o file.exe```
 ```-i file.ch```
 
+> Currently only one input file can be specified
+
 That's it. If you think more files are required you can change it, the code is Open Source.
