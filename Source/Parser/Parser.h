@@ -21,10 +21,14 @@ public:
 	char cValue; // Character value
 };
 
-
+/*
+This is pretty important, for function.
+*/
 class Function
 {
 public:
+	std::string Name;
+
 	int Type; // 0 - int, 1 - float, 2 - character
 	bool Declared;
 
@@ -42,6 +46,7 @@ public:
 
 	bool Defined;
 	bool Variable;
+	bool Function;
 
 	std::vector<std::string> Args; // Pretty Universal
 };
@@ -63,6 +68,7 @@ public: // Ok so you can see that the lower you go, the later the compiler is go
 	std::vector<Statement> Classified;
 
 	std::vector<Variable> VariableList;
+	std::vector<Function> FunctionList;
 
 	std::string text; // section .text
 	std::string data; // section .data

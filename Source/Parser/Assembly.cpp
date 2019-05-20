@@ -11,6 +11,10 @@ void Parsed::MakeAssembly()
 		{
 			std::cout <<"Variable name is: "<< this->VariableList.at(s.Identifier).Name << std::endl;
 		}
+		else if (s.Function)
+		{
+			std::cout << "Function name is: " << this->FunctionList.at(s.Identifier).Name << std::endl;
+		}
 	}
 }
 
