@@ -5,6 +5,13 @@
 
 void Parsed::MakeAssembly()
 {
+	for (auto &s : this->Classified) // Ok so get this shit ID
+	{
+		if (s.Variable)
+		{
+			std::cout <<"Variable name is: "<< this->VariableList.at(s.Identifier).Name << std::endl;
+		}
+	}
 }
 
 namespace Assembly
