@@ -7,5 +7,9 @@ namespace Log
 		void Defined(int err)
 		{
 		}
+		void Custom(std::string txt)
+		{
+
+		}
 	}
 }
