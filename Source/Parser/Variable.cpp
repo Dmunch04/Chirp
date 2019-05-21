@@ -27,26 +27,26 @@ void Parsed::ParseVar()
 				{
 					v.Type = 0;
 					v.Name = stat.Args.at(1);
-					v.Declared = true;
+					v.Defined = true;
 				}
 				else if (stat.Args.at(0).compare("float") == 0)
 				{
 					v.Type = 1;
 					v.Name = stat.Args.at(1);
-					v.Declared = true;
+					v.Defined = true;
 				}
 				else if (stat.Args.at(0).compare("char") == 0)
 				{
 					v.Type = 2;
 					v.Name = stat.Args.at(1);
-					v.Declared = true;
+					v.Defined = true;
 				}
 				else
 				{
-					v.Declared = false;
+					v.Defined = false;
 				}
 
-				if (v.Declared == true)
+				if (v.Defined == true)
 				{
 					try
 					{

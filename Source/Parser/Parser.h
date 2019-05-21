@@ -14,7 +14,7 @@ public:
 	std::string Name;
 
 	int Type; // 0 - int, 1 - float, 2 - character
-	bool Declared;
+	bool Defined;
 
 	int iValue; // Interger value
 	float fValue; // Float value
@@ -30,7 +30,7 @@ public:
 	std::string Name;
 
 	int Type; // 0 - int, 1 - float, 2 - character
-	bool Declared;
+	bool Defined;
 
 	int StartPos; // Position where the scope starts
 	int EndPos; // Position where the scope ends

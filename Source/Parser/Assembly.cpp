@@ -1,5 +1,7 @@
 #include "Assembly.h"
 
+#include "Variable.h"
+
 #include <fstream>
 #include <iostream>
 
@@ -9,11 +11,45 @@ void Parsed::MakeAssembly()
 	{
 		if (s.Variable)
 		{
-			std::cout <<"Variable name is: "<< this->VariableList.at(s.Identifier).Name << std::endl;
+			Variable var;
+
+			try
+			{
+				var = this->VariableList.at(s.Identifier);
+			}
+			catch (std::out_of_range)
+			{
+				std::cout << "fuck error" << std::endl;
+				break;
+			}
+
+			std::cout <<"Variable name is: "<< var.Name << std::endl;
+
+			if (var.Defined)
+			{
+				Var::Define(&var);
+			}
+			else
+			{
+				Var::Declare(&var);
+			}
+
 		}
 		else if (s.Function)
 		{
-			std::cout << "Function name is: " << this->FunctionList.at(s.Identifier).Name << std::endl;
+			Function func;
+
+			try
+			{
+				func = this->FunctionList.at(s.Identifier);
+			}
+			catch (std::out_of_range)
+			{
+				std::cout << "fuck error" << std::endl;
+				break;
+			}
+
+			std::cout << "Function name is: " << func.Name << std::endl;
 		}
 	}
 }
