@@ -1,7 +1,5 @@
 #pragma once
 
-#include "Variable.h"
-
 #include <vector>
 #include <string>
 
@@ -11,6 +9,8 @@ Class used to represent variables that can be rewritten in assembly later.
 class Variable
 {
 public:
+	Variable();
+
 	std::string Name;
 
 	int Type; // 0 - int, 1 - float, 2 - character

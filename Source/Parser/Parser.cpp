@@ -1,8 +1,14 @@
 #include "Parser.h"
+#include "Variable.h"
 
 #include <iostream>
 
 //===CLASS DEFINITON
+
+Variable::Variable()
+{
+
+}
 
 Statement::Statement()
 {
@@ -77,7 +83,6 @@ void Parsed::Classify()
 			}
 		}
 	}
-	// Should be finished by now
 	this->ParseVar();
 }
 
@@ -101,7 +106,7 @@ Parsed Parser::Parse(std::string txt)
 	for (char &c : txt) // The eagle eyed among, may have noticed this look like something from Powerscript
 	{
 		Pos++;
-		if(isspace(c))
+		if(isspace(c) || c == '\n')
 		{
 			//p_b
 			if (Word.compare("") != 0)

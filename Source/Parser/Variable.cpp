@@ -2,6 +2,18 @@
 
 #include <iostream>
 
+namespace Var
+{
+	void Define(Variable* v)
+	{
+		std::cout << "Writing variable definition in assembly" << std::endl;
+	}
+	void Declare(Variable* v)
+	{
+		std::cout << "Writing variable declaration in assembly" << std::endl;
+	}
+}
+
 void Parsed::ParseVar()
 {
 	for (auto& stat : this->Classified)
