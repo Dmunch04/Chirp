@@ -1,5 +1,10 @@
 #include "Color.h"
 
+#ifdef _WIN32
+#include <Windows.h>
+#include <iostream>
+#endif
+
 namespace Log
 {
 #ifdef linux
@@ -31,7 +36,30 @@ namespace Log
 #ifdef _WIN32
 	std::string Color(int c,std::string txt)
 	{
-
+		HANDLE hC = GetStdHandle(STD_OUTPUT_HANDLE);
+		switch (c)
+		{
+		case BLACK:
+		//	SetConsoleTextAttribute(hC,FORGEGROUND_BLACK);
+			std::cout << txt;
+			break;
+		case RED:
+			std::cout << txt;
+			break;
+		case GREEN:
+			std::cout << txt;
+			break;
+		case BLUE:
+			std::cout << txt;
+			break;
+		case WHITE:
+			std::cout << txt;
+			break;
+		default:
+			std::cout << txt;
+			break;
+		}
+		return " "; // ok so fuck, I am not supposed to return anything with the windows method
 	}
 #endif
 }
