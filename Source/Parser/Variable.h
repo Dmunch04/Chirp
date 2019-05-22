@@ -4,6 +4,6 @@
 
 namespace Var
 {
-	void Define(Variable*);
-	void Declare(Variable*);
+	void Define(Variable*,std::string*);
+	void Declare(Variable*,std::string*);
 }

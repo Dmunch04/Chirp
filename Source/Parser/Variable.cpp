@@ -4,13 +4,16 @@
 
 namespace Var
 {
-	void Define(Variable* v)
+	void Define(Variable* v, std::string* d)
 	{
 		std::cout << "Writing variable definition in assembly" << std::endl;
+		std::string yeet;
+		d->append("; ").append(v->Name).append(" must be defined here somehow \n");
 	}
-	void Declare(Variable* v)
+	void Declare(Variable* v,std::string* d)
 	{
 		std::cout << "Writing variable declaration in assembly" << std::endl;
+		d->append("; ").append(v->Name).append(" must be declared here somehow \n");
 	}
 }
 

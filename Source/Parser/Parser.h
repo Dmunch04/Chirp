@@ -34,6 +34,8 @@ public:
 
 	int StartPos; // Position where the scope starts
 	int EndPos; // Position where the scope ends
+
+	std::string Output; 
 };
 
 class Statement
@@ -71,6 +73,7 @@ public: // Ok so you can see that the lower you go, the later the compiler is go
 	std::vector<Function> FunctionList;
 
 	std::string text; // section .text
+	std::vector<std::string> outfunc; // Function and Output Ya' know 
 	std::string data; // section .data
 
 	std::string output;

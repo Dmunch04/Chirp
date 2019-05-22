@@ -27,11 +27,11 @@ void Parsed::MakeAssembly()
 
 			if (var.Defined)
 			{
-				Var::Define(&var);
+				Var::Define(&var,&text);
 			}
 			else
 			{
-				Var::Declare(&var);
+				Var::Declare(&var,&text);
 			}
 
 		}
@@ -58,11 +58,19 @@ namespace Assembly
 {
 	void Init(Parsed* p)
 	{
-		p->text.append("section .text \n");
-		p->text.append("global _start \n");
-		p->text.append("_start: \n");
+		/*
+		section .text
+			global _start
+
+		_start:
+			
+		section .data
+		*/
+		p->text.insert(0,"section .text \n ");
+		p->text.append("global _start \n ");
+		p->text.append("_start: \n ");
 		
-		p->data.append("section .data \n");
+		p->data.append("section .data \n ");
 	}
 	void Write(Parsed *p,std::string file)
 	{
