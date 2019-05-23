@@ -3,8 +3,10 @@ A modern low-level programming language written in C++, to replace C++ and other
 
 # Simple Example
 ```chirp
-  int: a = 1
-  print(a)
+int start()
+{
+int: a
+}
 ```
 As you can see this is weird.
 
