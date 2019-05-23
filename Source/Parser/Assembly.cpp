@@ -27,11 +27,11 @@ void Parsed::MakeAssembly()
 
 			if (var.Defined)
 			{
-				Var::Define(&var,&text);
+				this->data.append(var.Define());
 			}
 			else
 			{
-				Var::Declare(&var,&text);
+				this->data.append(var.Declare());
 			}
 
 		}

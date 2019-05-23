@@ -2,19 +2,19 @@
 
 #include <iostream>
 
-namespace Var
+std::string Variable::Define()
 {
-	void Define(Variable* v, std::string* d)
-	{
-		std::cout << "Writing variable definition in assembly" << std::endl;
-		std::string yeet;
-		d->append("; ").append(v->Name).append(" must be defined here somehow \n");
-	}
-	void Declare(Variable* v,std::string* d)
-	{
-		std::cout << "Writing variable declaration in assembly" << std::endl;
-		d->append("; ").append(v->Name).append(" must be declared here somehow \n");
-	}
+	std::cout << "Writing variable definition in assembly" << std::endl;
+	std::string d;
+	d.append("; ").append(this->Name).append(" must be defined here somehow \n");
+	return d;
+}
+std::string Variable::Declare()
+{
+	std::cout << "Writing variable declaration in assembly" << std::endl;
+	std::string d;
+	d.append("; ").append(this->Name).append(" must be declared here somehow \n");
+	return d;
 }
 
 void Parsed::ParseVar()

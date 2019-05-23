@@ -13,6 +13,9 @@ public:
 
 	std::string Name;
 
+	std::string Define();
+	std::string Declare();
+
 	int Type; // 0 - int, 1 - float, 2 - character
 	bool Defined;
 
