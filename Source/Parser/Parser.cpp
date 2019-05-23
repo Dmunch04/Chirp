@@ -56,7 +56,7 @@ void Parsed::Classify()
 							s.Args.push_back(Unclassified.at(Pos + 2));
 
 							// Should check if there isn't any other stuff like additions and function return values
-							s.Args.push_back(Unclassified.at(Pos + 4));
+							s.Args.push_back(Unclassified.at(Pos + 4)); // <-- Start value(const)
 
 							Classified.push_back(s);
 						}
@@ -85,8 +85,25 @@ void Parsed::Classify()
 						{
 							// Error confirmation
 							s.Function = true;
-							s.Args.push_back(Unclassified.at(Pos));
-							s.Args.push_back(Unclassified.at(Pos + 1));
+							s.Args.push_back(Unclassified.at(Pos)); // Data type 
+							s.Args.push_back(Unclassified.at(Pos + 1)); // Name
+
+							int lister = 0;
+
+							for (int i = Pos; i < Unclassified.size(); i++)
+							{
+								std::string w = Unclassified.at(i);
+								if (w.compare("(") == 0)
+								{
+									lister++;
+								}
+								if (w.compare(")") == 0)
+								{
+									lister--;
+								}
+							}
+
+							Classified.push_back(s);
 						}
 					}
 					catch (std::out_of_range)

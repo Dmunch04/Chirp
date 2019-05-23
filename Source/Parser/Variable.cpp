@@ -13,7 +13,7 @@ std::string Variable::Declare()
 {
 	std::cout << "Writing variable declaration in assembly" << std::endl;
 	std::string d;
-	d.append("; ").append(this->Name).append(" must be declared here somehow \n");
+	d.append(this->Name);
 	return d;
 }
 

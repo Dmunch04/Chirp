@@ -45,7 +45,7 @@ void Parsed::MakeAssembly()
 			}
 			catch (std::out_of_range)
 			{
-				std::cout << "fuck error" << std::endl;
+				std::cout << "fuck error at function" << std::endl;
 				break;
 			}
 
@@ -67,9 +67,7 @@ namespace Assembly
 		section .data
 		*/
 
-		p->text.insert(0,"section .text \n ");
-		p->text.append("global _start \n ");
-		p->text.append("_start: \n ");
+		p->text.append("section .text \n ");
 		
 		for (auto& d : p->FunctionList)
 		{

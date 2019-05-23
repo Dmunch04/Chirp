@@ -35,6 +35,9 @@ public:
 	int Type; // 0 - int, 1 - float, 2 - character
 	bool Defined;
 
+	int ParStartPos; // ( - pos
+	int ParEndPos; // ) - pos
+
 	int StartPos; // Position where the scope starts
 	int EndPos; // Position where the scope ends
 
