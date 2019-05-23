@@ -34,13 +34,13 @@ void Parsed::Classify()
 
 	int Pos = -1;
 
-	for (auto &txt : this->Unclassified)
+	for (auto& txt : this->Unclassified)
 	{
 		Pos++;
 
 		Statement s;
 
-		if (txt.compare("int") == 0)
+		if (txt.compare("int") == 0 || txt.compare("float") == 0 || txt.compare("char") == 0)
 		{
 			try
 			{
@@ -75,6 +75,24 @@ void Parsed::Classify()
 				else
 				{
 					// Function stuff, I guess
+
+					//int func()
+					// 1   2  34
+
+					try
+					{
+						if (Unclassified.at(Pos + 2).compare("(") == 0)
+						{
+							// Error confirmation
+							s.Function = true;
+							s.Args.push_back(Unclassified.at(Pos));
+							s.Args.push_back(Unclassified.at(Pos + 1));
+						}
+					}
+					catch (std::out_of_range)
+					{
+						std::cout << "Alternative Error B" << std::endl;
+					}
 				}
 			}
 			catch (std::out_of_range)
@@ -84,6 +102,7 @@ void Parsed::Classify()
 		}
 	}
 	this->ParseVar();
+	this->ParseFunc();
 }
 
 //===FUNCTION DEFINITIONS
@@ -117,7 +136,7 @@ Parsed Parser::Parse(std::string txt)
 		}
 		else
 		{
-			if (c == '=' || c == '"' || c == ':')
+			if (c == '=' || c == '"' || c == ':' || c == '(' || c == ')' || c == '{' || c == '}')
 			{
 				if (Word.compare("") != 0) // hmm
 				{

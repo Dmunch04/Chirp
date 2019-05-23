@@ -64,6 +64,7 @@ public: // Ok so you can see that the lower you go, the later the compiler is go
 	
 	void Classify();
 	void ParseVar(); // Pretty self explanatry wait fuck..
+	void ParseFunc();
 	void MakeAssembly();
 
 	std::vector<std::string> Unclassified; // What if it's declassified O_o 
@@ -73,7 +74,7 @@ public: // Ok so you can see that the lower you go, the later the compiler is go
 	std::vector<Function> FunctionList;
 
 	std::string text; // section .text
-	std::vector<std::string> outfunc; // Function and Output Ya' know 
+	std::vector<std::string> fout; // Function and Output
 	std::string data; // section .data
 
 	std::string output;

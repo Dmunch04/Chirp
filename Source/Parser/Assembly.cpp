@@ -66,10 +66,16 @@ namespace Assembly
 			
 		section .data
 		*/
+
 		p->text.insert(0,"section .text \n ");
 		p->text.append("global _start \n ");
 		p->text.append("_start: \n ");
 		
+		for (auto& d : p->FunctionList)
+		{
+			p->text.append("global _").append(d.Name);
+		}
+
 		p->data.append("section .data \n ");
 	}
 	void Write(Parsed *p,std::string file)
