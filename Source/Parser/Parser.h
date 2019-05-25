@@ -32,6 +32,8 @@ class Function
 public:
 	std::string Name;
 
+	std::string Define();
+
 	int Type; // 0 - int, 1 - float, 2 - character
 	bool Defined;
 

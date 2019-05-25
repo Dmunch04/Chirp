@@ -1,5 +1,7 @@
 #include "Function.h"
 
+#include <iostream>
+
 void Parsed::ParseFunc()
 {
 	int parg = 0; // parenthesis argument lister
@@ -10,7 +12,7 @@ void Parsed::ParseFunc()
 	bool ScopeOpened = false;
 	bool ScopeClosed = false;
 
-	int pos = 0;
+	int pos = 0; // may have to do it -1
 
 	for (auto& stat : this->Classified)
 	{
@@ -65,21 +67,12 @@ void Parsed::ParseFunc()
 					{
 					}
 				}
-
 				this->FunctionList.push_back(f);
+				stat.Identifier = this->FunctionList.size() - 1;
 			}
 			catch (...)
 			{
 				// error should be written
-			}
-
-			try
-			{
-
-			}
-			catch (...)
-			{
-
 			}
 		}
 	}

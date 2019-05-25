@@ -57,17 +57,23 @@ void Parsed::ParseVar()
 						if (v.Type == 0)
 						{
 							v.iValue = std::stoi(stat.Args.at(2));
+							
 							this->VariableList.push_back(v);
+							stat.Identifier = this->VariableList.size() - 1;
 						}
 						else if (v.Type == 1)
 						{
 							v.fValue = std::stof(stat.Args.at(2));
+							
 							this->VariableList.push_back(v);
+							stat.Identifier = this->VariableList.size() - 1;
 						}
 						else if (v.Type == 2)
 						{
 							v.cValue = stat.Args.at(2).at(0);
+
 							this->VariableList.push_back(v);
+							stat.Identifier = this->VariableList.size() - 1;
 						}
 					}
 					catch (std::out_of_range)
@@ -75,6 +81,7 @@ void Parsed::ParseVar()
 						// Undefined
 						// It's kinda stupid that I didn't make a defined/undefined boolean
 						this->VariableList.push_back(v);
+						stat.Identifier = this->VariableList.size() -1 ;
 					}
 				}
 			}
