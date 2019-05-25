@@ -21,3 +21,5 @@ After this, the build scripts will be run, and then other adjustement may be mad
 Into the function parsing there is stuff, I guess. The statement has stuff in it. I guess, so in the statement there is a vector called ``args`` and the order of stuff in it goes like this.
 
 ``return value type``,``name``,``argument start position``,``argument end position``,``scope start position``,``scope stop position``
+
+> nope nevermind let's not do what I did above
