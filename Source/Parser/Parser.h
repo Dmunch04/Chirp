@@ -35,13 +35,13 @@ public:
 	int Type; // 0 - int, 1 - float, 2 - character
 	bool Defined;
 
-	int ParStartPos; // ( - pos
-	int ParEndPos; // ) - pos
+	int ArgStartPos; // ( - pos
+	int ArgEndPos; // ) - pos
 
-	int StartPos; // Position where the scope starts
-	int EndPos; // Position where the scope ends
+	int ScopeStartPos; // Position where the scope starts
+	int ScopeEndPos; // Position where the scope ends 
 
-	std::string Output; 
+	int OutId; // Position in parsed's fout
 };
 
 class Statement

@@ -72,10 +72,8 @@ void Parsed::Classify()
 						std::cout << "Error B" << std::endl;
 					}
 				}
-				else
+				else // Function stuff
 				{
-					// Function stuff, I guess
-
 					//int func()
 					// 1   2  34
 
@@ -87,21 +85,6 @@ void Parsed::Classify()
 							s.Function = true;
 							s.Args.push_back(Unclassified.at(Pos)); // Data type 
 							s.Args.push_back(Unclassified.at(Pos + 1)); // Name
-
-							int lister = 0;
-
-							for (int i = Pos; i < Unclassified.size(); i++)
-							{
-								std::string w = Unclassified.at(i);
-								if (w.compare("(") == 0)
-								{
-									lister++;
-								}
-								if (w.compare(")") == 0)
-								{
-									lister--;
-								}
-							}
 
 							Classified.push_back(s);
 						}
@@ -116,6 +99,11 @@ void Parsed::Classify()
 			{
 				std::cout << "Error A" << std::endl;
 			}
+		}
+		if (txt.compare("(") == 0 || txt.compare(")") == 0 || txt.compare("{") == 0 || txt.compare("}") == 0)
+		{
+			s.Args.push_back(txt);
+			this->Classified.push_back(s);
 		}
 	}
 	this->ParseVar();
