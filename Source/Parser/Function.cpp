@@ -2,6 +2,22 @@
 
 #include <iostream>
 
+std::string Function::Define()
+{
+	std::cout << "Writing function assembly definition" << std::endl;
+
+	std::string d;
+
+	d = this->Name.append(": \n");
+
+	for (int pos = this->ScopeStartPos; pos < this->ScopeEndPos; pos++)
+	{
+
+	}
+
+	return d;
+}
+
 void Parsed::ParseFunc()
 {
 	int parg = 0; // parenthesis argument lister
@@ -26,17 +42,17 @@ void Parsed::ParseFunc()
 			{
 				f.Name = stat.Args.at(1);
 
-				for (pos; pos<this->Classified.size(); pos++) // This is litteraly the most inneficient thing ever made, but computers are fast
+				for (pos; pos < this->Classified.size(); pos++) // This is litteraly the most inneficient thing ever made, but computers are fast
 				{
 					try
 					{
-						if (stat.Args.at(0).compare("(") == 0 && ArgClosed == false)
+						if (this->Classified.at(pos).Args.at(0).compare("(") == 0 && ArgClosed == false)
 						{
 							parg++;
 							ArgOpened = true;
 							f.ArgStartPos = pos;
 						}
-						else if (stat.Args.at(0).compare(")") == 0 && ArgClosed == false)
+						else if (this->Classified.at(pos).Args.at(0).compare(")") == 0 && ArgClosed == false)
 						{
 							parg--;
 							// Won't do ArgClosed because it won't work with multiple parenthesises
@@ -47,13 +63,13 @@ void Parsed::ParseFunc()
 							f.ArgEndPos = pos;
 						}
 
-						if (stat.Args.at(0).compare("{") == 0 && ScopeClosed == false)
+						if (this->Classified.at(pos).Args.at(0).compare("{") == 0 && ScopeClosed == false)
 						{
 							sarg++;
 							ScopeOpened = true;
 							f.ScopeStartPos = pos;
 						}
-						else if (stat.Args.at(0).compare("}") == 0 && ScopeClosed == false)
+						else if (this->Classified.at(pos).Args.at(0).compare("}") == 0 && ScopeClosed == false)
 						{
 							sarg--;
 						}

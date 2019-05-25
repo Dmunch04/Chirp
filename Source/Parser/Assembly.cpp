@@ -49,6 +49,8 @@ void Parsed::MakeAssembly()
 				break;
 			}
 
+			this->text.append(func.Define());
+
 			std::cout << "Function name is: " << func.Name << std::endl;
 		}
 	}
