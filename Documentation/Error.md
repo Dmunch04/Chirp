@@ -9,3 +9,5 @@ This has errors, the table below explains itself.
 | 3 | Too much Input files |
 | 4 | More than one Output file |
 | 5 | Main input file unspeficied |
+| 6 | Variable has declaration token but no value |
+| 7 | Function has declaration but no definition |
