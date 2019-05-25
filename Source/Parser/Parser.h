@@ -50,7 +50,7 @@ public:
 	Statement();
 
 	int Type; // 0 - Variable Dec, 1 - Variable Def, 2 - Variable Dec&Def
-	int Identifier; // Should I call id ? Identify in the vector of either Variable or Function depending on the typr
+	int Identifier; // Should I call id ? Identify in the vector of either Variable or Function depending on the type
 
 	bool Defined;
 	bool Variable;

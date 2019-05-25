@@ -71,7 +71,7 @@ namespace Assembly
 		
 		for (auto& d : p->FunctionList)
 		{
-			p->text.append("global _").append(d.Name);
+			p->text.append("global _").append(d.Name).append(" \n");
 		}
 
 		p->data.append("section .data \n ");

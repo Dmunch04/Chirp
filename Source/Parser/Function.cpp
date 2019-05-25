@@ -72,6 +72,15 @@ void Parsed::ParseFunc()
 			{
 				// error should be written
 			}
+
+			try
+			{
+
+			}
+			catch (...)
+			{
+
+			}
 		}
 	}
 }
