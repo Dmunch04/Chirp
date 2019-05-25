@@ -6,8 +6,24 @@ std::string Variable::Define()
 {
 	std::cout << "Writing variable definition in assembly" << std::endl;
 	std::string d;
-	d.append("; ").append(this->Name).append(" must be defined here somehow \n");
-	return d;
+
+	switch (this->Type)
+	{
+	case 0:
+		d.append(this->Name).append(" DW ").append(std::to_string(this->iValue));
+		break;
+	case 1:
+		d.append(this->Name).append(" DQ ").append(std::to_string(this->fValue));
+		break;
+	case 2:
+		d.append(this->Name).append(" DB '").append(1,this->cValue).append("'");
+		break;
+	default:
+		d.append("; Oh hey, you're there. So basically your code is strangely wrong and I won't bother making any error");
+		break;
+	}
+
+	return d.append(" \n");
 }
 std::string Variable::Declare()
 {
