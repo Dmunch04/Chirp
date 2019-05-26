@@ -15,4 +15,25 @@ int: a
 As you can see this is weird.
 
 # Build instructions
-This should run on any modern C++ compiler, the only library used is the standard library
+
+## Windows
+
+There is currently no build tools for Windows, but you can build Chirp on any modern C++ compilers with only the Standard Library. 
+
+## Linux
+
+It is very easy to build Chirp on linux, it only requires the G++ compiler. If you don't have it yet you can run this command:
+
+```sh
+sudo apt install g++
+```
+
+If you have done the steps above or already have the g++ compiler, you can run the commands under:
+
+```sh
+git clone https://github.com/binkiklou/chirp.git
+cd chirp/tools/build
+make
+```
+
+and there you go, you just build Chirp. You can now either use the language or contribute to the developpement of it.
