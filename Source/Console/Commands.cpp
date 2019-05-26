@@ -1,6 +1,8 @@
 #include "Commands.h"
+
 #include "../Parser/Parser.h"
 #include "../Parser/Assembly.h"
+#include "../Build.h"
 
 #include <iostream>
 #include <fstream>
@@ -113,12 +115,15 @@ namespace Command
 		if (Error == false) // Lets compile now 
 		{
 			// Ok we can finally get started on doing real stuff
+			std::string Asm = InputFile.append(".asm");
 			std::string FileData = Read(InputFile);
 			Parsed P = Parser::Parse(FileData);
+
 			P.Classify();
 			Assembly::Init(&P);
 			P.MakeAssembly();
-			Assembly::Write(&P,InputFile.append(".asm"));
+			Assembly::Write(&P,Asm);
+			Tools::Build(Asm,OutputFile);
 		}
 	}
 }
