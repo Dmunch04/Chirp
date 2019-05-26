@@ -5,3 +5,5 @@
 *.o
 *.ipch
 *.bin
+*.swp
+Exemple.ch
