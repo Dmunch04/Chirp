@@ -7,7 +7,7 @@
 
 namespace Log
 {
-#ifdef linux
+#ifdef __linux__
 	std::string Color(int c,std::string txt)
 	{
 		switch (c)
