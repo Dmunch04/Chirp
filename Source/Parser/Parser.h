@@ -57,6 +57,7 @@ public:
 	bool Defined;
 	bool Variable;
 	bool Function;
+	bool Entry;
 
 	std::vector<std::string> Args; // Pretty Universal
 };
@@ -73,6 +74,7 @@ public: // Ok so you can see that the lower you go, the later the compiler is go
 	void Classify();
 	void ParseVar(); // Pretty self explanatry wait fuck..
 	void ParseFunc();
+	void CallFunc();
 	void MakeAssembly();
 
 	std::vector<std::string> Unclassified; // What if it's declassified O_o 
@@ -80,6 +82,8 @@ public: // Ok so you can see that the lower you go, the later the compiler is go
 
 	std::vector<Variable> VariableList;
 	std::vector<Function> FunctionList;
+
+	int EntryPos;
 
 	std::string text; // section .text
 	std::vector<std::string> fout; // Function and Output

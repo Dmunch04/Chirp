@@ -86,6 +86,19 @@ void Parsed::Classify()
 							s.Args.push_back(Unclassified.at(Pos)); // Data type 
 							s.Args.push_back(Unclassified.at(Pos + 1)); // Name
 
+							try
+							{
+								if (Unclassified.at(Pos - 1).compare("entry") == 0)
+								{
+									s.Entry = true;
+								}
+							}
+							catch (...)
+							{
+								// not entry point
+								s.Entry = false;
+							}
+
 							Classified.push_back(s);
 						}
 					}
@@ -100,11 +113,26 @@ void Parsed::Classify()
 				std::cout << "Error A" << std::endl;
 			}
 		}
-		if (txt.compare("(") == 0 || txt.compare(")") == 0 || txt.compare("{") == 0 || txt.compare("}") == 0)
+		if (txt.compare("(") == 0 || txt.compare(")") == 0 || txt.compare("{") == 0 || txt.compare("}") == 0) // Paren Expressions to list
 		{
 			s.Args.push_back(txt);
 			this->Classified.push_back(s);
 		}
+		
+		/*if (txt.compare("(") == 0) // Function call
+		{
+			try
+			{
+				if (this->Unclassified.at(Pos - 2).compare("int") != 0 && this->Unclassified.at(Pos - 2).compare("float") != 0 && this->Unclassified.at(Pos - 2).compare("char") != 0)
+				{
+					std::cout << "Is function call" << std::endl;
+				}
+			}
+			catch (std::out_of_range)
+			{
+				std::cout << "Error unrecognized argument" << std::endl;
+			}
+		} */
 	}
 	this->ParseVar();
 	this->ParseFunc();

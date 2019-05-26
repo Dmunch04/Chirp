@@ -70,11 +70,22 @@ namespace Assembly
 		*/
 
 		p->text.append("section .text \n ");
-		
+
+		try
+		{
+			p->text.append("global _").append(p->FunctionList.at(p->EntryPos).Name).append(" \n");
+		}
+		catch (...)
+		{
+			std::cout << "No entry point defined" << std::endl;
+		}
+
+		/*
 		for (auto& d : p->FunctionList)
 		{
 			p->text.append("global _").append(d.Name).append(" \n");
 		}
+		*/
 
 		p->data.append("section .data \n ");
 	}

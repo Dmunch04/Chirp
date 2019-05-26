@@ -16,6 +16,7 @@ std::string Read(std::string file)
 	if (!read)
 	{
 		// Error while reading file
+		return "";
 	}
 	else
 	{
@@ -115,15 +116,17 @@ namespace Command
 		if (Error == false) // Lets compile now 
 		{
 			// Ok we can finally get started on doing real stuff
-			std::string Asm = InputFile.append(".asm");
+
 			std::string FileData = Read(InputFile);
+			std::string Asm = InputFile.append(".asm");
+
 			Parsed P = Parser::Parse(FileData);
 
 			P.Classify();
 			Assembly::Init(&P);
 			P.MakeAssembly();
 			Assembly::Write(&P,Asm);
-			Tools::Build(Asm,OutputFile);
+		  	Tools::Build(Asm,OutputFile);
 		}
 	}
 }

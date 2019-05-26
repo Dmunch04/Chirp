@@ -83,6 +83,18 @@ void Parsed::ParseFunc()
 					{
 					}
 				}
+
+				if (stat.Entry == true)
+				{
+					try
+					{
+						this->EntryPos = this->FunctionList.size();
+					}
+					catch (...)
+					{
+					}
+				}
+
 				this->FunctionList.push_back(f);
 				stat.Identifier = this->FunctionList.size() - 1;
 			}
@@ -92,4 +104,9 @@ void Parsed::ParseFunc()
 			}
 		}
 	}
+}
+
+void Parsed::CallFunc()
+{
+
 }
