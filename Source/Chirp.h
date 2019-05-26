@@ -1,6 +1,6 @@
 #pragma once
 
-#define Version 0.4
+#define Version 0.5
 
 #include "Console/Commands.h"
 
