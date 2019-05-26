@@ -69,7 +69,7 @@ void Parsed::Classify()
 					}
 					catch (std::out_of_range)
 					{
-						std::cout << "Error B" << std::endl;
+						Log::Error::Defined(6);
 					}
 				}
 				else // Function stuff
@@ -119,7 +119,7 @@ void Parsed::Classify()
 			this->Classified.push_back(s);
 		}
 		
-		/*if (txt.compare("(") == 0) // Function call
+		if (txt.compare("(") == 0) // Function call
 		{
 			try
 			{
@@ -132,7 +132,7 @@ void Parsed::Classify()
 			{
 				std::cout << "Error unrecognized argument" << std::endl;
 			}
-		} */
+		}
 	}
 	this->ParseVar();
 	this->ParseFunc();

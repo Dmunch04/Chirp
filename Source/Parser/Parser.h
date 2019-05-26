@@ -1,5 +1,7 @@
 #pragma once
 
+#include "../Logger/Error.h"
+
 #include <vector>
 #include <string>
 
