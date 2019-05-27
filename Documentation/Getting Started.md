@@ -14,13 +14,21 @@ int main()
 ```
 Now with Chirp the code above would look like this
 ```chirp 
-print("This works!")
+entry int start()
+{
+	print("This works!")
+}
 ```
-The Chirp code works much better than the C++ code.
+The Chirp code is weird but has some use to it. Such as the entry keyword which make it so any function can be the entry point, or the lack of need to return. 
 
 ## Variables
-Chirp like any other programming language has variales. In chirp the variables have 4 types, ``int``,``float``,``char`` and ``string``. Unlike in C/C++ strings are  natives and don't have to be imported.
-```
+Chirp like any other programming language has variales. In chirp the variables have 4 types, ``int``,``float``,``char`` and ``string``.
+```chirp
 int: a = 13
 ```
-As you can see, the code above is **weird**, but I like it.
+As you can see, the code above is **weird**, but I like it.'
+
+Unlike in C/C++ strings are  natives and don't have to be imported, this is demonstrated in the code below.
+```chirp
+string: name = "Maxence"
+```
