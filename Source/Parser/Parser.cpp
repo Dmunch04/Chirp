@@ -48,6 +48,17 @@ void Parsed::Classify()
 				{
 					// Not a function
 					s.Variable = true;
+					try
+					{
+						if (Unclassified.at(Pos - 1).compare("const") == 0)
+						{
+							s.Args.push_back(Unclassified.at(Pos - 1));
+						}
+					}
+					catch (std::out_of_range)
+					{
+						// Not a const
+					}
 					s.Args.push_back(Unclassified.at(Pos));
 					try
 					{

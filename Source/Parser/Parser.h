@@ -20,6 +20,7 @@ public:
 
 	int Type; // 0 - int, 1 - float, 2 - character
 	bool Defined;
+	bool Constant;
 
 	int iValue; // Interger value
 	float fValue; // Float value
@@ -38,6 +39,7 @@ public:
 
 	int Type; // 0 - int, 1 - float, 2 - character
 	bool Defined;
+	bool Entry;
 
 	int ArgStartPos; // ( - pos
 	int ArgEndPos; // ) - pos

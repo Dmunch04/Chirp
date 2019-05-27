@@ -40,7 +40,16 @@ void Parsed::ParseFunc()
 
 			try
 			{
-				f.Name = stat.Args.at(1);
+				if (stat.Args.at(1).compare("entry") == 0)
+				{
+					f.Name = stat.Args.at(2);
+					f.Entry = true;
+				}
+				else
+				{
+					f.Name = stat.Args.at(1);
+					f.Entry = false;
+				}
 
 				for (pos; pos < this->Classified.size(); pos++) // This is litteraly the most inneficient thing ever made, but computers are fast
 				{
@@ -84,7 +93,7 @@ void Parsed::ParseFunc()
 					}
 				}
 
-				if (stat.Entry == true)
+				if (f.Entry == true)
 				{
 					try
 					{
