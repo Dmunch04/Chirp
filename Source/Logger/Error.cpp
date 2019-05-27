@@ -35,6 +35,9 @@ namespace Log
 			case 8:
 				std::cout << Log::Color(RED, "Error 008:") << "Function has unrecognized argument start position" << std::endl;
 				break;
+			case 9:
+				std::cout << Log::Color(RED, "Error 009:") << "Statement's variable is unrecognized" << std::endl;
+				break;
 			default:
 				std::cout << Color(RED, "Error ???: ") << "Unspecified error has been detected" << std::endl;
 				break;

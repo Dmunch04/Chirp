@@ -19,7 +19,7 @@ void Parsed::MakeAssembly()
 			}
 			catch (std::out_of_range)
 			{
-				std::cout << "fuck error" << std::endl;
+				Log::Error::Defined(9);
 				break;
 			}
 
