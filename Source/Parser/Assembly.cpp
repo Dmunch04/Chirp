@@ -27,7 +27,10 @@ void Parsed::MakeAssembly()
 
 			if (var.Defined)
 			{
-				this->data.append(var.Define());
+				if (var.Constant)
+				{
+					this->data.append(var.Define());
+				}
 			}
 			else
 			{
