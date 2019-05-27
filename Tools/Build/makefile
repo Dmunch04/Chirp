@@ -1,6 +1,5 @@
-# I have no idea how to write makefiles, so I used a lot of code from Github user Wenchy's makefile on github gist
+# I have no idea how to write makefiles
 # - Maxence "Binkiklou" Cossette
-
 
 .ONESHELL:
 all: compile build done
