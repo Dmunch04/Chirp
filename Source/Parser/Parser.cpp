@@ -10,6 +10,11 @@ Variable::Variable()
 
 }
 
+Scope::Scope()
+{
+
+}
+
 Statement::Statement()
 {
 

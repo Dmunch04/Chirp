@@ -10,7 +10,7 @@ std::string Function::Define(std::vector<Statement>* Classified)
 
 	d = this->Name.append(": \n");
 
-	for (int pos = this->ScopeStartPos; pos < this->ScopeEndPos; pos++)
+	for (int pos = this->scope.ScopeStart; pos < this->scope.ScopeStop;pos++)
 	{
 		Statement s = Classified->at(pos);
 	}
@@ -51,47 +51,7 @@ void Parsed::ParseFunc()
 					f.Entry = false;
 				}
 
-				for (pos; pos < this->Classified.size(); pos++) // This is litteraly the most inneficient thing ever made, but computers are fast
-				{
-					try
-					{
-						if (this->Classified.at(pos).Args.at(0).compare("(") == 0 && ArgClosed == false)
-						{
-							parg++;
-							ArgOpened = true;
-							f.ArgStartPos = pos;
-						}
-						else if (this->Classified.at(pos).Args.at(0).compare(")") == 0 && ArgClosed == false)
-						{
-							parg--;
-							// Won't do ArgClosed because it won't work with multiple parenthesises
-						}
-						if (parg == 0 && ArgOpened == true)
-						{
-							ArgClosed = true;
-							f.ArgEndPos = pos;
-						}
-
-						if (this->Classified.at(pos).Args.at(0).compare("{") == 0 && ScopeClosed == false)
-						{
-							sarg++;
-							ScopeOpened = true;
-							f.ScopeStartPos = pos;
-						}
-						else if (this->Classified.at(pos).Args.at(0).compare("}") == 0 && ScopeClosed == false)
-						{
-							sarg--;
-						}
-						if (sarg == 0 && ScopeOpened == true)
-						{
-							ScopeClosed = true;
-							f.ScopeEndPos = pos;
-						}
-					}
-					catch (...)
-					{
-					}
-				}
+				f.scope.Set(pos,&this->Classified);
 
 				if (f.Entry == true)
 				{

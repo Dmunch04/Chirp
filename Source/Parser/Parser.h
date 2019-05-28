@@ -27,17 +27,6 @@ public:
 	char cValue; // Character value
 };
 
-class Scope //I'm writing this on the website on mobile, I have no idea if it works
-{
-public:
-        Scope();
-
-        void Set(); // Pretty much parses it 
-
-        int Start; // Position in classified
-        int Stop; // Position in classified
-};
-
 class Statement
 {
 public:
@@ -54,6 +43,22 @@ public:
 	std::vector<std::string> Args; // Pretty Universal
 };
 
+// Thise shouldn't be called scope but it is, can't find a name
+// basicallly it's either the positions of various symbols or
+// thoses of conditions
+class Scope
+{
+public:
+	Scope();
+
+	void Set(int, std::vector<Statement>*); // Pretty much parses it 
+
+	int ArgStart; // Position where the parenthesis opens
+	int ArgStop; // Position where the parenthesis closes
+	int ScopeStart; // Position where the brackets start
+	int ScopeStop; // Position where the brackets stop
+};
+
 /*
 This is pretty important, for function.
 */
@@ -68,15 +73,10 @@ public:
 	bool Defined;
 	bool Entry;
 
-	int ArgStartPos; // ( - pos
-	int ArgEndPos; // ) - pos
-
-	int ScopeStartPos; // Position where the scope starts
-	int ScopeEndPos; // Position where the scope ends 
+	Scope scope;
 
 	int OutId; // Position in parsed's fout
 };
-
 
 /*
 Most important class for the compiler. Everything is happening here iet's a 
