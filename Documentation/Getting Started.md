@@ -19,7 +19,7 @@ entry int start()
 	print("This works!")
 }
 ```
-The Chirp code is weird but has some use to it. Such as the entry keyword which make it so any function can be the entry point, or the lack of need to return. 
+The Chirp code is weird but has some use to it. Such as the entry keyword which make it so any function can be the entry point. 
 
 ## Variables
 Chirp like any other programming language has variales. In chirp the variables have 4 types, ``int``,``float``,``char`` and ``string``.
