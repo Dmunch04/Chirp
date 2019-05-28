@@ -13,12 +13,19 @@ int main()
 }
 ```
 Now with Chirp the code above would look like this
-```chirp 
+
+
+```chirp
+import <io>
+ 
 entry int start()
 {
 	print("This works!")
 }
 ```
+
+> The code above isn't working yet, it will be soon.
+
 The Chirp code is weird but has some use to it. Such as the entry keyword which make it so any function can be the entry point. 
 
 ## Variables
