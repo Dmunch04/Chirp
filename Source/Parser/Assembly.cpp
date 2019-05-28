@@ -52,7 +52,7 @@ void Parsed::MakeAssembly()
 				break;
 			}
 
-			this->text.append(func.Define());
+			this->text.append(func.Define(&this->Classified));
 
 			std::cout << "Function name is: " << func.Name << std::endl;
 		}

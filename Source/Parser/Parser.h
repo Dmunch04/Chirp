@@ -27,29 +27,6 @@ public:
 	char cValue; // Character value
 };
 
-/*
-This is pretty important, for function.
-*/
-class Function
-{
-public:
-	std::string Name;
-
-	std::string Define();
-
-	int Type; // 0 - int, 1 - float, 2 - character
-	bool Defined;
-	bool Entry;
-
-	int ArgStartPos; // ( - pos
-	int ArgEndPos; // ) - pos
-
-	int ScopeStartPos; // Position where the scope starts
-	int ScopeEndPos; // Position where the scope ends 
-
-	int OutId; // Position in parsed's fout
-};
-
 class Statement
 {
 public:
@@ -65,6 +42,30 @@ public:
 
 	std::vector<std::string> Args; // Pretty Universal
 };
+
+/*
+This is pretty important, for function.
+*/
+class Function
+{
+public:
+	std::string Name;
+
+	std::string Define(std::vector<Statement>*);
+
+	int Type; // 0 - int, 1 - float, 2 - character
+	bool Defined;
+	bool Entry;
+
+	int ArgStartPos; // ( - pos
+	int ArgEndPos; // ) - pos
+
+	int ScopeStartPos; // Position where the scope starts
+	int ScopeEndPos; // Position where the scope ends 
+
+	int OutId; // Position in parsed's fout
+};
+
 
 /*
 Most important class for the compiler. Everything is happening here iet's a 

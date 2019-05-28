@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-std::string Function::Define()
+std::string Function::Define(std::vector<Statement>* Classified)
 {
 	std::cout << "Writing function assembly definition" << std::endl;
 
@@ -12,7 +12,7 @@ std::string Function::Define()
 
 	for (int pos = this->ScopeStartPos; pos < this->ScopeEndPos; pos++)
 	{
-
+		Statement s = Classified->at(pos);
 	}
 
 	return d;
