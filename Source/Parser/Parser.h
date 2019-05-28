@@ -27,6 +27,17 @@ public:
 	char cValue; // Character value
 };
 
+class Scope //I'm writing this on the website on mobile, I have no idea if it works
+{
+public:
+        Scope();
+
+        void Set(); // Pretty much parses it 
+
+        int Start; // Position in classified
+        int Stop; // Position in classified
+};
+
 class Statement
 {
 public:
