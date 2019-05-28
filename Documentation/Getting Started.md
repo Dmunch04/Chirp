@@ -42,3 +42,5 @@ inner
 	number DW 1234
 }
 ```
+
+> The inner statement is not supported yet. It will like in 1-3 days
