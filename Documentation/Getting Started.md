@@ -32,3 +32,13 @@ Unlike in C/C++ strings are  natives and don't have to be imported, this is demo
 ```chirp
 string: name = "Maxence"
 ```
+
+## Inner
+The inner keyword is used to write assembly inside Chirp code. It is pretty weird, but I guess you could do cool stuff with it.
+
+```chirp
+inner
+{
+	number DW 1234
+}
+```
