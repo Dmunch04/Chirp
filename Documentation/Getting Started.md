@@ -1,6 +1,8 @@
 # Getting started with chirp
 This isn't about the source code, this documentation is for the programming language.
 
+> Chirp is still early in it's developpement, so a lot of the code below may not work yet or be invalid.
+
 ## Basic code
 So let's get started with basic code, below is some basic code with C++:
 ``` cpp
