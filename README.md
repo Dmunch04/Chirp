@@ -9,7 +9,7 @@ A modern low-level programming language written in C++, to replace C++ and other
 ```chirp
 int start()
 {
-int: a
+int: a = 123
 }
 ```
 As you can see this is weird.
