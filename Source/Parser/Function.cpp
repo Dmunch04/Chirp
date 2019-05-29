@@ -2,20 +2,6 @@
 
 #include <iostream>
 
-void Function::Write(std::vector<Statement>* Classified)
-{
-	std::cout << "Writing function assembly definition" << std::endl;
-
-	std::string d;
-
-	d = this->Name.append(": \n");
-
-	for (int pos = this->scope.ScopeStart + 1; pos < this->scope.ScopeStop; pos++)
-	{
-		std::cout << "Statement inside function" << std::endl;
-	}
-}
-
 void Parsed::ParseFunc()
 {
 	int parg = 0; // parenthesis argument lister

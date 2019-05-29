@@ -44,7 +44,12 @@ void Parsed::MakeAssembly()
 			try
 			{
 				func = this->FunctionList.at(s.Identifier);
-				func.Write(&this->Classified);
+				
+				for (int pos = func.scope.ScopeStart + 1; pos < func.scope.ScopeStop; pos++)
+				{
+					std::cout << "Statement inside function" << std::endl;
+					this->ASMStat(&s);
+				}
 			}
 			catch (std::out_of_range)
 			{
@@ -56,6 +61,12 @@ void Parsed::MakeAssembly()
 		}
 	}
 }
+
+std::string Parsed::ASMStat(Statement* s)
+{
+	return ";yeet";
+}
+
 
 namespace Assembly
 {

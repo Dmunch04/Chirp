@@ -69,8 +69,6 @@ class Function
 public:
 	std::string Name;
 
-	void Write(std::vector<Statement>*);
-
 	int Type; // 0 - int, 1 - float, 2 - character
 	bool Defined;
 	bool Entry;
@@ -93,6 +91,7 @@ public: // Ok so you can see that the lower you go, the later the compiler is go
 	void ParseVar(); // Pretty self explanatry wait fuck..
 	void ParseFunc();
 	void CallFunc();
+	std::string ASMStat(Statement*); // Makes a statement inside a stack into assembly code
 	void MakeAssembly();
 
 	std::vector<std::string> Unclassified; // What if it's declassified O_o 
