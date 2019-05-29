@@ -53,6 +53,8 @@ public:
 
 	void Set(int, std::vector<Statement>*); // Pretty much parses it 
 
+	bool hasArg;
+
 	int ArgStart; // Position where the parenthesis opens
 	int ArgStop; // Position where the parenthesis closes
 	int ScopeStart; // Position where the brackets start
@@ -67,7 +69,7 @@ class Function
 public:
 	std::string Name;
 
-	std::string Define(std::vector<Statement>*);
+	void Define(std::vector<Statement>*);
 
 	int Type; // 0 - int, 1 - float, 2 - character
 	bool Defined;

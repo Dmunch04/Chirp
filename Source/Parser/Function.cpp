@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-std::string Function::Define(std::vector<Statement>* Classified)
+void Function::Define(std::vector<Statement>* Classified)
 {
 	std::cout << "Writing function assembly definition" << std::endl;
 
@@ -10,12 +10,7 @@ std::string Function::Define(std::vector<Statement>* Classified)
 
 	d = this->Name.append(": \n");
 
-	for (int pos = this->scope.ScopeStart; pos < this->scope.ScopeStop;pos++)
-	{
-		Statement s = Classified->at(pos);
-	}
 
-	return d;
 }
 
 void Parsed::ParseFunc()
