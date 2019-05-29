@@ -5,6 +5,7 @@
 #include <fstream>
 #include <iostream>
 
+// Starts the assembly writing process after writing in assembly
 void Parsed::MakeAssembly()
 {
 	for (auto &s : this->Classified) // Ok so get this shit ID
@@ -43,6 +44,7 @@ void Parsed::MakeAssembly()
 			try
 			{
 				func = this->FunctionList.at(s.Identifier);
+				func.Write(&this->Classified);
 			}
 			catch (std::out_of_range)
 			{

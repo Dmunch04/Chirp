@@ -69,7 +69,7 @@ class Function
 public:
 	std::string Name;
 
-	void Define(std::vector<Statement>*);
+	void Write(std::vector<Statement>*);
 
 	int Type; // 0 - int, 1 - float, 2 - character
 	bool Defined;
