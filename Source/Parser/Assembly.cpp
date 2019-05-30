@@ -47,8 +47,7 @@ void Parsed::MakeAssembly()
 				
 				for (int pos = func.scope.ScopeStart + 1; pos < func.scope.ScopeStop; pos++)
 				{
-					std::cout << "Statement inside function" << std::endl;
-					this->ASMStat(&s);
+					func.Output.append(this->ASMStat(&s));
 				}
 			}
 			catch (std::out_of_range)
@@ -56,15 +55,22 @@ void Parsed::MakeAssembly()
 				std::cout << "fuck error at function" << std::endl;
 				break;
 			}
-
-//			this->text.append(func.Define(&this->Classified));
 		}
+	}
+
+	// Should be finished now
+
+	for (auto& f : this->FunctionList)
+	{
+		this->text.append(f.Output);
+		std::cout << "Appended: "<< f.Output << std::endl;
 	}
 }
 
 std::string Parsed::ASMStat(Statement* s)
 {
-	return ";yeet";
+	std::cout << " yo ?" << std::endl;
+	return ";yeet \n";
 }
 
 
@@ -91,13 +97,6 @@ namespace Assembly
 		{
 			std::cout << "No entry point defined" << std::endl;
 		}
-
-		/*
-		for (auto& d : p->FunctionList)
-		{
-			p->text.append("global _").append(d.Name).append(" \n");
-		}
-		*/
 
 		p->data.append("section .data \n ");
 	}

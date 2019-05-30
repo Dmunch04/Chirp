@@ -75,7 +75,8 @@ public:
 
 	Scope scope;
 
-	int OutId; // Position in parsed's fout
+	std::string Output;
+//	int OutId; // Position in parsed's fout
 };
 
 /*
@@ -103,7 +104,6 @@ public: // Ok so you can see that the lower you go, the later the compiler is go
 	int EntryPos;
 
 	std::string text; // section .text
-	std::vector<std::string> fout; // Function and Output
 	std::string data; // section .data
 
 	std::string output;
