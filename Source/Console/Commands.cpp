@@ -114,7 +114,7 @@ namespace Command
 		}
 
 		if (Error == false) // Lets compile now 
-		{
+ 		{
 			// Ok we can finally get started on doing real stuff
 
 			std::string FileData = Read(InputFile);

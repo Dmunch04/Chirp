@@ -39,15 +39,17 @@ void Parsed::MakeAssembly()
 		}
 		else if (s.Function)
 		{
-			Function func;
+			Function* func;
 
 			try
 			{
-				func = this->FunctionList.at(s.Identifier);
+				func = &this->FunctionList.at(s.Identifier);
 				
-				for (int pos = func.scope.ScopeStart + 1; pos < func.scope.ScopeStop; pos++)
+				func->Output.append(func->Name).append(": \n");
+
+				for (int pos = func->scope.ScopeStart + 1; pos < func->scope.ScopeStop; pos++)
 				{
-					func.Output.append(this->ASMStat(&s));
+					func->Output.append(this->ASMStat(&s));
 				}
 			}
 			catch (std::out_of_range)
@@ -63,13 +65,11 @@ void Parsed::MakeAssembly()
 	for (auto& f : this->FunctionList)
 	{
 		this->text.append(f.Output);
-		std::cout << "Appended: "<< f.Output << std::endl;
 	}
 }
 
 std::string Parsed::ASMStat(Statement* s)
 {
-	std::cout << " yo ?" << std::endl;
 	return ";yeet \n";
 }
 
@@ -145,7 +145,7 @@ namespace Assembly
 	{
 		p->output = p->text.append(p->data); 
 
-		std::ofstream write(file);
+ 		std::ofstream write(file);
 
 		write << p->output << std::endl;
 	}
