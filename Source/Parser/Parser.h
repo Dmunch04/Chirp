@@ -104,6 +104,7 @@ public: // Ok so you can see that the lower you go, the later the compiler is go
 	int EntryPos;
 
 	std::string text; // section .text
+	std::string bss; // section .bss
 	std::string data; // section .data
 
 	std::string output;

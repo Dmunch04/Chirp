@@ -7,8 +7,8 @@ std::string Variable::Define()
 	std::cout << "Writing variable definition in assembly" << std::endl;
 	std::string d;
 
-	if (this->Constant == true)
-	{
+//	if (this->Constant == true)
+//	{
 		switch (this->Type)
 		{
 		case 0:
@@ -24,12 +24,12 @@ std::string Variable::Define()
 			d.append("; Oh hey, you're there. So basically your code is strangely wrong and I won't bother making any error for that");
 			return d.append(" \n");
 		}
-	}
-	else
-	{
-		std::cout << "Isn't constant" << std::endl;
-		return "; This is undefined, this is not your fault";
-	}
+//	}
+//	else
+//	{
+//		std::cout << "Isn't constant" << std::endl;
+//		return d.append(" \n");
+//	}
 }
 std::string Variable::Declare()
 {

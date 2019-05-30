@@ -45,11 +45,16 @@ void Parsed::MakeAssembly()
 			{
 				func = &this->FunctionList.at(s.Identifier);
 				
+				if (&func->Entry)
+				{
+					func->Name.insert(0,"_");
+				}
+
 				func->Output.append(func->Name).append(": \n");
 
 				for (int pos = func->scope.ScopeStart + 1; pos < func->scope.ScopeStop; pos++)
 				{
-					func->Output.append(this->ASMStat(&s));
+					func->Output.append(this->ASMStat(&this->Classified.at(pos))); // oof
 				}
 			}
 			catch (std::out_of_range)
@@ -68,12 +73,6 @@ void Parsed::MakeAssembly()
 	}
 }
 
-std::string Parsed::ASMStat(Statement* s)
-{
-	return ";yeet \n";
-}
-
-
 namespace Assembly
 {
 	void Init(Parsed* p)
@@ -91,13 +90,14 @@ namespace Assembly
 
 		try
 		{
-			p->text.append("global _").append(p->FunctionList.at(p->EntryPos).Name).append(" \n");
+			p->text.append("global _").append(p->FunctionList.at(p->EntryPos).Name).append(" \n"); // Still ok, because the insert is later
 		}
 		catch (...)
 		{
 			std::cout << "No entry point defined" << std::endl;
 		}
 
+		p->bss.append("section .bss \n");
 		p->data.append("section .data \n ");
 	}
 
@@ -143,7 +143,7 @@ namespace Assembly
 
 	void Write(Parsed *p,std::string file)
 	{
-		p->output = p->text.append(p->data); 
+		p->output = p->text.append(p->bss).append(p->data); 
 
  		std::ofstream write(file);
 
