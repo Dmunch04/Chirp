@@ -7,7 +7,7 @@ namespace Tools
 #ifdef __linux__
 	void Build(std::string asmfile, std::string out)
 	{
-		std::cout << "Starting build scripts on windows" << std::endl;
+		std::cout << "Starting build scripts on linux" << std::endl;
 		std::string cmd("nasm -f win32 ");
 		cmd.append(asmfile).append(" -o bin.o");
 		std::string cmdB = "ld bin.o -o ";
