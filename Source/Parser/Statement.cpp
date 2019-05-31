@@ -19,9 +19,12 @@ std::string Parsed::ASMStat(Statement* s)
 
 		if (!var.Constant)
 		{
-			this->bss.append(var.Define());
-			std::cout << "Yeeted: " << bss << std::endl;
+		//	this->bss.append(var.Define());
 		}
 	}
-	return ";yeet \n";
+	else if (s->Type == 4)
+	{
+		return this->CallFunc(s);
+	}
+	return "";
 }

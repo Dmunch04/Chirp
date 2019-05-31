@@ -54,8 +54,10 @@ void Parsed::MakeAssembly()
 
 				for (int pos = func->scope.ScopeStart + 1; pos < func->scope.ScopeStop; pos++)
 				{
-					func->Output.append(this->ASMStat(&this->Classified.at(pos))); // oof
+					func->Output.append(this->ASMStat(&this->Classified.at(pos)));
 				}
+
+				func->Output.append("ret \n ");
 			}
 			catch (std::out_of_range)
 			{

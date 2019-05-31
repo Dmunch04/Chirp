@@ -59,7 +59,20 @@ void Parsed::ParseFunc()
 	}
 }
 
-void Parsed::CallFunc()
+std::string Parsed::CallFunc(Statement* stat)
 {
+	std::string d = "call "; // d stands for "data"
+	
+	try
+	{
+		d.append(stat->Args.at(0)).append(" \n");
+	}
+	catch (...)
+	{
+		return "; error at function call \n";
+	}
 
+//	std::cout << "eh" << std::endl;
+
+	return d;
 }

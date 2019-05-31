@@ -32,13 +32,11 @@ class Statement
 public:
 	Statement();
 
-	int Type; // 0 - Variable Dec, 1 - Variable Def, 2 - Variable Dec&Def
+	int Type; // Look up the codes in Documentation/Parsing.md, it's there and it's pretty. - Binkiklou
 	int Identifier; // Should I call id ? Identify in the vector of either Variable or Function depending on the type
 
-	bool Defined;
 	bool Variable;
 	bool Function;
-//	bool Entry;
 
 	std::vector<std::string> Args; // Pretty Universal
 };
@@ -91,7 +89,7 @@ public: // Ok so you can see that the lower you go, the later the compiler is go
 	void Classify();
 	void ParseVar(); // Pretty self explanatry wait fuck..
 	void ParseFunc();
-	void CallFunc();
+	std::string CallFunc(Statement* stat);
 	std::string ASMStat(Statement*); // Makes a statement inside a stack into assembly code
 	void MakeAssembly();
 
