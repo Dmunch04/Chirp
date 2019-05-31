@@ -32,7 +32,7 @@ If you have done the steps above or already have the g++ compiler, you can run t
 
 ```sh
 git clone https://github.com/binkiklou/chirp.git
-cd chirp/tools/build
+cd Chirp/Tools/Build
 make
 ```
 
