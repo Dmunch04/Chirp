@@ -7,7 +7,7 @@ A modern low-level programming language written in C++, to replace C++ and other
 
 # Simple Example
 ```chirp
-int start()
+entry int start()
 {
 int: a = 123
 }
