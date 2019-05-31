@@ -24,7 +24,7 @@ void Parsed::ParseFunc()
 
 			try
 			{
-				if (stat.Args.at(1).compare("entry") == 0)
+				if (stat.Args.at(0).compare("entry") == 0)
 				{
 					f.Name = stat.Args.at(2);
 					f.Entry = true;

@@ -38,7 +38,7 @@ public:
 	bool Defined;
 	bool Variable;
 	bool Function;
-	bool Entry;
+//	bool Entry;
 
 	std::vector<std::string> Args; // Pretty Universal
 };

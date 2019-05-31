@@ -45,7 +45,7 @@ void Parsed::MakeAssembly()
 			{
 				func = &this->FunctionList.at(s.Identifier);
 				
-				if (&func->Entry)
+				if (func->Entry == true)
 				{
 					func->Name.insert(0,"_");
 				}
