@@ -6,7 +6,7 @@ all: compile build done
 
 compile:
 	@echo "Starting build processs"
-	@sh build.sh
+	g++ -I ../../Source/ -I ../../Source/Console -I ../../Source/Logger -I ../../Source/Parser ../../Source/*.cpp ../../Source/Console/*.cpp ../../Source/Logger/*.cpp ../../Source/Parser/*.cpp -std=c++11 -o Chirp.o
 
 build:
 	@echo "Creating ressource files"
