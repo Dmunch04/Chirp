@@ -45,7 +45,11 @@ namespace Log
 		}
 		void Custom(std::string txt)
 		{
-
+			std::cout << Color(RED, "Error: ") << txt << std::endl;
+		}
+		void At(int pos, std::string txt)
+		{
+			std::cout << Log::Color(RED,":") << txt <<std::endl;
 		}
 	}
 }

@@ -112,7 +112,7 @@ void Parsed::ParseVar()
 			}
 			catch (std::out_of_range)
 			{
-				std::cout << "Error C" << std::endl;
+				Log::Error::Custom("Out of range vector at variable parsing");
 			}
 		}
 	}
