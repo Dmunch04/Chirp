@@ -2,55 +2,58 @@
 
 #include <iostream>
 
-void Parsed::ParseFunc()
+void Parsed::ParseFunc ()
 {
-	int parg = 0; // parenthesis argument lister
-	int sarg = 0; // scope argument lister 
+	int PArg = 0; // parenthesis argument lister
+	int SArg = 0; // scope argument lister
 
 	bool ArgOpened = false;
 	bool ArgClosed = false;
 	bool ScopeOpened = false;
 	bool ScopeClosed = false;
 
-	int pos = 0; // may have to do it -1
+	int Pos = 0; // may have to do it -1
 
-	for (auto& stat : this->Classified)
+	for (auto& Statement : this -> Classified)
 	{
-		pos++;
+		Pos++;
 
-		if (stat.Function)
+		if (Statement.Function)
 		{
-			Function f;
+			Function Function;
 
 			try
 			{
-				if (stat.Args.at(0).compare("entry") == 0)
+				if (Statement.Args.at (0).compare ("entry") == 0)
 				{
-					f.Name = stat.Args.at(2);
-					f.Entry = true;
+					Function.Name = Statement.Args.at (2);
+					Function.Entry = true;
 				}
+
 				else
 				{
-					f.Name = stat.Args.at(1);
-					f.Entry = false;
+					Function.Name = Statement.Args.at (1);
+					Function.Entry = false;
 				}
 
-				f.scope.Set(pos,&this->Classified);
+				Function.ThisScope.Set (Pos, &this -> Classified);
 
-				if (f.Entry == true)
+				if (Function.Entry == true)
 				{
 					try
 					{
-						this->EntryPos = this->FunctionList.size();
+						this -> EntryPos = this -> FunctionList.size ();
 					}
+
 					catch (...)
 					{
 					}
 				}
 
-				this->FunctionList.push_back(f);
-				stat.Identifier = this->FunctionList.size() - 1;
+				this -> FunctionList.push_back (Function);
+				Statement.Identifier = this -> FunctionList.size () - 1;
 			}
+
 			catch (...)
 			{
 				// error should be written
@@ -59,14 +62,15 @@ void Parsed::ParseFunc()
 	}
 }
 
-std::string Parsed::CallFunc(Statement* stat)
+std::string Parsed::CallFunc (Statement* Statement)
 {
-	std::string d = "call "; // d stands for "data"
-	
+	std::string Data = "call "; // d stands for "data"
+
 	try
 	{
-		d.append(stat->Args.at(0)).append(" \n");
+		Data.append (Statement -> Args.at (0)).append (" \n");
 	}
+
 	catch (...)
 	{
 		return "; error at function call \n";
@@ -74,5 +78,5 @@ std::string Parsed::CallFunc(Statement* stat)
 
 //	std::cout << "eh" << std::endl;
 
-	return d;
+	return Data;
 }

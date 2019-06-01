@@ -10,5 +10,5 @@
 
 namespace Log
 {
-	std::string Color(int,std::string);
+	std::string Color (int, std::string);
 }

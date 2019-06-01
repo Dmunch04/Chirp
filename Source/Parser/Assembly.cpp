@@ -6,61 +6,63 @@
 #include <iostream>
 
 // Starts the assembly writing process after writing in assembly
-void Parsed::MakeAssembly()
+void Parsed::MakeAssembly ()
 {
-	for (auto &s : this->Classified) // Ok so get this shit ID
+	for (auto &Statement : this -> Classified) // Ok so get this shit ID
 	{
-		if (s.Variable)
+		if (Statement.Variable)
 		{
-			Variable var;
+			Variable Var;
 
 			try
 			{
-				var = this->VariableList.at(s.Identifier);
+				Var = this -> VariableList.at (Statement.Identifier);
 			}
+
 			catch (std::out_of_range)
 			{
-				Log::Error::Defined(9);
+				Log::Error::Defined (9);
 				break;
 			}
 
-			if (var.Defined)
+			if (Var.Defined)
 			{
-				if (var.Constant)
+				if (Var.Constant)
 				{
-					this->data.append(var.Define());
+					this -> Data.append (Var.Define ());
 				}
 			}
+
 			else
 			{
-				this->data.append(var.Declare());
+				this -> Data.append (Var.Declare ());
 			}
 
 		}
-		else if (s.Function)
+
+		else if (Statement.Function)
 		{
-			Function* func;
+			Function* Function;
 
 			try
 			{
-				func = &this->FunctionList.at(s.Identifier);
-				
-				if (func->Entry == true)
+				Function = &this -> FunctionList.at (Statement.Identifier);
+
+				if (Function -> Entry == true)
 				{
-					func->Name.insert(0,"_");
+					Function -> Name.insert (0, "_");
 				}
 
-				func->Output.append(func->Name).append(": \n");
+				Function -> Output.append (Function -> Name).append (": \n");
 
-				func->Output.append(" push ebp \n mov ebp,esp \n");
-
-				for (int pos = func->scope.ScopeStart + 1; pos < func->scope.ScopeStop; pos++)
+				for (int Pos = Function -> ThisScope.ScopeStart + 1; Pos < Function -> ThisScope.ScopeStop; Pos++)
 				{
-					func->Output.append(this->ASMStat(&this->Classified.at(pos)));
+					Function -> Output.append (this -> ASMStat (&this -> Classified.at (Pos)));
 				}
 
-				func->Output.append(" mov esp,ebp \n pop ebp \n ret \n ");
+				Function -> Output.append ("ret \n ");
 			}
+
 			catch (std::out_of_range)
 			{
 				std::cout << "fuck error at function" << std::endl;
@@ -71,86 +73,91 @@ void Parsed::MakeAssembly()
 
 	// Should be finished now
 
-	for (auto& f : this->FunctionList)
+	for (auto& Functions : this -> FunctionList)
 	{
-		this->text.append(f.Output);
+		this -> Text.append (Functions.Output);
 	}
 }
 
 namespace Assembly
 {
-	void Init(Parsed* p)
+	void Init (Parsed* Parsed)
 	{
 		/*
 		section .text
 			global _start
 
 		_start:
-			
+
 		section .data
 		*/
 
-		p->text.append("section .text \n ");
+		Parsed -> Text.append ("section .text \n ");
 
 		try
 		{
-			p->text.append("global _").append(p->FunctionList.at(p->EntryPos).Name).append(" \n"); // Still ok, because the insert is later
-		}
-		catch (...)
-		{
-			std::cout << "No entry point defined" << std::endl;
+			Parsed -> Text.append ("global _").append (Parsed -> FunctionList.at (Parsed -> EntryPos).Name).append (" \n"); // Still ok, because the insert is later
 		}
 
-		p->bss.append("section .bss \n");
-		p->data.append("section .data \n ");
+		catch (...)
+		{
+			std::cout << "No entry point defined!" << std::endl;
+		}
+
+		Parsed -> BSS.append ("section .bss \n");
+		Parsed -> Data.append ("section .data \n ");
 	}
 
 	// Takes the parsed stuff and redirect it to their specific functions that write stuff
-	std::string Make(Parsed* p,int start,int stop)
+	std::string Make (Parsed* Parsed, int Start, int Stop)
 	{
-		std::string d;
+		std::string Data;
 
-		for (int pos = start + 1; pos < stop; pos++)
+		for (int Pos = Start + 1; Pos < Stop; Pos++)
 		{
-			Statement s = p->Classified.at(pos);
-			if (s.Variable)
+			Statement Statement = Parsed -> Classified.at (Pos);
+
+			if (Statement.Variable)
 			{
-				Variable var;
+				Variable Var;
 
 				try
 				{
-					var = p->VariableList.at(s.Identifier);
+					Var = Parsed -> VariableList.at (Statement.Identifier);
 				}
+
 				catch (std::out_of_range)
 				{
-					Log::Error::Defined(9);
+					Log::Error::Defined (9);
 				}
 
 				//			std::cout <<"Variable name is: "<< var.Name << std::endl;
 
-				if (var.Defined)
+				if (Var.Defined)
 				{
-					if (var.Constant)
+					if (Var.Constant)
 					{
-						d.append(var.Define());
+						Data.append (Var.Define ());
 					}
 				}
+
 				else
 				{
-					d.append(var.Declare());
+					Data.append (Var.Declare ());
 				}
 
 			}
 		}
-		return d;
+
+		return Data;
 	}
 
-	void Write(Parsed *p,std::string file)
+	void Write (Parsed *Parsed, std::string File)
 	{
-		p->output = p->text.append(p->bss).append(p->data); 
+		Parsed -> Output = Parsed -> Text.append (Parsed -> BSS).append (Parsed -> Data);
 
- 		std::ofstream write(file);
+ 		std::ofstream Write (File);
 
-		write << p->output << std::endl;
+		Write << Parsed -> Output << std::endl;
 	}
-} 
+}

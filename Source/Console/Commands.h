@@ -6,5 +6,5 @@
 namespace Command
 {
 	// Parse and run command arguments
-	void Run(std::vector<std::string>);
+	void Run (std::vector<std::string>);
 }

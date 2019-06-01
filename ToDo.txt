@@ -1,0 +1,7 @@
+Errors: https://gist.github.com/binkiklou/71c2fc2311ca689722c3ff607606ea4b
+
+ToDo:
+- Fix errors
+
+Info:
+- The: Error: Out of range vector at.. error happens in: Variable.cpp at void Parsed::ParseVar ()

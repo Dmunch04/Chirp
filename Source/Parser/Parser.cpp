@@ -5,17 +5,17 @@
 
 //===CLASS DEFINITON
 
-Variable::Variable()
-{
-	this->stackPos = 4;
-}
-
-Scope::Scope()
+Variable::Variable ()
 {
 
 }
 
-Statement::Statement()
+Scope::Scope ()
+{
+
+}
+
+Statement::Statement ()
 {
 
 }
@@ -24,70 +24,77 @@ Statement::Statement()
 Constructor function for the Parsed class, maybe we should move all the code from Parser::Parse()
 to here?
 */
-Parsed::Parsed()
+Parsed::Parsed ()
 {
-	
+
 }
 
 /*
 Actually parses the words in the Parsed class then start the whole thing.
 */
-void Parsed::Classify()
+void Parsed::Classify ()
 {
 	// Now, here you separate unclassified strings into keywords that will then be analyzed
 	// and made into assembly.
 
 	int Pos = -1;
 
-	for (auto& txt : this->Unclassified)
+	for (auto& Text : this -> Unclassified)
 	{
 		Pos++;
 
-		Statement s;
+		Statement Statement;
 
-		if (txt.compare("int") == 0 || txt.compare("float") == 0 || txt.compare("char") == 0)
+		if (Text.compare ("int") == 0 || Text.compare ("float") == 0 || Text.compare ("char") == 0)
 		{
 			try
 			{
-				if (Unclassified.at(Pos + 1).compare(":") == 0)
+				if (Unclassified.at (Pos + 1).compare (":") == 0)
 				{
 					// Not a function
-					s.Variable = true;
+					Statement.Variable = true;
+
 					try
 					{
-						if (Unclassified.at(Pos - 1).compare("const") == 0)
+						if (Unclassified.at (Pos - 1).compare ("const") == 0)
 						{
-							s.Args.push_back(Unclassified.at(Pos - 1));
+							Statement.Args.push_back (Unclassified.at (Pos - 1));
 						}
 					}
+
 					catch (std::out_of_range)
 					{
 						// Not a const
 					}
-					s.Args.push_back(Unclassified.at(Pos));
+
+					Statement.Args.push_back (Unclassified.at (Pos));
+
 					try
 					{
-						if (Unclassified.at(Pos + 3).compare("=") == 0)
+						if (Unclassified.at (Pos + 3).compare ("=") == 0)
 						{
-							s.Args.push_back(Unclassified.at(Pos + 2));
+							Statement.Args.push_back (Unclassified.at (Pos + 2));
 
 							// Should check if there isn't any other stuff like additions and function return values
-							s.Args.push_back(Unclassified.at(Pos + 4)); // <-- Start value(const)
+							Statement.Args.push_back (Unclassified.at (Pos + 4)); // <-- Start value(const)
 
-							Classified.push_back(s);
+							Classified.push_back (Statement);
 						}
+
 						else
 						{
-							s.Args.push_back(Unclassified.at(Pos + 2));
+							Statement.Args.push_back (Unclassified.at (Pos + 2));
 
-							Classified.push_back(s);
+							Classified.push_back (Statement);
 						}
 					}
+
 					catch (std::out_of_range)
 					{
-						Log::Error::Defined(6);
+						Log::Error::Defined (6);
 					}
 				}
+
 				else // Function stuff
 				{
 					//int func()
@@ -95,73 +102,79 @@ void Parsed::Classify()
 
 					try
 					{
-						if (Unclassified.at(Pos + 2).compare("(") == 0)
+						if (Unclassified.at (Pos + 2).compare ("(") == 0)
 						{
 							// Error confirmation
-							s.Function = true;
+							Statement.Function = true;
 
 							try
 							{
-								if (Unclassified.at(Pos - 1).compare("entry") == 0)
+								if (Unclassified.at (Pos - 1).compare ("entry") == 0)
 								{
-									s.Args.push_back(Unclassified.at(Pos - 1));
+									Statement.Args.push_back (Unclassified.at (Pos - 1));
 								}
 							}
+
 							catch (...)
 							{
 								// not entry point
 							}
 
-							s.Args.push_back(Unclassified.at(Pos)); // Data type or cast ??
-							s.Args.push_back(Unclassified.at(Pos + 1)); // Name
+							Statement.Args.push_back (Unclassified.at (Pos)); // Data type or cast ??
+							Statement.Args.push_back (Unclassified.at (Pos + 1)); // Name
 
-							Classified.push_back(s);
+							Classified.push_back (Statement);
 						}
 					}
+
 					catch (std::out_of_range)
 					{
-						Log::Error::Custom("Function parsing confirmation failure");
+						std::cout << "Alternative Error B" << std::endl;
 					}
 				}
 			}
+
 			catch (std::out_of_range)
 			{
-				Log::Error::Custom("Parser classification failure");
+				std::cout << "Error A" << std::endl;
 			}
 		}
 
-		if (txt.compare("(") == 0) // Function call
+		if (Text.compare ("(") == 0) // Function call
 		{
 			try
 			{
-				if (this->Unclassified.at(Pos - 2).compare("int") != 0 && this->Unclassified.at(Pos - 2).compare("float") != 0 && this->Unclassified.at(Pos - 2).compare("char") != 0)
+				if (this -> Unclassified.at (Pos - 2).compare ("int") != 0 && this -> Unclassified.at (Pos - 2).compare ("float") != 0 && this -> Unclassified.at (Pos - 2).compare ("char") != 0)
 				{
 					// Function call
-					s.Type = 4;
-					s.Args.push_back(Unclassified.at(Pos - 1));
-					this->Classified.push_back(s);
+					Statement.Type = 4;
+					Statement.Args.push_back (Unclassified.at (Pos - 1));
+					this -> Classified.push_back (Statement);
 				//	break;
 				}
+
 				else // Ok so this is a mildly bad fix
 				{
-					s.Args.push_back(txt);
-					this->Classified.push_back(s);
+					Statement.Args.push_back (Text);
+					this -> Classified.push_back (Statement);
 				}
 			}
+
 			catch (std::out_of_range)
 			{
-				Log::Error::Custom("Function call parsing failure");
+				std::cout << "Error unrecognized error thingy" << std::endl;
 			}
 		}
 
-		if (txt.compare(")") == 0 || txt.compare("{") == 0 || txt.compare("}") == 0) // Paren Expressions to list
+		if (Text.compare (")") == 0 || Text.compare ("{") == 0 || Text.compare ("}") == 0) // Paren Expressions to list
 		{
-			s.Args.push_back(txt);
-			this->Classified.push_back(s);
+			Statement.Args.push_back (Text);
+			this -> Classified.push_back(Statement);
 		}
 	}
-	this->ParseVar();
-	this->ParseFunc();
+
+	this -> ParseVar ();
+	this -> ParseFunc ();
 }
 
 //===FUNCTION DEFINITIONS
@@ -170,56 +183,61 @@ void Parsed::Classify()
 Creates an automatic "Parsed" class with separated words
 @std::string txt - Text to parse
 */
-Parsed Parser::Parse(std::string txt)
+Parsed Parser::Parse (std::string Text)
 {
 	// Ok so basically in here let's seperate words.
 	// and make them in seperate keywords, but let's not touch any assembly code
 	// because the nicely parsed objects will be forwared to the assembly portion
 	// of the compiler.
-	Parsed p;
-	
+	Parsed Parsed;
+
 	std::string Word;
 	int Pos = 0;
 
-	for (char &c : txt) // The eagle eyed among, may have noticed this look like something from Powerscript
+	for (char &Char : Text) // The eagle eyed among, may have noticed this look like something from Powerscript
 	{
 		Pos++;
-		if(isspace(c) || c == '\n')
+
+		if (isspace (Char) || Char == '\n')
 		{
 			//p_b
-			if (Word.compare("") != 0)
+			if (Word.compare ("") != 0)
 			{
-				p.Unclassified.push_back(Word);
-				Word.erase();
+				Parsed.Unclassified.push_back (Word);
+				Word.erase ();
 			}
 		}
+
 		else
 		{
-			if (c == '=' || c == '"' || c == ':' || c == '(' || c == ')' || c == '{' || c == '}')
+			if (Char == '=' || Char == '"' || Char == ':' || Char == '(' || Char == ')' || Char == '{' || Char == '}')
 			{
-				if (Word.compare("") != 0) // hmm
+				if (Word.compare ("") != 0) // hmm
 				{
-					p.Unclassified.push_back(Word);
-					Word.clear();
+					Parsed.Unclassified.push_back (Word);
+					Word.clear ();
 				}
-				Word.append(1,c);
-				p.Unclassified.push_back(Word);
-				Word.clear();
-			}
-			else
-			{
-				Word.append(1,c);
+
+				Word.append (1, Char);
+				Parsed.Unclassified.push_back (Word);
+				Word.clear ();
 			}
 
-			if (Pos >= txt.length())
+			else
+			{
+				Word.append (1, Char);
+			}
+
+			if (Pos >= Text.length ())
 			{
 				// Ending
-				p.Unclassified.push_back(Word);
-				Word.erase();
-				return p;
+				Parsed.Unclassified.push_back (Word);
+				Word.erase ();
+
+				return Parsed;
 			}
 		}
 	}
 
-	return p;
+	return Parsed;
 }

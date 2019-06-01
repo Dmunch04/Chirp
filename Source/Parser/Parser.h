@@ -1,10 +1,9 @@
 #pragma once
 
-#include "../Logger/Logger.h"
+#include "../Logger/Error.h"
 
 #include <vector>
 #include <string>
-#include <stdexcept>
 
 /*
 Class used to represent variables that can be rewritten in assembly later.
@@ -12,18 +11,16 @@ Class used to represent variables that can be rewritten in assembly later.
 class Variable
 {
 public:
-	Variable();
+	Variable ();
 
 	std::string Name;
 
-	std::string Define();
-	std::string Declare();
+	std::string Define ();
+	std::string Declare ();
 
 	int Type; // 0 - int, 1 - float, 2 - character
 	bool Defined;
 	bool Constant;
-
-	int stackPos; // Position inside the stack
 
 	int iValue; // Interger value
 	float fValue; // Float value
@@ -33,7 +30,7 @@ public:
 class Statement
 {
 public:
-	Statement();
+	Statement ();
 
 	int Type; // Look up the codes in Documentation/Parsing.md, it's there and it's pretty. - Binkiklou
 	int Identifier; // Should I call id ? Identify in the vector of either Variable or Function depending on the type
@@ -50,9 +47,9 @@ public:
 class Scope
 {
 public:
-	Scope();
+	Scope ();
 
-	void Set(int, std::vector<Statement>*); // Pretty much parses it 
+	void Set (int, std::vector<Statement>*); // Pretty much parses it
 
 	bool hasArg;
 
@@ -74,30 +71,29 @@ public:
 	bool Defined;
 	bool Entry;
 
-	Scope scope;
-
-	int Stack; // Max position inside stack
+	Scope ThisScope;
 
 	std::string Output;
+//	int OutId; // Position in parsed's fout
 };
 
 /*
-Most important class for the compiler. Everything is happening here iet's a 
+Most important class for the compiler. Everything is happening here iet's a
 pretty way to do stuff.
 */
 class Parsed
 {
 public: // Ok so you can see that the lower you go, the later the compiler is gonna work on it
-	Parsed();
-	
-	void Classify();
-	void ParseVar(); // Pretty self explanatry wait fuck..
-	void ParseFunc();
-	std::string CallFunc(Statement* stat);
-	std::string ASMStat(Statement*); // Makes a statement inside a stack into assembly code
-	void MakeAssembly();
+	Parsed ();
 
-	std::vector<std::string> Unclassified; // What if it's declassified O_o 
+	void Classify ();
+	void ParseVar (); // Pretty self explanatry wait fuck..
+	void ParseFunc ();
+	std::string CallFunc (Statement* stat);
+	std::string ASMStat (Statement*); // Makes a statement inside a stack into assembly code
+	void MakeAssembly ();
+
+	std::vector<std::string> Unclassified; // What if it's declassified O_o
 	std::vector<Statement> Classified;
 
 	std::vector<Variable> VariableList;
@@ -105,14 +101,14 @@ public: // Ok so you can see that the lower you go, the later the compiler is go
 
 	int EntryPos;
 
-	std::string text; // section .text
-	std::string bss; // section .bss
-	std::string data; // section .data
+	std::string Text; // section .text
+	std::string BSS; // section .bss
+	std::string Data; // section .data
 
-	std::string output;
+	std::string Output;
 };
 
 namespace Parser
 {
-	Parsed Parse(std::string);
+	Parsed Parse (std::string);
 }

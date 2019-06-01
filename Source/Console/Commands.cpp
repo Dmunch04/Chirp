@@ -7,31 +7,33 @@
 #include <iostream>
 #include <fstream>
 
-std::string Read(std::string file)
+std::string Read (std::string File)
 {
-	char c;
-	std::string data;
-	std::ifstream read(file);
+	char Char;
+	std::string Data;
+	std::ifstream Read (File);
 
-	if (!read)
+	if (!Read)
 	{
 		// Error while reading file
 		return "";
 	}
+
 	else
 	{
-		for (int i = 0; ! read.eof(); i++)
+		for (int I = 0; ! Read.eof (); I++)
 		{
-			read.get(c);
-			data.append(1, c);
+			Read.get (Char);
+			Data.append (1, Char);
 		}
-		return data;
+
+		return Data;
 	}
 }
 
 namespace Command
 {
-	void Run(std::vector<std::string> Args)
+	void Run (std::vector<std::string> Args)
 	{
 		// Once the -i flag is declared, this is on.Until there is another flag
 		bool IncludeFlag = false;
@@ -44,18 +46,20 @@ namespace Command
 		std::string OutputFile;
 
 		// Start
-		for (const auto& arg : Args)
+		for (const auto& Arg : Args)
 		{
-			if (arg.compare("-i") == 0)
+			if (Arg.compare ("-i") == 0)
 			{
 				IncludeFlag = true;
 				OutputFlag = false;
 			}
-			else if (arg.compare("-o") == 0)
+
+			else if (Arg.compare ("-o") == 0)
 			{
 				IncludeFlag = false;
 				OutputFlag = true;
 			}
+
 			else
 			{
 				if (IncludeFlag == true)
@@ -66,23 +70,26 @@ namespace Command
 
 					if (In == false)
 					{
-						InputFile = arg;
+						InputFile = Arg;
 						In = true;
 					}
+
 					else
 					{
 						// Temporary, should make&use Logger's error
 						std::cout << "Error, cannot currently include more than one file" << std::endl;
 					}
 				}
+
 				else if (OutputFlag == true)
 				{
 					// You shouldn't be able to have more than one input, i think.
 					if (Out == false)
 					{
-						OutputFile = arg;
+						OutputFile = Arg;
 						Out = true;
 					}
+
 					else
 					{
 						std::cout << "Error, cannot output to more than one file" << std::endl;
@@ -91,42 +98,47 @@ namespace Command
 			}
 		}
 		//End
-		
+
 		bool Error = false;
 
-		if (InputFile.empty())
+		if (InputFile.empty ())
 		{
-			std::cout << "Error, No input files are specified" << std::endl;
+			std::cout << "Error, No input files are specified!" << std::endl;
 			Error = true;
-		}
-		else
-		{
-			std::cout << "Input file is " << InputFile << std::endl;
-		}
-		if (OutputFile.empty())
-		{
-			std::cout << "Error, No output file are specified" << std::endl;
-			Error = true;
-		}
-		else
-		{
-			std::cout << "Output file is " << OutputFile << std::endl;
 		}
 
-		if (Error == false) // Lets compile now 
+		else
+		{
+			std::cout << "Input file is: " << InputFile << std::endl;
+		}
+
+		if (OutputFile.empty ())
+		{
+			std::cout << "Error, No output file are specified!" << std::endl;
+			Error = true;
+		}
+
+		else
+		{
+			std::cout << "Output file is: " << OutputFile << std::endl;
+		}
+
+		std::cout << "PLEASE PRINT ME FFS";
+
+		if (Error == false) // Lets compile now
  		{
 			// Ok we can finally get started on doing real stuff
 
-			std::string FileData = Read(InputFile);
-			std::string Asm = InputFile.append(".asm");
+			std::string FileData = Read (InputFile);
+			std::string Asm = InputFile.append (".asm");
 
-			Parsed P = Parser::Parse(FileData);
+			Parsed Parsed = Parser::Parse (FileData);
 
-			P.Classify();
-			Assembly::Init(&P);
-			P.MakeAssembly();
-			Assembly::Write(&P,Asm);
-		  	Tools::Build(Asm,OutputFile);
+			Parsed.Classify ();
+			Assembly::Init (&Parsed);
+			Parsed.MakeAssembly ();
+			Assembly::Write (&Parsed, Asm);
+			Tools::Build (Asm, OutputFile);
 		}
 	}
 }

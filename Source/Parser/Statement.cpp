@@ -2,29 +2,32 @@
 
 #include <iostream>
 
-std::string Parsed::ASMStat(Statement* s)
+std::string Parsed::ASMStat (Statement* Statement)
 {
-	if (s->Variable)
+	if (Statement -> Variable)
 	{
-		Variable var;
+		Variable Var;
 
 		try
 		{
-			var = this->VariableList.at(s->Identifier);
+			Var = this -> VariableList.at (Statement -> Identifier);
 		}
+
 		catch (...)
 		{
 			return ";fuck \n";
 		}
 
-		if (!var.Constant)
+		if (!Var.Constant)
 		{
-			return var.Define();
+		//	this->bss.append(var.Define());
 		}
 	}
-	else if (s->Type == 4)
+
+	else if (Statement -> Type == 4)
 	{
-		return this->CallFunc(s);
+		return this -> CallFunc (Statement);
 	}
+	
 	return "";
 }

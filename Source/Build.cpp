@@ -5,32 +5,32 @@
 namespace Tools
 {
 #ifdef __linux__
-	void Build(std::string asmfile, std::string out)
+	void Build (std::string AsmFile, std::string Out)
 	{
-		std::cout << "Starting build scripts on linux" << std::endl;
-		std::string cmd("nasm -f win32 ");
-		cmd.append(asmfile).append(" -o bin.o");
-		std::string cmdB = "ld bin.o -o ";
-		cmdB.append(out);
+		std::cout << "Starting build scripts on Linux.." << std::endl;
+		std::string Cmd ("nasm -f elf ");
+		Cmd.append (AsmFile).append (" -o bin.o");
+		std::string CmdB = "ld bin.o -o ";
+		CmdB.append (Out);
 
-		system(cmd.c_str()); // Assembly
-		system(cmdB.c_str()); // Linking
-		system("del bin.o"); // Clean up
+		system (Cmd.c_str ()); 	// Assembly
+		system (CmdB.c_str ()); // Linking
+		system ("del bin.o"); 	// Clean up
 	}
-#endif 
+#endif
 
 #ifdef _WIN32
-	void Build(std::string asmfile,std::string out)
+	void Build (std::string AsmFile, std::string Out)
 	{
-		std::cout << "Starting build scripts on windows" << std::endl;
-		std::string cmd("nasm -f win32 ");
-		cmd.append(asmfile).append(" -o bin.o");
-		std::string cmdB = "ld bin.o -o ";
-		cmdB.append(out);
+		std::cout << "Starting build scripts on Windows.." << std::endl;
+		std::string Cmd ("nasm -f win32 ");
+		Cmd.append (AsmFile).append (" -o bin.o");
+		std::string CmdB = "ld bin.o -o ";
+		CmdB.append (Out);
 
-		system(cmd.c_str()); // Assembly
-		system(cmdB.c_str()); // Linking
-		system("del bin.o"); // Clean up
+		system (Cmd.c_str ()); 	// Assembly
+		system (CmdB.c_str ()); // Linking
+		system ("del bin.o"); 	// Clean up
 	}
 #endif
 }

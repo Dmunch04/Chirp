@@ -4,5 +4,5 @@
 
 namespace Log
 {
-	void Debug(std::string);
+
 }
