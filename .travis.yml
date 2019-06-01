@@ -1,7 +1,6 @@
 language: cpp
 compiler: g++
 
-script: cd Tools/Build
 script: sh test.sh
 
 deploy:
