@@ -1,0 +1,10 @@
+.vscode/ipch/89728bb38a4f9c0f/mmap_address.bin
+.vscode/ipch/f896f9005a161f6b/Build.ipch
+.vscode/ipch/89728bb38a4f9c0f/Chirp.ipch
+.vscode/ipch/f896f9005a161f6b/mmap_address.bin
+*.o
+*.ipch
+*.bin
+*.swp
+Test.ch
+Test.ch.asm

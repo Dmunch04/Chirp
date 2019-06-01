@@ -1,0 +1,12 @@
+language: cpp
+compiler: g++
+
+script: sh test.sh
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  keep_history: true
+  on:
+    branch: master
