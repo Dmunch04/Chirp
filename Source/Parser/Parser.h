@@ -22,6 +22,8 @@ public:
 	bool Defined;
 	bool Constant;
 
+	int stackPos; // Position inside the stack
+
 	int iValue; // Interger value
 	float fValue; // Float value
 	char cValue; // Character value
@@ -73,8 +75,9 @@ public:
 
 	Scope scope;
 
+	int Stack; // Max position inside stack
+
 	std::string Output;
-//	int OutId; // Position in parsed's fout
 };
 
 /*

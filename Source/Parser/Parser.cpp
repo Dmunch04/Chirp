@@ -7,7 +7,7 @@
 
 Variable::Variable()
 {
-
+	this->stackPos = 4;
 }
 
 Scope::Scope()

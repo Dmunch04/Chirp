@@ -6,21 +6,43 @@ std::string Variable::Define()
 {
 	std::cout << "Writing variable definition in assembly" << std::endl;
 	std::string d;
-
-	switch (this->Type)
+	
+	if (this->Constant == true)
 	{
-	case 0:
-		d.append(this->Name).append(" DW ").append(std::to_string(this->iValue));
-		return d.append(" \n");
-	case 1:
-		d.append(this->Name).append(" DQ ").append(std::to_string(this->fValue));
-		return d.append(" \n");
-	case 2:
-		d.append(this->Name).append(" DB '").append(1, this->cValue).append("'");
-		return d.append(" \n");
-	default:
-		d.append("; Oh hey, you're there. So basically your code is strangely wrong and I won't bother making any error for that");
-		return d.append(" \n");
+		switch (this->Type)
+		{
+		case 0:
+			d.append(this->Name).append(" DW ").append(std::to_string(this->iValue));
+			return d.append(" \n");
+		case 1:
+			d.append(this->Name).append(" DQ ").append(std::to_string(this->fValue));
+			return d.append(" \n");
+		case 2:
+			d.append(this->Name).append(" DB '").append(1, this->cValue).append("'");
+			return d.append(" \n");
+		default:
+			d.append("; Oh hey, you're there. So basically your code is strangely wrong and I won't bother making any error for that");
+			return d.append(" \n");
+		}
+	}
+	else
+	{
+		std::string d;
+		d = "mov ";
+		switch (this->Type)
+		{
+		case 0: // int
+			d.append(" DWORD [ebp-").append(std::to_string(this->stackPos)).append("], ").append(std::to_string(this->iValue));
+			return d.append(" \n");
+		case 1: // float
+			d.append(" DQ [ebp-").append(std::to_string(this->stackPos)).append("], ").append(std::to_string(this->fValue));
+			return d.append(" \n");
+		case 2: // char
+			d.append(" BYTE [ebp-").append(std::to_string(this->stackPos)).append("], '").append(1, this->cValue).append("'");
+			return d.append(" \n");
+		default:
+			return d.append(" \n");
+		}
 	}
 }
 std::string Variable::Declare()

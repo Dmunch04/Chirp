@@ -19,7 +19,7 @@ std::string Parsed::ASMStat(Statement* s)
 
 		if (!var.Constant)
 		{
-		//	this->bss.append(var.Define());
+			return var.Define();
 		}
 	}
 	else if (s->Type == 4)

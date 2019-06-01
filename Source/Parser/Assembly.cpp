@@ -52,12 +52,14 @@ void Parsed::MakeAssembly()
 
 				func->Output.append(func->Name).append(": \n");
 
+				func->Output.append(" push ebp \n mov ebp,esp \n");
+
 				for (int pos = func->scope.ScopeStart + 1; pos < func->scope.ScopeStop; pos++)
 				{
 					func->Output.append(this->ASMStat(&this->Classified.at(pos)));
 				}
 
-				func->Output.append("ret \n ");
+				func->Output.append(" mov esp,ebp \n pop ebp \n ret \n ");
 			}
 			catch (std::out_of_range)
 			{
