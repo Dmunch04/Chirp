@@ -1,2 +1,2 @@
 cd Tools/Build
-make
+sh build.sh
