@@ -120,13 +120,13 @@ void Parsed::Classify()
 					}
 					catch (std::out_of_range)
 					{
-						std::cout << "Alternative Error B" << std::endl;
+						Log::Error::Custom("Function parsing confirmation failure");
 					}
 				}
 			}
 			catch (std::out_of_range)
 			{
-				std::cout << "Error A" << std::endl;
+				Log::Error::Custom("Parser classification failure");
 			}
 		}
 
@@ -150,7 +150,7 @@ void Parsed::Classify()
 			}
 			catch (std::out_of_range)
 			{
-				std::cout << "Error unrecognized error thingy" << std::endl;
+				Log::Error::Custom("Function call parsing failure");
 			}
 		}
 

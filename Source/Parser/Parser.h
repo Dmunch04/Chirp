@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Logger/Error.h"
+#include "../Logger/Logger.h"
 
 #include <vector>
 #include <string>
