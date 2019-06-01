@@ -129,6 +129,7 @@ void Parsed::ParseVar()
 						// It's kinda stupid that I didn't make a defined/undefined boolean
 						this->VariableList.push_back(v);
 						stat.Identifier = this->VariableList.size() -1 ;
+						Log::Debug("Variable statement is undefined");
 					}
 				}
 			}
