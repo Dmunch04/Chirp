@@ -1,7 +1,8 @@
 language: cpp
 compiler: g++
 
-script: make -C ./Tools/Build/
+script: cd Tools/Build
+script: sh test.sh
 
 deploy:
   provider: pages
