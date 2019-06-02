@@ -21,6 +21,58 @@ Aborted (core dumped)
 
 The first two lines are printed in `Console/Commands.cpp`
 
+**Update:** So basically, by using __my__ shitty debugger, we found out that everything except: *()* & *{}*, is fine. It's only those 2 creating errors. Of what we know so far. So bink is looking into fixing that. Btw. What caused that error above, was because I removed the try-catch statements in Variable.cpp, for debugging. Basically the new errors are:
+```
+munchii@pop-os:~/Dokumenter/GitHub/Chirp/Tools/Build$ ./Chirp.o -i Test.ch -o Test.o
+Input file is: Test.ch
+Output file is: Test.o
+Error: Out of range vector at variable parsing
+Error: Out of range vector at variable parsing
+Error: Out of range vector at variable parsing
+Error: Out of range vector at variable parsing
+Error 009:Statement's variable is unrecognized
+Starting build scripts on Linux..
+ld: i386 architecture of input file `bin.o' is incompatible with i386:x86-64 output
+ld: warning: cannot find entry symbol _start; defaulting to 0000000000401000
+sh: 1: del: not found
+```
+
+And this is the Test.ch file:
+```
+entry int start ()
+{
+  int: a = 13
+}
+```
+
+And with my logger, it prints:
+```
+munchii@pop-os:~/Dokumenter/GitHub/Chirp/Tools/Build$ ./Chirp.o -i Test.ch -o Test.o
+Input file is: Test.ch
+Output file is: Test.o
+entry int start  :: bf
+(  :: b
+Error: Out of range vector at variable parsing
+
+)  :: b
+Error: Out of range vector at variable parsing
+
+{  :: b
+Error: Out of range vector at variable parsing
+
+int a 13  :: bcgh
+}  :: b
+Error: Out of range vector at variable parsing
+
+Error 009:Statement's variable is unrecognized
+Starting build scripts on Linux..
+ld: i386 architecture of input file `bin.o' is incompatible with i386:x86-64 output
+ld: warning: cannot find entry symbol _start; defaulting to 0000000000401000
+sh: 1: del: not found
+```
+
+We hope to figure it out haha.
+
 # Chirp
 A modern low-level programming language written in C++, to replace C++ and other old languages, but it's still pretty bad right now.
 
