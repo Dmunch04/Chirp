@@ -1,9 +1,16 @@
 #include "Parser.h"
 #include "Variable.h"
 
+#include "Value.h"
+
 #include <iostream>
 
 //===CLASS DEFINITON
+
+Value::Value()
+{
+
+}
 
 Variable::Variable()
 {
@@ -39,130 +46,151 @@ void Parsed::Classify()
 
 	int Pos = -1;
 
+	bool IsString = false; // If it's a string then it wont parse the words below and when the string is closed will be pushed as arguments
+
 	for (auto& txt : this->Unclassified)
 	{
 		Pos++;
 
 		Statement s;
 
-		if (txt.compare("int") == 0 || txt.compare("float") == 0 || txt.compare("char") == 0)
+		if (IsString)
 		{
-			try
+			if (txt.compare("\"") == 0)
 			{
-				if (Unclassified.at(Pos + 1).compare(":") == 0)
+				IsString = false;
+			}
+		}
+		else
+		{
+			if (txt.compare("\"") == 0)
+			{
+				IsString = true;
+			}
+
+			if (txt.compare("int") == 0 || txt.compare("float") == 0 || txt.compare("char") == 0)
+			{
+				try
 				{
-					// Not a function
-					s.Variable = true;
-					try
+					if (Unclassified.at(Pos + 1).compare(":") == 0)
 					{
-						if (Unclassified.at(Pos - 1).compare("const") == 0)
+						// Not a function
+						s.Variable = true;
+						try
 						{
-							s.Args.push_back(Unclassified.at(Pos - 1));
-						}
-					}
-					catch (std::out_of_range)
-					{
-						// Not a const
-					}
-					s.Args.push_back(Unclassified.at(Pos));
-					try
-					{
-						if (Unclassified.at(Pos + 3).compare("=") == 0)
-						{
-							s.Args.push_back(Unclassified.at(Pos + 2));
-
-							// Should check if there isn't any other stuff like additions and function return values
-							s.Args.push_back(Unclassified.at(Pos + 4)); // <-- Start value(const)
-
-							Classified.push_back(s);
-						}
-						else
-						{
-							s.Args.push_back(Unclassified.at(Pos + 2));
-
-							Classified.push_back(s);
-						}
-					}
-					catch (std::out_of_range)
-					{
-						Log::Error::Defined(6);
-					}
-				}
-				else // Function stuff
-				{
-					//int func()
-					// 1   2  34
-
-					try
-					{
-						if (Unclassified.at(Pos + 2).compare("(") == 0)
-						{
-							// Error confirmation
-							s.Function = true;
-
-							try
+							if (Unclassified.at(Pos - 1).compare("const") == 0)
 							{
-								if (Unclassified.at(Pos - 1).compare("entry") == 0)
+								s.Args.push_back(Unclassified.at(Pos - 1));
+							}
+						}
+						catch (std::out_of_range)
+						{
+							// Not a const
+						}
+
+						s.Args.push_back(Unclassified.at(Pos));
+						
+						try
+						{
+							if (Unclassified.at(Pos + 3).compare("=") == 0)
+							{
+								s.Args.push_back(Unclassified.at(Pos + 2));
+
+								// Should check if there isn't any other stuff like additions and function return values
+
+							//	s.Args.push_back(Parser::FindRange(Pos + 4,&Unclassified)); // <-- Start value(const)
+								s.Args.push_back(Unclassified.at(Pos + 4));
+
+								Classified.push_back(s);
+							}
+							else
+							{
+								s.Args.push_back(Unclassified.at(Pos + 2));
+
+								Classified.push_back(s);
+							}
+						}
+						catch (std::out_of_range)
+						{
+							Log::Error::Defined(6);
+						}
+					}
+					else // Function stuff
+					{
+						//int func()
+						// 1   2  34
+
+						try
+						{
+							if (Unclassified.at(Pos + 2).compare("(") == 0)
+							{
+								// Error confirmation
+								s.Function = true;
+
+								try
 								{
-									s.Args.push_back(Unclassified.at(Pos - 1));
+									if (Unclassified.at(Pos - 1).compare("entry") == 0)
+									{
+										s.Args.push_back(Unclassified.at(Pos - 1));
+									}
 								}
-							}
-							catch (...)
-							{
-								// not entry point
-							}
+								catch (...)
+								{
+									// not entry point
+								}
 
-							s.Args.push_back(Unclassified.at(Pos)); // Data type or cast ??
-							s.Args.push_back(Unclassified.at(Pos + 1)); // Name
+								s.Args.push_back(Unclassified.at(Pos)); // Data type or cast ??
+								s.Args.push_back(Unclassified.at(Pos + 1)); // Name
 
-							Classified.push_back(s);
+								Classified.push_back(s);
+							}
+						}
+						catch (std::out_of_range)
+						{
+							Log::Error::Custom("Function parsing confirmation failure");
 						}
 					}
-					catch (std::out_of_range)
+				}
+				catch (std::out_of_range)
+				{
+					Log::Error::Custom("Parser classification failure");
+				}
+			}
+
+			if (txt.compare("inner") == 0) // Just testing
+			{
+
+			}
+
+			if (txt.compare("(") == 0) // Function call
+			{
+				try
+				{
+					if (this->Unclassified.at(Pos - 2).compare("int") != 0 && this->Unclassified.at(Pos - 2).compare("float") != 0 && this->Unclassified.at(Pos - 2).compare("char") != 0)
 					{
-						Log::Error::Custom("Function parsing confirmation failure");
+						// Function call
+						s.Type = 4;
+						s.Args.push_back(Unclassified.at(Pos - 1));
+						this->Classified.push_back(s);
+						//	break;
+					}
+					else // Ok so this is a mildly bad fix
+					{
+						s.Args.push_back(txt);
+						this->Classified.push_back(s);
 					}
 				}
-			}
-			catch (std::out_of_range)
-			{
-				Log::Error::Custom("Parser classification failure");
-			}
-		}
-
-		if (txt.compare("inner") == 0) // Just testing
-		{
-
-		}
-
-		if (txt.compare("(") == 0) // Function call
-		{
-			try
-			{
-				if (this->Unclassified.at(Pos - 2).compare("int") != 0 && this->Unclassified.at(Pos - 2).compare("float") != 0 && this->Unclassified.at(Pos - 2).compare("char") != 0)
+				catch (std::out_of_range)
 				{
-					// Function call
-					s.Type = 4;
-					s.Args.push_back(Unclassified.at(Pos - 1));
-					this->Classified.push_back(s);
-				//	break;
-				}
-				else // Ok so this is a mildly bad fix
-				{
-					s.Args.push_back(txt);
-					this->Classified.push_back(s);
+					Log::Error::Custom("Function call parsing failure");
 				}
 			}
-			catch (std::out_of_range)
-			{
-				Log::Error::Custom("Function call parsing failure");
-			}
-		}
 
-		if (txt.compare(")") == 0 || txt.compare("{") == 0 || txt.compare("}") == 0) // Paren Expressions to list
-		{
-			s.Args.push_back(txt);
-			this->Classified.push_back(s);
+			if (txt.compare(")") == 0 || txt.compare("{") == 0 || txt.compare("}") == 0) // Paren Expressions to list
+			{
+				s.Args.push_back(txt);
+				this->Classified.push_back(s);
+			}
 		}
 	}
 	this->ParseVar();
