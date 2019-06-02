@@ -1,0 +1,9 @@
+func main ()
+{
+  Build ()
+}
+
+func Build (Name = "Untitled", Version = "0.0.1", File = ".")
+{
+  System.print (Name, Version, File)
+}

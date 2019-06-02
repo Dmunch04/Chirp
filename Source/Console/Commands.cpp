@@ -123,8 +123,6 @@ namespace Command
 			std::cout << "Output file is: " << OutputFile << std::endl;
 		}
 
-		std::cout << "PLEASE PRINT ME FFS";
-
 		if (Error == false) // Lets compile now
  		{
 			// Ok we can finally get started on doing real stuff
