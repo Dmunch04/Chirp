@@ -93,6 +93,7 @@ Functions:
 | sin | x | Return the sine of `x` radians | square (10) |
 
 Variables:
+
 | Variable | Value | Explanation |
 | --- | --- | --- |
 | pi | 3.141592… | The mathematical constant `π = 3.141592…`, to available precision | square (10) |

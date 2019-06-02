@@ -2,6 +2,7 @@
 *About functions*
 
 **Define:**
+
 You define a function with:
 ```chirp
   int MyFunction ()
@@ -11,11 +12,12 @@ You define a function with:
 ```
 
 **Call:**
+
 You call a function like so many other languages:
 ```chirp
   MyFunction ()
 ```
-You can ofc. give args in the `()`
+> You can ofc. give args in the `()`
 
 <br>
 

@@ -2,10 +2,13 @@
 
 ### Install
 **Windows:**
+
 Just run it
 
 **Linux:**
+
 *For more help building, check out Build.md*
+
 To install Chirp on Linux, simply execute the commands below. This should make an executable: **chirp**.
 ```bash
   git clone https://github.com/binkiklou/Chirp.git

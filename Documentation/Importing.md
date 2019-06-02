@@ -6,6 +6,7 @@ Chirps import system, is built on relativness. Every file you're in, you can imp
 ### Examples
 #### Comparison - Python vs. Chirp
 **Python**:
+
 The way Python imports work, is it's relative to the "starter" files path. Example:
 Project folder:
 ```
@@ -18,6 +19,7 @@ Project folder:
 So in this example, the `Main.py` file, imports a function from `Helpers/Helper.py`, but `Helpers/Helper.py` imports a function from `Helpers/HelpersHelper.py`. But in order for `Helpers/Helper.py` to import from `Helpers/HelpersHelper.py`, it must use `from Helpers.HelpersHelper import HelperFunction`. Now that sucks. So instead of just being able to do `from HelpersHelper import HelperFunction`, it needs to import it from the Helpers folder.
 
 **Chirp**:
+
 The way Chirp imports work, is it's **always** relative to the current files path. Example:
 Project folder:
 ```
