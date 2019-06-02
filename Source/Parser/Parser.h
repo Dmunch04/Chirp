@@ -4,6 +4,7 @@
 
 #include <vector>
 #include <string>
+#include <stdexcept> // Very important, might create errors if not there on certain system
 
 /*
 Class used to represent variables that can be rewritten in assembly later.
