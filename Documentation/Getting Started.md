@@ -1,55 +1,41 @@
-# Getting started with chirp
-This isn't about the source code, this documentation is for the programming language.
+## Chirp Get Started
 
-> Chirp is still early in it's developpement, so a lot of the code below may not work yet or be invalid.
+### Install
+**Windows:**
+Just run it
 
-## Basic code
-So let's get started with basic code, below is some basic code with C++:
-``` cpp
-#include <iostream>
-
-int main()
-{
-	std::cout<<"This works!"<<std::endl;
-	return 0;
-}
+**Linux:**
+*For more help building, check out Build.md*
+To install Chirp on Linux, simply execute the commands below. This should make an executable: **chirp**.
+```bash
+  git clone https://github.com/binkiklou/Chirp.git
+  cd Chirp/Tools/Build
+  make
 ```
-Now with Chirp the code above would look like this
 
+> If you want to use the Chirp compiler globally, just add it to your **$PATH**
 
+<br>
+
+### Syntax highlighting
+Coding is way better and more fun when using syntax highlighting. It also helps readability. We've created some packages to different editors, to add Chirp syntax highlighting:
+- [Visual Studio Code] (https://github.com/binkiklou/Chirp-vscode-extension)
+- [Atom] (https://github.com/Dmunch04/AtomChirpLanguage) - TO COME!
+
+<br>
+
+### Command line
+Commands are to come!
+
+<br>
+
+### Simple program
+This is a very simple **Hello World** program, written in Chirp:
 ```chirp
 import <io>
- 
-entry int start()
+
+entry int start ()
 {
-	print("This works!")
+  print ("Hello, World!")
 }
 ```
-
-> The code above isn't working yet, it will be soon.
-
-The Chirp code is weird but has some use to it. Such as the entry keyword which make it so any function can be the entry point. 
-
-## Variables
-Chirp like any other programming language has variales. In chirp the variables have 4 types, ``int``,``float``,``char`` and ``string``.
-```chirp
-int: a = 13
-```
-As you can see, the code above is **weird**, but I like it.'
-
-Unlike in C/C++ strings are  natives and don't have to be imported, this is demonstrated in the code below.
-```chirp
-string: name = "Maxence"
-```
-
-## Inner
-The inner keyword is used to write assembly inside Chirp code. It is pretty weird, but I guess you could do cool stuff with it.
-
-```chirp
-inner
-{
-	number DW 1234
-}
-```
-
-> The inner statement is not supported yet. It will like in 1-3 days

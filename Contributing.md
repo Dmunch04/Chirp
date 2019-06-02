@@ -1,6 +1,6 @@
 # Chirp's contribution guide
 
-## What we are looking for
+## What we're looking for
 
 To make the project go progress further we are looking for and priorize the following.
 
@@ -9,6 +9,8 @@ To make the project go progress further we are looking for and priorize the foll
 * Modification of existing code to make it better or more efficient
 * Cross-platform code or ports of existing code
 * Additionsts to the language, that respect the existing grammar rules
+
+<br>
 
 ## How to help
 
