@@ -48,7 +48,7 @@ namespace Log
 		{
 		case BLACK:
 		//	SetConsoleTextAttribute(hC,FORGEGROUND_BLACK);
-			std::cout << txt;
+			std::cout << Text;
 			break;
 
 		case RED:

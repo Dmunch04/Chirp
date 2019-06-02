@@ -39,7 +39,3 @@ Wanna help us develop Chirp? We would love your help.
 Learn more on contributing in the [Official Contribute](Contributing.md) file!
 
 <br>
-
-### License
-Chirp is licensed under the `MIT` license. Go check out our [license](License.md)!
-> It's actually a modifified version of MIT
