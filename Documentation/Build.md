@@ -1,5 +1,11 @@
 # Build instructions
 
+Here's the instructions for building Chirp. Currently there's been written for:
+- Windows
+- Linux
+
+<br>
+
 ## Windows
 
 There is currently no build tools for Windows, but you can build Chirp on any modern C++ compilers with only the Standard Library.

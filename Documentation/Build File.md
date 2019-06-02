@@ -32,9 +32,9 @@ Here's the instructions for building Chirp scripts. Currently there's been writt
 ### Linux:
   Install:
 
-    - nasm (`sudo apt install nasm`)
+    - nasm (sudo apt install nasm)
 
-    - g++ (`sudo apt install g++`)
+    - g++ (sudo apt install g++)
 
   Then clone the repo with opening the terminal and typing:
 

@@ -1,4 +1,5 @@
 ## Variables
+
 Chirp, like any other programming language, has variales. In chirp there's 4 different value types:
  - `int`
  - `float`

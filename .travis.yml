@@ -1,4 +1,4 @@
 language: cpp
 compiler: g++
 
-script: sh test.sh
+script: sh BuildChirp.sh

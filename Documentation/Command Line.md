@@ -1,10 +1,12 @@
-# Using the Chirp Compiler Command line
-Like every other compilers, Chirp has a command line and it is used
+# Using the Chirp compiler command line
+
+Like every other compiler, Chirp has a command line and it is used
 to compile code. Unlike other compilers, it isn't written by someone that knows what he is doing.
 
 <br>
 
-##  Basic Compiling
+##  Basic compiling
+
 This is the command you will be most likely typing most of the time, it is
 pretty simple and works on all mainstream OS.
 

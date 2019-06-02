@@ -21,7 +21,7 @@ Something about the io module.
 
 Import with:
 ```chirp
-import <math>
+  import <io>
 ```
 
 Functions:
@@ -40,7 +40,7 @@ A lightweight data-interchange format. You can read more here: [EvePy](https://g
 
 Import with:
 ```chirp
-import <eve>
+  import <eve>
 ```
 
 Functions:
@@ -58,7 +58,7 @@ You probably already know what json is. If not, read more about it here: [JSON](
 
 Import with:
 ```chirp
-import <json>
+  import <json>
 ```
 
 Functions:
@@ -76,7 +76,7 @@ Math is a very useful module in Chirp. It helps you do a lot of calculation and 
 
 Import with:
 ```chirp
-import <math>
+  import <math>
 ```
 
 Functions:
@@ -90,7 +90,7 @@ Functions:
 | power | x | Return `x` raised to the power `y` | power (10, 5) |
 | square | x | Return the square root of `x` | square (10) |
 | cos | x | Return the cosine of `x` radians | cos (10) |
-| sin | x | Return the sine of `x` radians | square (10) |
+| sin | x | Return the sine of `x` radians | sin (10) |
 
 Variables:
 

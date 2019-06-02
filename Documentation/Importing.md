@@ -1,10 +1,13 @@
 ## Importing
+
 Chirps import system, is built on relativness. Every file you're in, you can import files relative to the current files path.
 
 <br>
 
 ### Examples
+
 #### Comparison - Python vs. Chirp
+
 **Python**:
 
 The way Python imports work, is it's relative to the "starter" files path. Example:
@@ -34,4 +37,5 @@ So in this example, the `Main.ch` file, imports a function from `Helpers/Helper.
 <br>
 
 ### Conclusion
+
 No matter in which folder you are, or in which file, you can always import relatively.

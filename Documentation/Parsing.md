@@ -1,10 +1,12 @@
 ## Parser documentation
+
 Obviously, this is a compiler, so like in all compilers there is parser. This file will document how you should parse stuff,
 I think. I'm gonna be honest, I haven't tought about it.
 
 <br>
 
 ### ``class`` Statement
+
 The class keyword has stuff in it, I guess. It has the arguments vector of string, which does a lot of stuff depending on what the function does. Below is all the types of values that the ``int`` Type variable has.
 
 | ID | Type |
@@ -18,6 +20,7 @@ The class keyword has stuff in it, I guess. It has the arguments vector of strin
 <br>
 
 ## Parsing order
+
 ``int: a = 1``
 Let's see the order in which the parser should parse the code above.
 First the words will be disjointed into seperate strings and put into a vector, the vector would look like this:

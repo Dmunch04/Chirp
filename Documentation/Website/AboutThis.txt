@@ -1,0 +1,9 @@
+Currently this website has been moved to:
+https://github.com/binkiklou/Chirp-Website
+And is hosted as:
+https://binkiklou.github.io/Chirp-Website/
+
+BUT! We'll keep these files here, because we're probably gonna be using this
+here anyway for hosting the website. So please don't remove this folder!
+
+- Munchii
