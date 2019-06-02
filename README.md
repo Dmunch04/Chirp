@@ -1,41 +1,42 @@
-[![Build Status](https://travis-ci.org/binkiklou/Chirp.svg?branch=master)](https://travis-ci.org/binkiklou/Chirp)
+<p align = 'center'>
+  <img src = 'https://camo.githubusercontent.com/641f171b8217bb22d5951086a25c7c7a037a106c/68747470733a2f2f63646e2e646973636f72646170702e636f6d2f6174746163686d656e74732f3530363135323839363631383935343831322f3538323035313338303737373435313534312f4368697270536d616c6c49636f6e2e706e67'>
+</p>
 
-<p align="center">
-  <img src="https://camo.githubusercontent.com/641f171b8217bb22d5951086a25c7c7a037a106c/68747470733a2f2f63646e2e646973636f72646170702e636f6d2f6174746163686d656e74732f3530363135323839363631383935343831322f3538323035313338303737373435313534312f4368697270536d616c6c49636f6e2e706e67">
- </p>
- 
-# Chirp
-A modern low-level programming language written in C++, to replace C++ and other old languages, but it's still pretty bad right now.
+## Chirp
+Chirp is a modern low-level programming language written in C++, to replace C++ and other old languages.
 
-# Simple Example
+<br>
+
+### Simple Example
 ```chirp
-entry int start()
-{
-int: a = 123
-}
-```
-As you can see this is weird.
-
-# Build instructions
-
-## Windows
-
-There is currently no build tools for Windows, but you can build Chirp on any modern C++ compilers with only the Standard Library. 
-
-## Linux
-
-It is very easy to build Chirp on linux, it only requires the G++ compiler. If you don't have it yet you can run this command:
-
-```sh
-sudo apt install g++
+  entry int start ()
+  {
+    int: a = 123
+  }
 ```
 
-If you have done the steps above or already have the g++ compiler, you can run the commands under:
+<br>
 
-```sh
-git clone https://github.com/binkiklou/chirp.git
-cd Chirp/Tools/Build
-make
-```
+### Communicate
+Want to Communicate with us and the rest of the community? *Add some community*.
 
-and there you go, you just build Chirp. You can now either use the language or contribute to the developpement of it.
+> If you have a bug report or feature request, you can also create a ticket on the repo
+
+<br>
+
+### Documentation
+Currently Chirp's documentation is under writing, but there's enough for you to get an idea of how the language works. If you want help on building Chirp and getting started, check out [Getting Started](https://github.com/binkiklou/Chirp/blob/master/Documentation/Getting%20Started.md). You can find all the documentation in the `Documentation` folder in this repo, or at [Documentation Website](http://munchii.me/chirp).
+
+> The documentation website will be switched with a custom URL soon
+
+<br>
+
+### Contribute
+Wanna help us develop Chirp? We would love your help.
+Learn more on contributing in the [Official Contribute](Contributing.md) file!
+
+<br>
+
+### License
+Chirp is licensed under the `MIT` license. Go check out our [license](License.md)!
+> It's actually a modifified version of MIT

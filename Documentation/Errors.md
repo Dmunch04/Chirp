@@ -1,5 +1,6 @@
-# Idk
-This has errors, the table below explains itself.
+## Errors
+
+Here's a table of Chirp's current errors. If you get an error that's not on this table, or you're confused about an error, then create a ticket!
 
 | ID | Explanation |
 | --- | --- |

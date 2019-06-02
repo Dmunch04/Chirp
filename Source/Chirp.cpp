@@ -2,17 +2,17 @@
 
 #include <vector>
 
-int main(int argc, char *argv[])
+int main (int ArgC, char *ArgV[])
 {
-	std::vector<std::string> a; // This is so bad
+	std::vector<std::string> A; // This is so bad
 
-	for (int i = 1; i <argc; i++) // i = 1, so program name isn't included
+	for (int I = 1; I < ArgC; I++) // i = 1, so program name isn't included
 	{
-		std::string txt(argv[i]);
-		a.push_back(txt);
+		std::string Text (ArgV[I]);
+		A.push_back (Text);
 	}
-	
-	Command::Run(a);
+
+	Command::Run (A);
 
 	return 0;
 }

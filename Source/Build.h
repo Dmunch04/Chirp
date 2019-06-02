@@ -7,5 +7,5 @@
 namespace Tools
 {
 	// Run some scripts and stuff to build the chirp application
-	void Build(std::string,std::string);
+	void Build (std::string, std::string);
 }

@@ -2,141 +2,176 @@
 
 #include <iostream>
 
-std::string Variable::Define()
+std::string Variable::Define ()
 {
 	std::cout << "Writing variable definition in assembly" << std::endl;
-	std::string d;
-	
-	if (this->Constant == true)
+	std::string Data;
+
+	switch (this -> Type)
 	{
-		switch (this->Type)
-		{
-		case 0:
-			d.append(this->Name).append(" DW ").append(std::to_string(this->iValue));
-			return d.append(" \n");
-		case 1:
-			d.append(this->Name).append(" DQ ").append(std::to_string(this->fValue));
-			return d.append(" \n");
-		case 2:
-			d.append(this->Name).append(" DB '").append(1, this->cValue).append("'");
-			return d.append(" \n");
-		default:
-			d.append("; Oh hey, you're there. So basically your code is strangely wrong and I won't bother making any error for that");
-			return d.append(" \n");
-		}
-	}
-	else
-	{
-		std::string d;
-		d = "mov ";
-		switch (this->Type)
-		{
-		case 0: // int
-			d.append(" DWORD [ebp-").append(std::to_string(this->stackPos)).append("], ").append(std::to_string(this->iValue));
-			return d.append(" \n");
-		case 1: // float
-			d.append(" DQ [ebp-").append(std::to_string(this->stackPos)).append("], ").append(std::to_string(this->fValue));
-			return d.append(" \n");
-		case 2: // char
-			d.append(" BYTE [ebp-").append(std::to_string(this->stackPos)).append("], '").append(1, this->cValue).append("'");
-			return d.append(" \n");
-		default:
-			return d.append(" \n");
-		}
+	case 0:
+		Data.append (this -> Name).append (" DW ").append (std::to_string (this -> iValue));
+		return Data.append (" \n");
+
+	case 1:
+		Data.append(this -> Name).append (" DQ ").append (std::to_string (this -> fValue));
+		return Data.append (" \n");
+
+	case 2:
+		Data.append (this -> Name).append (" DB '").append (1, this -> cValue).append ("'");
+		return Data.append (" \n");
+
+	default:
+		Data.append ("; Oh hey, you're there. So basically your code is strangely wrong and I won't bother making any error for that");
+		return Data.append (" \n");
 	}
 }
-std::string Variable::Declare()
+
+std::string Variable::Declare ()
 {
 	std::cout << "Writing variable declaration in assembly" << std::endl;
-	std::string d;
-	d.append(this->Name);
-	return d;
+	std::string Data;
+	Data.append (this -> Name);
+
+	return Data;
 }
 
-void Parsed::ParseVar()
+// The: Error: Out of range vector at... error happens here!
+void Parsed::ParseVar ()
 {
-	for (auto& stat : this->Classified)
+	for (auto& Statement : this -> Classified)
 	{
-		if (stat.Variable == true)
+		if (Statement.Variable == true)
 		{
-			Variable v;
-			int index; // Position of the regular position of interger
+			Variable Var;
+			int Index; // Position of the regular position of interger
+
+			// -- DEBUG -> REMOVE LATER --
+			for (auto Arg : Statement.Args)
+				std::cout << Arg << " ";
+
+			std::cout << " :: ";
+			std::cout << Var.Name;
+			//
+
 			try
 			{
-				if (stat.Args.at(0).compare("const") == 0)
+				if (Statement.Args.at (0).compare ("const") == 0)
 				{
-					v.Name = stat.Args.at(2);
-					v.Constant = true;
-					index = 1;
-				}
-				else
-				{
-					v.Name = stat.Args.at(1);
-					v.Constant = false;
-					index = 0;
+					// -- DEBUG -> REMOVE LATER --
+					std::cout << "a";
+
+					Var.Name = Statement.Args.at (2);
+					Var.Constant = true;
+					Index = 1;
 				}
 
-				if (stat.Args.at(index + 0).compare("int") == 0)
-				{
-					v.Type = 0;
-					v.Defined = true;
-				}
-				else if (stat.Args.at(index + 0).compare("float") == 0)
-				{
-					v.Type = 1;
-					v.Defined = true;
-				}
-				else if (stat.Args.at(index +0).compare("char") == 0)
-				{
-					v.Type = 2;
-					v.Defined = true;
-				}
 				else
 				{
-					v.Defined = false;
+					// -- DEBUG -> REMOVE LATER --
+					std::cout << "b";
+
+					Var.Name = Statement.Args.at(1);
+					Var.Constant = false;
+					Index = 0;
 				}
 
-				if (v.Defined == true)
+				if (Statement.Args.at (Index + 0).compare ("int") == 0)
 				{
+					// -- DEBUG -> REMOVE LATER --
+					std::cout << "c";
+
+					Var.Type = 0;
+					Var.Defined = true;
+				}
+
+				else if (Statement.Args.at (Index + 0).compare ("float") == 0)
+				{
+					// -- DEBUG -> REMOVE LATER --
+					std::cout << "d";
+
+					Var.Type = 1;
+					Var.Defined = true;
+				}
+
+				else if (Statement.Args.at (Index +0).compare ("char") == 0)
+				{
+					// -- DEBUG -> REMOVE LATER --
+					std::cout << "e";
+
+					Var.Type = 2;
+					Var.Defined = true;
+				}
+
+				else
+				{
+					// -- DEBUG -> REMOVE LATER --
+					std::cout << "f";
+
+					Var.Defined = false;
+				}
+
+				if (Var.Defined == true)
+				{
+					// -- DEBUG -> REMOVE LATER --
+					std::cout << "g";
+
 					try
 					{
 						// Defined
-						if (v.Type == 0)
+						if (Var.Type == 0)
 						{
-							v.iValue = std::stoi(stat.Args.at(index + 2));
-							
-							this->VariableList.push_back(v);
-							stat.Identifier = this->VariableList.size() - 1;
-						}
-						else if (v.Type == 1)
-						{
-							v.fValue = std::stof(stat.Args.at(index + 2));
-							
-							this->VariableList.push_back(v);
-							stat.Identifier = this->VariableList.size() - 1;
-						}
-						else if (v.Type == 2)
-						{
-							v.cValue = stat.Args.at(index + 2).at(0);
+							// -- DEBUG -> REMOVE LATER --
+							std::cout << "h";
 
-							this->VariableList.push_back(v);
-							stat.Identifier = this->VariableList.size() - 1;
+							Var.iValue = std::stoi (Statement.Args.at (Index + 2));
+
+							this -> VariableList.push_back (Var);
+							Statement.Identifier = this -> VariableList.size () - 1;
+						}
+
+						else if (Var.Type == 1)
+						{
+							// -- DEBUG -> REMOVE LATER --
+							std::cout << "i";
+
+							Var.fValue = std::stof (Statement.Args.at (Index + 2));
+							this -> VariableList.push_back (Var);
+							Statement.Identifier = this -> VariableList.size () - 1;
+						}
+
+						else if (Var.Type == 2)
+						{
+							// -- DEBUG -> REMOVE LATER --
+							std::cout << "j";
+
+							Var.cValue = Statement.Args.at (Index + 2).at (0);
+							this -> VariableList.push_back (Var);
+							Statement.Identifier = this -> VariableList.size () - 1;
 						}
 					}
+
 					catch (std::out_of_range)
 					{
 						// Undefined
 						// It's kinda stupid that I didn't make a defined/undefined boolean
-						this->VariableList.push_back(v);
-						stat.Identifier = this->VariableList.size() -1 ;
-						Log::Debug("Variable statement is undefined");
+						this -> VariableList.push_back (Var);
+						Statement.Identifier = this -> VariableList.size () -1 ;
 					}
 				}
 			}
+
 			catch (std::out_of_range)
 			{
-				Log::Error::Custom("Out of range vector at variable parsing");
+				// -- DEBUG -> REMOVE LATER --
+				std::cout << "\n";
+
+				// The error gets printed here!
+				Log::Error::Custom ("Out of range vector at variable parsing");
 			}
+
+			// -- DEBUG -> REMOVE LATER --
+			std::cout << "\n";
 		}
 	}
 }
