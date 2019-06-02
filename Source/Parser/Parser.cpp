@@ -118,6 +118,7 @@ void Parsed::Classify ()
 							catch (...)
 							{
 								// not entry point
+								Log::Error::Custom("Unexpected end of line after entry keyword");
 							}
 
 							Statement.Args.push_back (Unclassified.at (Pos)); // Data type or cast ??
@@ -129,14 +130,14 @@ void Parsed::Classify ()
 
 					catch (std::out_of_range)
 					{
-						std::cout << "Alternative Error B" << std::endl;
+						Log::Error::Custom("Unexpected start of line at function parsing");
 					}
 				}
 			}
 
 			catch (std::out_of_range)
 			{
-				std::cout << "Error A" << std::endl;
+				Log::Error::Custom("Unexpected vector out-of-range at parsing statement with data type");
 			}
 		}
 
@@ -162,7 +163,7 @@ void Parsed::Classify ()
 
 			catch (std::out_of_range)
 			{
-				std::cout << "Error unrecognized error thingy" << std::endl;
+				Log::Error::Custom("Undefined error");
 			}
 		}
 
