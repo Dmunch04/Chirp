@@ -25,7 +25,7 @@ Chirp is a modern low-level programming language written in C++, to replace C++ 
 
 ### Communicate
 
-Want to Communicate with us and the rest of the community? You can join our Discord group here: https://discord.gg/TR7hBD. There's always someone ready to help you out, or just chat with you.
+Want to Communicate with us and the rest of the community? You can join our Discord group here: https://discord.gg/8EeVJaS. There's always someone ready to help you out, or just chat with you.
 
 > If you have a bug report or feature request, you can also create a ticket on the repo
 
