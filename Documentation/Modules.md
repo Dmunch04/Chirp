@@ -3,7 +3,7 @@
 
 There's module support in Chirp. You can create your own, and then share them with everyone, using [GravPack](https://github.com/Dmunch04/GravPack)!
 
-<br>
+<br><br>
 
 ### Built-in modules
 
@@ -16,6 +16,7 @@ In Chirp, we've created some built-in modules. This means, when you install the 
 > None of these modules actually work yet. They'll be soon though, so stick around!
 
 **io:**
+
 Something about the io module.
 
 Import with:
@@ -24,13 +25,17 @@ import <math>
 ```
 
 Functions:
+
 | Function | Args | Explanation | Example |
 | --- | --- | --- | --- |
 | print | ToPrint | It prints out the given arg to the console | print ("Hello, World!") |
 | read | File | Returns the contents of the given file (path) | read ("path/to/file.txt") |
 | write | Contents, File, Type = w | It writes the `Contents` to the given file (path). It does it by type: `w = write (overwrite whole file)` or `a = append (appends to the bottom)` | write ("Hello, World!", "path/to/file.txt", "a") |
 
+<br>
+
 **eve:**
+
 A lightweight data-interchange format. You can read more here: [EvePy](https://github.com/Dmunch04/EVEPY)
 
 Import with:
@@ -39,12 +44,16 @@ import <eve>
 ```
 
 Functions:
+
 | Function | Args | Explanation | Example |
 | --- | --- | --- | --- |
 | load | File | It takes in an eve file (path), and returns a dict or list of it's variables | load ("path/to/file.eve") |
 | loads | Data | It takes in a string of Eve data. It returns a dict or list of it's variables | loads ("[\n  'MyVar' :: 5\n];") |
 
+<br>
+
 **json:**
+
 You probably already know what json is. If not, read more about it here: [JSON](https://www.json.org/)
 
 Import with:
@@ -53,12 +62,16 @@ import <json>
 ```
 
 Functions:
+
 | Function | Args | Explanation | Example |
 | --- | --- | --- | --- |
 | load | File | It takes in an eve file (path), and returns a dict of it's variables | load ("path/to/file.json") |
 | loads | Data | It takes in a string of Eve data. It returns a dict of it's variables | loads ('{"MyVar": 5}') |
 
+<br>
+
 **math:**
+
 Math is a very useful module in Chirp. It helps you do a lot of calculation and gives you access to useful variables and functions.
 
 Import with:
@@ -67,6 +80,7 @@ import <math>
 ```
 
 Functions:
+
 | Function | Args | Explanation | Example |
 | --- | --- | --- | --- |
 | eval | Equation | It calculates the given string. It needs to be a valid equation | eval ("5 * (1 + 2)") |
