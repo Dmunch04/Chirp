@@ -112,6 +112,7 @@ public: // Ok so you can see that the lower you go, the later the compiler is go
 	void ParseVar (); // Pretty self explanatry wait fuck..
 	void ParseFunc ();
 	std::string CallFunc (Statement* stat);
+	Variable FindVar(std::string); // Return a variable with given name
 	std::string ASMStat (Statement*); // Makes a statement inside a stack into assembly code
 	void MakeAssembly ();
 

@@ -2,6 +2,17 @@
 
 #include <iostream>
 
+Variable Parsed::FindVar(std::string name)
+{
+	for (auto& var : this->VariableList)
+	{
+		if (var.Name.compare(name) == 0)
+		{
+			return var; // wow that was pretty simple
+		}
+	}
+}
+
 std::string Variable::Define ()
 {
 	std::cout << "Writing variable definition in assembly" << std::endl;
