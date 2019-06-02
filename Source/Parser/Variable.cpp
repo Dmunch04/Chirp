@@ -39,28 +39,28 @@ std::string Variable::Declare ()
 // The: Error: Out of range vector at... error happens here!
 void Parsed::ParseVar ()
 {
-	int FailIndex;
 	for (auto& Statement : this -> Classified)
 	{
-		//std::cout << Statement.Args.at (0);
 		if (Statement.Variable == true)
 		{
 			Variable Var;
 			int Index; // Position of the regular position of interger
 
-			//std::cout << Statement.Args.at (0);
-			for (auto v : Statement.Args)
-				std::cout << v << " ";
+			// -- DEBUG -> REMOVE LATER --
+			for (auto Arg : Statement.Args)
+				std::cout << Arg << " ";
+
 			std::cout << " :: ";
 			std::cout << Var.Name;
+			//
 
 			try
 			{
-				FailIndex += 1;
-
 				if (Statement.Args.at (0).compare ("const") == 0)
 				{
+					// -- DEBUG -> REMOVE LATER --
 					std::cout << "a";
+
 					Var.Name = Statement.Args.at (2);
 					Var.Constant = true;
 					Index = 1;
@@ -68,7 +68,9 @@ void Parsed::ParseVar ()
 
 				else
 				{
+					// -- DEBUG -> REMOVE LATER --
 					std::cout << "b";
+
 					Var.Name = Statement.Args.at(1);
 					Var.Constant = false;
 					Index = 0;
@@ -76,40 +78,52 @@ void Parsed::ParseVar ()
 
 				if (Statement.Args.at (Index + 0).compare ("int") == 0)
 				{
+					// -- DEBUG -> REMOVE LATER --
 					std::cout << "c";
+
 					Var.Type = 0;
 					Var.Defined = true;
 				}
 
 				else if (Statement.Args.at (Index + 0).compare ("float") == 0)
 				{
+					// -- DEBUG -> REMOVE LATER --
 					std::cout << "d";
+
 					Var.Type = 1;
 					Var.Defined = true;
 				}
 
 				else if (Statement.Args.at (Index +0).compare ("char") == 0)
 				{
+					// -- DEBUG -> REMOVE LATER --
 					std::cout << "e";
+
 					Var.Type = 2;
 					Var.Defined = true;
 				}
 
 				else
 				{
+					// -- DEBUG -> REMOVE LATER --
 					std::cout << "f";
+
 					Var.Defined = false;
 				}
 
 				if (Var.Defined == true)
 				{
+					// -- DEBUG -> REMOVE LATER --
 					std::cout << "g";
+
 					try
 					{
 						// Defined
 						if (Var.Type == 0)
 						{
+							// -- DEBUG -> REMOVE LATER --
 							std::cout << "h";
+
 							Var.iValue = std::stoi (Statement.Args.at (Index + 2));
 
 							this -> VariableList.push_back (Var);
@@ -118,18 +132,20 @@ void Parsed::ParseVar ()
 
 						else if (Var.Type == 1)
 						{
+							// -- DEBUG -> REMOVE LATER --
 							std::cout << "i";
-							Var.fValue = std::stof (Statement.Args.at (Index + 2));
 
+							Var.fValue = std::stof (Statement.Args.at (Index + 2));
 							this -> VariableList.push_back (Var);
 							Statement.Identifier = this -> VariableList.size () - 1;
 						}
 
 						else if (Var.Type == 2)
 						{
+							// -- DEBUG -> REMOVE LATER --
 							std::cout << "j";
-							Var.cValue = Statement.Args.at (Index + 2).at (0);
 
+							Var.cValue = Statement.Args.at (Index + 2).at (0);
 							this -> VariableList.push_back (Var);
 							Statement.Identifier = this -> VariableList.size () - 1;
 						}
@@ -147,11 +163,14 @@ void Parsed::ParseVar ()
 
 			catch (std::out_of_range)
 			{
+				// -- DEBUG -> REMOVE LATER --
 				std::cout << "\n";
+
 				// The error gets printed here!
 				Log::Error::Custom ("Out of range vector at variable parsing");
 			}
 
+			// -- DEBUG -> REMOVE LATER --
 			std::cout << "\n";
 		}
 	}
