@@ -7,6 +7,22 @@
 #include <stdexcept> // Very important, might create errors if not there on certain system
 
 /*
+Class used to represent values and parse them. 
+*/
+class Value
+{
+public:
+	Value();
+
+	void Parse(std::string); // Very important function: Detect and parses
+
+	int iValue; // Interger value
+	float fValue; // Float value
+	char cValue; // Character value
+	std::string sValue; // String value
+};
+
+/*
 Class used to represent variables that can be rewritten in assembly later.
 */
 class Variable
@@ -18,6 +34,8 @@ public:
 
 	std::string Define ();
 	std::string Declare ();
+
+	Value val;
 
 	int Type; // 0 - int, 1 - float, 2 - character
 	bool Defined;
@@ -40,6 +58,7 @@ public:
 
 	bool Variable;
 	bool Function;
+	bool Value;
 
 	std::vector<std::string> Args; // Pretty Universal
 };
@@ -101,6 +120,7 @@ public: // Ok so you can see that the lower you go, the later the compiler is go
 
 	std::vector<Variable> VariableList;
 	std::vector<Function> FunctionList;
+	std::vector<Value> ValueList;
 
 	int EntryPos;
 
