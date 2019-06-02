@@ -25,6 +25,8 @@ public:
 	int iValue; // Interger value
 	float fValue; // Float value
 	char cValue; // Character value
+	
+	int stackPos;
 };
 
 class Statement
