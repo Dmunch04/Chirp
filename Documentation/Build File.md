@@ -10,8 +10,11 @@ Here's the instructions for building Chirp scripts. Currently there's been writt
   Clone the repo
 
   Add:
+
     - Chirp.exe
+
     - nasm.exe
+
     - ld.exe
 
   Into `Tools/Build`.
@@ -28,7 +31,9 @@ Here's the instructions for building Chirp scripts. Currently there's been writt
 
 ### Linux:
   Install:
+
     - nasm (`sudo apt install nasm`)
+
     - g++ (`sudo apt install g++`)
 
   Then clone the repo with opening the terminal and typing:

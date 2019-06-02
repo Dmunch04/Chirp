@@ -1,7 +1,7 @@
 You just put all these files:
 ```
   - CSS:
-  - Style.css
+    - Style.css
   - Index.html
   - .nojekyll
   - \_coverpage.md
@@ -24,3 +24,4 @@ You just put all these files:
   - Variables.md
 ```
 Into your website
+> Btw, remember to rename `Index.html` to `index.html`
