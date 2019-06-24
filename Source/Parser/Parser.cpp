@@ -1,258 +1,226 @@
 #include "Parser.h"
-#include "Variable.h"
-
-#include "Value.h"
+#include "../Console/Log/Log.h"
 
 #include <iostream>
 
-//===CLASS DEFINITON
-
-Value::Value()
-{
-
-}
-
-Variable::Variable()
-{
-	this->stackPos = 4;
-}
-
-Scope::Scope()
-{
-
-}
-
-Statement::Statement()
-{
-
-}
+//=CLASS CONSTRUCTORS
 
 /*
-Constructor function for the Parsed class, maybe we should move all the code from Parser::Parse()
-to here?
+Makes the string into processable code
 */
-Parsed::Parsed()
+void Parser::Setup (std::string txt, Environement* env)
 {
-	
-}
+// Ok so basically in here let's seperate words.
+// and make them in seperate keywords, but let's not touch any assembly code
+// because the nicely parsed objects will be forwared to the assembly portion
+// of the compiler.
 
-/*
-Actually parses the words in the Parsed class then start the whole thing.
-*/
-void Parsed::Classify()
-{
-	// Now, here you separate unclassified strings into keywords that will then be analyzed
-	// and made into assembly.
-
-	int Pos = -1;
-
-	bool IsString = false; // If it's a string then it wont parse the words below and when the string is closed will be pushed as arguments
-
-	for (auto& txt : this->Unclassified)
-	{
-		Pos++;
-
-		Statement s;
-
-		if (IsString)
-		{
-			if (txt.compare("\"") == 0)
-			{
-				IsString = false;
-			}
-		}
-		else
-		{
-			if (txt.compare("\"") == 0)
-			{
-				IsString = true;
-			}
-
-			if (txt.compare("int") == 0 || txt.compare("float") == 0 || txt.compare("char") == 0)
-			{
-				try
-				{
-					if (Unclassified.at(Pos + 1).compare(":") == 0)
-					{
-						// Not a function
-						s.Variable = true;
-						try
-						{
-							if (Unclassified.at(Pos - 1).compare("const") == 0)
-							{
-								s.Args.push_back(Unclassified.at(Pos - 1));
-							}
-						}
-						catch (std::out_of_range)
-						{
-							// Not a const
-						}
-
-						s.Args.push_back(Unclassified.at(Pos));
-						
-						try
-						{
-							if (Unclassified.at(Pos + 3).compare("=") == 0)
-							{
-								s.Args.push_back(Unclassified.at(Pos + 2));
-
-								// Should check if there isn't any other stuff like additions and function return values
-
-							//	s.Args.push_back(Parser::FindRange(Pos + 4,&Unclassified)); // <-- Start value(const)
-								s.Args.push_back(Unclassified.at(Pos + 4));
-
-								Classified.push_back(s);
-							}
-							else
-							{
-								s.Args.push_back(Unclassified.at(Pos + 2));
-
-								Classified.push_back(s);
-							}
-						}
-						catch (std::out_of_range)
-						{
-							Log::Error::Defined(6);
-						}
-					}
-					else // Function stuff
-					{
-						//int func()
-						// 1   2  34
-
-						try
-						{
-							if (Unclassified.at(Pos + 2).compare("(") == 0)
-							{
-								// Error confirmation
-								s.Function = true;
-
-								try
-								{
-									if (Unclassified.at(Pos - 1).compare("entry") == 0)
-									{
-										s.Args.push_back(Unclassified.at(Pos - 1));
-									}
-								}
-								catch (...)
-								{
-									// not entry point
-								}
-
-								s.Args.push_back(Unclassified.at(Pos)); // Data type or cast ??
-								s.Args.push_back(Unclassified.at(Pos + 1)); // Name
-
-								Classified.push_back(s);
-							}
-						}
-						catch (std::out_of_range)
-						{
-							Log::Error::Custom("Function parsing confirmation failure");
-						}
-					}
-				}
-				catch (std::out_of_range)
-				{
-					Log::Error::Custom("Parser classification failure");
-				}
-			}
-
-			if (txt.compare("inner") == 0) // Just testing
-			{
-
-			}
-
-			if (txt.compare("(") == 0) // Function call
-			{
-				try
-				{
-					if (this->Unclassified.at(Pos - 2).compare("int") != 0 && this->Unclassified.at(Pos - 2).compare("float") != 0 && this->Unclassified.at(Pos - 2).compare("char") != 0)
-					{
-						// Function call
-						s.Type = 4;
-						s.Args.push_back(Unclassified.at(Pos - 1));
-						this->Classified.push_back(s);
-						//	break;
-					}
-					else // Ok so this is a mildly bad fix
-					{
-						s.Args.push_back(txt);
-						this->Classified.push_back(s);
-					}
-				}
-				catch (std::out_of_range)
-				{
-					Log::Error::Custom("Function call parsing failure");
-				}
-			}
-
-			if (txt.compare(")") == 0 || txt.compare("{") == 0 || txt.compare("}") == 0) // Paren Expressions to list
-			{
-				s.Args.push_back(txt);
-				this->Classified.push_back(s);
-			}
-		}
-	}
-	this->ParseVar();
-	this->ParseFunc();
-}
-
-//===FUNCTION DEFINITIONS
-
-/*
-Creates an automatic "Parsed" class with separated words
-@std::string txt - Text to parse
-*/
-Parsed Parser::Parse(std::string txt)
-{
-	// Ok so basically in here let's seperate words.
-	// and make them in seperate keywords, but let's not touch any assembly code
-	// because the nicely parsed objects will be forwared to the assembly portion
-	// of the compiler.
-	Parsed p;
-	
 	std::string Word;
 	int Pos = 0;
 
-	for (char &c : txt) // The eagle eyed among, may have noticed this look like something from Powerscript
+	for (char& c : txt) // The eagle eyed among, may have noticed this look like something from Powerscript
 	{
 		Pos++;
-		if(isspace(c) || c == '\n')
+		if (isspace (c) || c == '\n')
 		{
-			//p_b
-			if (Word.compare("") != 0)
+			if (Word.compare ("") != 0)
 			{
-				p.Unclassified.push_back(Word);
-				Word.erase();
+				env->Processed.push_back (Word);
+				Word.erase ();
 			}
 		}
 		else
 		{
-			if (c == '=' || c == '"' || c == ':' || c == '(' || c == ')' || c == '{' || c == '}')
+			if (c == '=' || c == '"' || c == ':' || c == '(' || c == ')' || c == '{' || c == '}' || c == ';' || c == '###')
 			{
-				if (Word.compare("") != 0) // hmm
+				if (Word.compare ("") != 0) // hmm
 				{
-					p.Unclassified.push_back(Word);
-					Word.clear();
+					env->Processed.push_back( Word);
+					Word.clear ();
 				}
-				Word.append(1,c);
-				p.Unclassified.push_back(Word);
-				Word.clear();
+				Word.append (1, c);
+				env->Processed.push_back (Word);
+				Word.clear ();
 			}
 			else
 			{
-				Word.append(1,c);
+				Word.append (1, c);
 			}
 
-			if (Pos >= txt.length())
+			if (Pos >= txt.length ())
 			{
 				// Ending
-				p.Unclassified.push_back(Word);
-				Word.erase();
-				return p;
+				env->Processed.push_back (Word);
+				Word.erase ();
 			}
 		}
 	}
-
-	return p;
 }
+
+/*
+void Parser::MakeTree(Environement* env)
+{
+	Node Start;
+	Start.Value.Identifier = TREE_START_TOKEN;
+	env->ParseTree.MakeStart(&Start);
+
+	int pos = 0;
+
+	Log::Warning("Current Tree is legacy, use MakeSyntax instead");
+
+	for (auto& token : env->Cluster) // Loops trough token cluster
+	{
+		if (token.Identifier == OBJECT_TYPE_TOKEN) // var or func ? hmm
+		{
+			// When token is here, you should be there:
+			// int: a = 123 | int: a | int a()
+			// ^^^            ^^^      ^^^
+			if (env->Cluster.at(pos + 1).Identifier == VAR_CONFIRM_TOKEN) // the : symbol
+			{
+				Node Variable;
+				Variable.Value.Identifier = VAR_TOKEN;
+				env->ParseTree.AddChild(Start.SelfPos,&Variable);
+
+				Node Declaration;
+				Declaration.Value.Identifier = VAR_DEC_TOKEN;
+				env->ParseTree.AddChild(Variable.SelfPos,&Declaration);
+
+				Node Type;
+				Type.Value = token;
+				env->ParseTree.AddChild(Declaration.SelfPos, &Type);
+
+				Node Name;
+				Name.Value.Identifier = OBJECT_ID_TOKEN;
+				Name.Value.Lexeme = env->Cluster.at(pos + 2).Lexeme;
+				env->ParseTree.AddChild(Declaration.SelfPos,&Name);
+
+				if (env->Cluster.at(pos + 3).Identifier == VAR_ASSIGN_OP_TOKEN) // has def
+				{
+					Node Definition;
+					Definition.Value.Identifier = VAR_DEF_TOKEN;
+					env->ParseTree.AddChild(Variable.SelfPos, &Definition);
+
+					// Link dat tree
+					Node AltName; // Same as original name
+					AltName.Value.Identifier = OBJECT_ID_TOKEN;
+					AltName.Value.Lexeme = env->Cluster.at(pos + 2).Lexeme;
+					env->ParseTree.AddChild(Definition.SelfPos,&AltName);
+
+					if(env->Cluster.at(pos + 4).Identifier == KEYWORD_UNKNOWN_TOKEN)
+                	{
+                    	Node Val;
+                    	Val.Value.Identifier = VALUE_INTERGER_TOKEN;
+                    	env->ParseTree.AddChild(Val.SelfPos, &Val);
+                	}
+				}
+			}
+			else // function
+			{
+				// ...
+			}
+		}
+		pos++;
+	}
+}
+*/
+
+/*
+void Parser::MakeIndex(Environement* env) // ThIs CoDe Is JuSt MiSunDeRsToOD gEnIuS
+{
+	bool Finished = false;
+	bool Climbing = false; // Will climb until it find the earliest way to fall down
+//	bool Bottomed = false;
+
+	Node Current;
+
+	Current = env->ParseTree.NodeList.at(env->ParseTree.StartPos); // This isn't pushed to index
+	env->Index.push_back(Current.SelfPos);
+
+	while (!Finished)
+	{
+		// This is more understandable if you just think of the positon as a cube
+		// pushing agaisnt gravity and falling in holes. Wait no, it doesn't help at all
+
+//		std::cout << "====================" << std::endl;
+//		std::cout << "Current:  " << Current.SelfPos << std::endl;
+
+		if (env->Index.size() == env->ParseTree.NodeList.size())
+		{
+			Finished = true;
+		}
+
+		if (Current.ChildPos.size() == 0) // Can only go up or right
+		{
+			if (Current.PosInNode < env->ParseTree.GetNode(Current.ParentPos).ChildPos.size() - 1) // Can go to the right
+			{
+				Current = env->ParseTree.GetNode(env->ParseTree.GetNode(Current.ParentPos).ChildPos.at(Current.PosInNode + 1)); // Go left
+//				std::cout << "right add:"<<Current.SelfPos<< std::endl;
+			}
+			else // Last child in node that doesn't have child so only choice is to go up
+			{
+				Climbing = true;
+				if (Current.SelfPos != env->Index.back())
+				{
+//					std::cout << "up-sy add:" << Current.SelfPos << std::endl; // Up-stay add, adds current node, at stay still
+					env->Index.push_back(Current.SelfPos);
+				}
+			}
+		}
+		else if(!Climbing) // Go down
+		{
+			Current = env->ParseTree.GetNode(Current.ChildPos.at(0));
+			env->Index.push_back(Current.SelfPos);
+//			std::cout << "first add:" << Current.SelfPos << std::endl;
+			Climbing = false;
+		}
+
+		if (Climbing) // Go up
+		{
+			Current = env->ParseTree.GetNode(Current.ParentPos);
+
+			if (Current.PosInNode < env->ParseTree.GetNode(Current.ParentPos).ChildPos.size() - 1) // Check if parent has a sideway node, by now Current should already be the parent
+			{
+				if (Current.SelfPos != env->ParseTree.GetNode(Current.ParentPos).ChildPos.size() - 1) // Made it on a different if statement, because the line would be too much big
+				{
+					Current = env->ParseTree.NodeList.at(env->ParseTree.GetNode(Current.ParentPos).ChildPos.at(Current.PosInNode + 1)); // Go left
+					if (Current.SelfPos != env->Index.back())
+					{
+	//					std::cout << "up->  add:" << Current.SelfPos << std::endl;
+						env->Index.push_back(Current.SelfPos);
+					}
+					else
+					{
+						Finished = true;
+					}
+				}
+			}
+		}
+	}
+}
+*/
+
+/*
+A tree can look like this
+
+		TREE_START_TOKEN
+		       |
+			VAR_TOKEN
+			/       \
+ VAR_DEC_TOKEN      VAR_DEF_TOKEN
+
+ then there is other stuff
+
+ The order should look like this:
+
+		0
+	   / \
+	  1   5
+	 / \
+	2   4
+    |
+	3
+
+0,1,2,3,4,5
+
+When climbing up it does not count
+*/
