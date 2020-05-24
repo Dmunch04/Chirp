@@ -23,16 +23,11 @@ class Program
     this(string[] args)
     {
         handleArgs(args[1..$]);
-
-        this.lexer = new Lexer();
     }
 
-    private void run(string input)
+    private void run(string source)
     {
-        if (debugging)
-        {
-            logger.printExit(input);
-        }
+        this.lexer = new Lexer(source);
     }
 
     private void runFile(string path)
