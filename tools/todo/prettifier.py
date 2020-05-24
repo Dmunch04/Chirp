@@ -1,15 +1,15 @@
 import datetime
 
-with open('../TODO.md', 'r+') as todo:
+with open('../../TODO.md', 'r+') as todo:
 	lines = todo.readlines()
 	todo.seek(0)
 	todo.truncate()
 	elements = []
 	for line in lines:
 		path, number, _, message = line.split(':')
-		path = path.replace('../source/', '')
+		path = path.replace('../../source/', '')
 		number = number.strip()
-		file_path = f'{Path}:{Number}'
+		file_path = f'{path}:{number}'
 		status = 'N/A'
 		
 		if '->' in message:
@@ -20,7 +20,7 @@ with open('../TODO.md', 'r+') as todo:
 		else:
 			message = message.strip()
 
-		elements.append(f'| {message} | `{status}` | `{filePath}` |')
+		elements.append(f'| {message} | `{status}` | `{file_path}` |')
 
 	todo.write('# TODO\n\n')
 	todo.write('| Message | Status | File |\n')

@@ -3,4 +3,4 @@ sh build.sh
 
 cd ../..
 
-./chirp tests/function.ch
+./bin/chirp ../tests/function.ch

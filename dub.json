@@ -1,9 +1,17 @@
 {
-	"authors": [
-		"Munchii"
-	],
-	"copyright": "Copyright © 2020, Munchii",
+	"name": "chirp",
 	"description": "A compiler for the Chirp language written in D",
 	"license": "MIT",
-	"name": "chirp"
+	"copyright": "Copyright © 2020, Munchii",
+	"authors": ["Munchii"],
+
+	"configurations": [
+		{
+			"mainSourceFile": "source/app.d",
+			"name": "application",
+			"targetType": "executable"
+		}
+	],
+
+	"targetPath": "bin"
 }

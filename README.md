@@ -36,7 +36,7 @@ Chirp is a modern low-level programming language written in C++. Currently the l
 ```chirp
   import io.(println)
 
-  def entry()
+  none entry()
   {
     string: hello = "Hello, World!"
     println(hello)
