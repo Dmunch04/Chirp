@@ -1,7 +1,7 @@
 module chirp.logging.color;
 
 /++
- +
+ + An enum of ANSI color codes
  +/
 enum Color : string
 {
@@ -31,7 +31,7 @@ enum Color : string
 }
 
 /++
- +
+ + Returns the ANSI color code of a 256 color
  +/
 string make256Color(int index)
 {
