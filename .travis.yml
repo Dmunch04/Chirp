@@ -1,4 +1,5 @@
 language: d
-compiler: dmd
+d: dmd
 
-script: sh build.sh
+#script: sh build.sh
+script: dub build
