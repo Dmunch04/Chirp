@@ -33,6 +33,7 @@ class Logger
     // TODO: Fix that for some reason bold colors doesn't work
     void error(string msg)
     {
-        printExit(Color.boldRed ~ "[ERROR] " ~ Color.red ~ msg);
+        print(Color.boldRed ~ "[ERROR] " ~ Color.red ~ msg);
+        exit(-1);
     }
 }

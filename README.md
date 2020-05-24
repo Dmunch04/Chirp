@@ -7,7 +7,7 @@
 
   <!-- Source for new image: https://shields.io/category/build -->
   <a href="https://travis-ci.org/binkiklou/Chirp">
-    <img src="https://img.shields.io/travis/binkiklou/Chirp/master.svg?style=for-the-badge" alt="Build Status" />
+    <img src="https://img.shields.io/travis/Dmunch04/Chirp/master.svg?style=for-the-badge" alt="Build Status" />
   </a>
 
   <a href="https://github.com/binkiklou/Chirp/blob/master/LICENSE">
@@ -15,7 +15,7 @@
   </a>
 
   <a href="https://discord.gg/8EeVJaS">
-    <img src="https://user-images.githubusercontent.com/30357821/82761835-b52af700-9dfd-11ea-8647-1103111682f5.png" alt="Discord Server" />
+    <img src="https://img.shields.io/discord/584797314695299112?label=Chirp%20Discord&style=for-the-badge" alt="Discord Server" />
   </a>
 </div>
 
@@ -42,6 +42,16 @@ Chirp is a modern low-level programming language written in D. The language is s
     println(hello)
   }
 ```
+
+<br>
+
+### Building
+
+You can build the project by running
+```
+  dub build
+```
+Or by running any of the scripts in `/tools/build`
 
 <br>
 
