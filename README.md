@@ -57,14 +57,14 @@ Or by running any of the scripts in `/tools/build`
 
 ### Communnity
 
-If you wanna come hang out with us and talk, then make sure to head over to [our Discord server](https://discord.gg/8EeVJaS)!
+If you wanna come hang out with us and talk, then make sure to head over to [our Discord server](https://discord.gg/QX6dd4N)!
 
 <br>
 
 ### Contribute
 
 Wanna help us develop Chirp? We would love your help.
-Learn more on contributing in the [Official Contribution](CONTRIBUTING.md) file!
+Learn more on contributing in the [official contribution](CONTRIBUTING.md) file!
 
 > If you have a bug report or feature request, you can also create a ticket on the repo
 
@@ -72,4 +72,4 @@ Learn more on contributing in the [Official Contribution](CONTRIBUTING.md) file!
 
 ### License
 
-Chirp is licensed under the MIT license. Check out our license at in the [License](LICENSE) file!
+Chirp is licensed under the MIT license. Check out our license at in the [license](LICENSE) file!
