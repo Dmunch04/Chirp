@@ -1,0 +1,9 @@
+{
+	"authors": [
+		"Munchii"
+	],
+	"copyright": "Copyright © 2020, Munchii",
+	"description": "A compiler for the Chirp language written in D",
+	"license": "MIT",
+	"name": "chirp"
+}

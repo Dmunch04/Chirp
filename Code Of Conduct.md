@@ -19,4 +19,6 @@ We, the project maintainers can do whatever we want unless the community decides
 the maintainers should always follow the code of conducts and stay humble. The maintainers should strive
 towards making Chirp the best programming language they can, and maintaining it great.
 
-This code of conduct was written by ``Binkiklou``
+<br>
+
+> Written by `Binkiklou`

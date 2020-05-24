@@ -1,4 +1,4 @@
-language: cpp
-compiler: g++
+language: d
+compiler: dmd
 
-script: sh BuildChirp.sh
+script: sh build.sh

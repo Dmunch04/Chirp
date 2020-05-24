@@ -22,4 +22,6 @@ When contributing, you should make complete pull requests. If you contribution i
 documentation or adjust the existing one to be adapted to your change. If it is particulary major, you need to write new documentation
 to help the other contributers and users of the language.
 
-Written by ``Binkiklou``
+<br>
+
+> Written by `Binkiklou`
