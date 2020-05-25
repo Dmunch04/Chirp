@@ -3,3 +3,4 @@
 /.dub
 *.log
 *.def
+/dub.selections.json
