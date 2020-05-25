@@ -13,5 +13,19 @@
 		}
 	],
 
-	"targetPath": "bin"
+	"targetPath": "bin",
+	"buildTypes": {
+		"debug": {
+			"buildOptions": ["debugInfoC", "debugInfo", "optimize"]
+		},
+		"profile": {
+			"buildOptions": ["debugMode", "debugInfo", "profile"]
+		},
+		"profile-gc": {
+			"buildOptions": ["debugMode", "debugInfo", "profileGC"]
+		},
+		"release": {
+			"buildOptions": ["releaseMode", "optimize"]
+		}
+	}
 }

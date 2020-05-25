@@ -5,16 +5,16 @@ import chirp.lexer.location;
 /++
  + All possible token types
  +/
-enum TokenType
+enum TokenType : ubyte
 {
-    leftParen,
+    leftParen = 0,
     rightParen,
     leftBracket,
     rightBracket,
     leftBrace,
     rightBrace,
 
-    comma,
+    comma = 10,
     dot,
     colon,
     question,
@@ -24,23 +24,23 @@ enum TokenType
     ampersand,
     dollar,
 
-    plus,
+    plus = 20,
     dash,
     star,
     slash,
 
-    equal,
+    equal = 30,
     equalEqual,
     lessThan,
     lessEqual,
     greaterThan,
     greaterEqual,
 
-    arrow,
+    arrow = 40,
     colonColon,
     dotDot,
 
-    identifier,
+    identifier = 50,
     // TODO: Hmm
     stringLiteral,
     integerLiteral,
@@ -48,7 +48,7 @@ enum TokenType
     floatLiteral,
 
     // TODO: Other naming convention?
-    _string,
+    _string = 60,
     integer,
     _long,
     _float,

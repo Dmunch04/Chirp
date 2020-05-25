@@ -11,10 +11,9 @@ class Program
 {
     private {
         bool debugging = false;
+        bool verbose = false;
 
         Logger logger = new Logger();
-
-        Lexer lexer;
     }
 
     /++
@@ -25,9 +24,19 @@ class Program
         handleArgs(args[1..$]);
     }
 
-    private void run(string source)
+    private void run(ref string source)
     {
-        this.lexer = new Lexer(source);
+        if (debugging)
+        {
+            import std.datetime.stopwatch : StopWatch, AutoStart;
+            import std.conv : to;
+
+            const auto timer = StopWatch(AutoStart.yes);
+
+            Lexer lexer = new Lexer(source);
+
+            logger.print("Finished compilation in " ~ timer.peek.total!"msecs".to!string ~ "ms");
+        }
     }
 
     private void runFile(string path)
@@ -46,7 +55,8 @@ class Program
 	    }
 
         logger.print("Compiling file '" ~ path ~ "'..");
-        run(readFile(path));
+        string contents = readFile(path);
+        run(contents);
     }
 
     private void handleArgs(string[] args)
@@ -62,7 +72,8 @@ class Program
                 config.caseInsensitive,
 
                 "version|v", "Prints the version of the compiler", &printVersion,
-                "debug|d", "Should the compiler log extra information?", &debugging
+                "debug|d", "Should the compiler log extra information?", &debugging,
+                "verbose", "Verbose mode", &verbose
             );
 
             if (help.helpWanted)
