@@ -5,15 +5,15 @@
 
   <br><br>
 
-  <a href="https://travis-ci.org/Dmunch04/Chirp" target="_blank">
+  <a href="https://travis-ci.org/Dmunch04/Chirp">
     <img src="https://img.shields.io/travis/Dmunch04/Chirp/master.svg?style=for-the-badge" alt="Build Status" />
   </a>
 
-  <a href="https://github.com/Dmunch04/Chirp/blob/master/LICENSE" target="_blank">
+  <a href="https://github.com/Dmunch04/Chirp/blob/master/LICENSE">
     <img src="https://img.shields.io/github/license/Dmunch04/Chirp.svg?style=for-the-badge" alt="License" />
   </a>
 
-  <a href="https://discord.gg/p8BDqnt" target="_blank">
+  <a href="https://discord.gg/p8BDqnt">
     <img src="https://img.shields.io/discord/584797314695299112?label=Chirp%20Discord&style=for-the-badge" alt="Discord Server" />
   </a>
 </div>
