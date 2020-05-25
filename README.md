@@ -1,7 +1,7 @@
 <h1 align="center">Chirp</h1>
 
 <div align="center">
-  <strong>Chirp is a modern low-level programming language written in C++</strong>
+  <strong>Chirp is a modern low-level programming language written in D</strong>
 
   <br><br>
 
