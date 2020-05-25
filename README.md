@@ -6,11 +6,11 @@
   <br><br>
 
   <!-- Source for new image: https://shields.io/category/build -->
-  <a href="https://travis-ci.org/binkiklou/Chirp">
+  <a href="https://travis-ci.org/Dmunch04/Chirp">
     <img src="https://img.shields.io/travis/Dmunch04/Chirp/master.svg?style=for-the-badge" alt="Build Status" />
   </a>
 
-  <a href="https://github.com/binkiklou/Chirp/blob/master/LICENSE">
+  <a href="https://github.com/Dmunch04/Chirp/blob/master/LICENSE">
     <img src="https://img.shields.io/github/license/Dmunch04/Chirp.svg?style=for-the-badge" alt="License" />
   </a>
 
