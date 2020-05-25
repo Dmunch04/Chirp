@@ -28,6 +28,7 @@ enum TokenType : ubyte
     dash,
     star,
     slash,
+    modulo,
 
     equal = 30,
     equalEqual,
@@ -54,6 +55,10 @@ enum TokenType : ubyte
     _float,
     _import,
     _if,
+
+    newline = 97,
+    unknown = 98,
+    eof = 99
 }
 
 /++
