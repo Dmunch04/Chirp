@@ -9,7 +9,8 @@
 		{
 			"mainSourceFile": "source/app.d",
 			"name": "application",
-			"targetType": "executable"
+			"targetType": "executable",
+			"sourceFiles": ["res/bin/llvm.so"]
 		}
 	],
 

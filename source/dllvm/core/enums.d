@@ -1,0 +1,20 @@
+module dllvm.core.enums;
+
+alias LLVMAttribute = long;
+alias LLVMAttributeIndex = uint;
+alias LLVMOpcode = int;
+alias LLVMTypeKind = int;
+alias LLVMLinkage = int;
+alias LLVMVisibility = int;
+alias LLVMUnnamedAddr = int;
+alias LLVMDLLStorageCall = int;
+alias LLVMCallConv = int;
+alias LLVMIntPredicate = int;
+alias LLVMRealPredicate = int;
+alias LLVMLandingPadClauseTy = int;
+alias LLVMThreadLocalMode = int;
+alias LLVMAtomicOrdering = int;
+alias LLVMAtomicRMWBinOp = int;
+alias LLVMDiagnosticSeverity = int;
+alias LLVMInlineAsmDialect = int;
+alias LLVMModuleFlagBehavior = int;
