@@ -10,6 +10,7 @@ dist: bionic
 before_install:
   - wget https://apt.llvm.org/llvm.sh && chmod +x llvm.sh && sudo ./llvm.sh 10
   - sudo ln -s /usr/lib/libncursesw.so.6 /usr/lib/libtinfo.so.6
+  - export PATH=/usr/lib/llvm-10/bin:$PATH
 
 addons:
   apt:
