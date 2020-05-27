@@ -10,14 +10,14 @@
 			"name": "application-linux",
 			"mainSourceFile": "source/app.d",
 			"targetType": "executable",
-			"libs": ["/usr/lib/llvm-10/lib/libLLVM-10.so"],
+			"sourceFiles": ["/usr/lib/llvm-10/lib/libLLVM-10.so"],
 			"platforms": ["linux"]
 		},
 		{
 			"name": "application-macos",
 			"mainSourceFile": "source/app.d",
 			"targetType": "executable",
-			"libs": [""],
+			"sourceFiles": ["/usr/local/opt/llvm/lib/libLLVM-10.so"],
 			"platforms": ["macos"]
 		}
 	],
