@@ -204,5 +204,29 @@ enum : LLVMCallConv
 
 enum : LLVMValueKind
 {
-    LLVMArgumentValueKind
+    LLVMArgumentValueKind,
+	LLVMBasicBlockValueKind,
+	LLVMMemoryUseValueKind,
+	LLVMMemoryDefValueKind,
+	LLVMMemoryPhiValueKind,
+	LLVMFunctionValueKind,
+	LLVMGlobalAliasValueKind,
+	LLVMGlobalIFuncValueKind,
+	LLVMGlobalVariableValueKind,
+	LLVMBlockAddressValueKind,
+	LLVMConstantExprValueKind,
+	LLVMConstantArrayValueKind,
+	LLVMConstantStructValueKind,
+	LLVMConstantVectorValueKind,
+	LLVMUndefValueValueKind,
+	LLVMConstantAggregateZeroValueKind,
+	LLVMConstantDataArrayValueKind,
+	LLVMConstantDataVectorValueKind,
+	LLVMConstantIntValueKind,
+	LLVMConstantFPValueKind,
+	LLVMConstantPointerNullValueKind,
+	LLVMConstantTokenNoneValueKind,
+	LLVMMetadataAsValueValueKind,
+	LLVMInlineAsmValueKind,
+	LLVMInstructionValueKind
 }
