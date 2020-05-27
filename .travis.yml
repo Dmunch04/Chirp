@@ -4,10 +4,11 @@ d: dmd
 os:
   - linux
 
+# why does travis not update to this? instead of keep using 16.04. is travis dense?
 dist: bionic
 
 before_install:
-  - sudo apt install libncurses6
+  - sudo apt-get -y install libncurses6
   - wget https://apt.llvm.org/llvm.sh && chmod +x llvm.sh && sudo ./llvm.sh 10
 
 #script: sh build.sh
