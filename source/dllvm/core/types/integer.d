@@ -2,6 +2,7 @@ module dllvm.core.types.integer;
 
 import dllvm.ctypes;
 
+// TODO: Is this supposed to be `extern (C)`? In llvm-d `__gshared extern(System) nothrow:` is being used
 extern (C)
 {
     LLVMTypeRef LLVMInt1TypeInContext(LLVMContextRef ctx);
@@ -17,4 +18,26 @@ extern (C)
     LLVMTypeRef LLVMInt128TypeInContext(LLVMContextRef ctx);
 
     LLVMTypeRef LLVMIntTypeInContext(LLVMContextRef ctx);
+
+    /++
+     + Obtain an integer type from the global context with a specified bit width
+     +/
+    LLVMTypeRef LLVMInt1Type();
+
+    /++
+     + Obtain an integer type from a context with specified bit width
+     +/
+    LLVMTypeRef LLVMInt8Type();
+
+    LLVMTypeRef LLVMInt16Type();
+
+    LLVMTypeRef LLVMInt32Type();
+
+    LLVMTypeRef LLVMInt64Type();
+
+    LLVMTypeRef LLVMInt128Type();
+
+    LLVMTypeRef LLVMIntType(uint bits);
+
+    uint LLVMGetIntTypeWidth(LLVMTypeRef ty);
 }
