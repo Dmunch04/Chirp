@@ -4,12 +4,8 @@ d: dmd
 os:
   - linux
 
-addons:
-  apt:
-    sources:
-      - sourceline: 'deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-10 main'
-    packages:
-      - llvm-10
+before_install:
+  - wget https://apt.llvm.org/llvm.sh && chmod +x llvm.sh && sudo ./llvm.sh 10
 
 #script: sh build.sh
 script: dub build

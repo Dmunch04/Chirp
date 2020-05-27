@@ -9,6 +9,7 @@ alias LLVMVisibility = int;
 alias LLVMUnnamedAddr = int;
 alias LLVMDLLStorageCall = int;
 alias LLVMCallConv = int;
+alias LLVMValueKind = int;
 alias LLVMIntPredicate = int;
 alias LLVMRealPredicate = int;
 alias LLVMLandingPadClauseTy = int;
@@ -19,6 +20,12 @@ alias LLVMDiagnosticSeverity = int;
 alias LLVMInlineAsmDialect = int;
 alias LLVMModuleFlagBehavior = int;
 
+enum : uint
+{
+    LLVMAttributeReturnIndex    = 0,
+    LLVMAttributeFunctionIndex  = -1
+}
+
 enum : LLVMOpcode
 {
     LLVMRet             = 1,
@@ -27,8 +34,6 @@ enum : LLVMOpcode
     LLVMIndirectBr      = 4,
     LLVMInvoke          = 5,
     LLVMUnreachable     = 7,
-    LLVMCallBr          = 67,
-    LLVMFNeg            = 66,
     LLVMAdd             = 8,
     LLVMFAdd            = 9,
     LLVMSub             = 10,
@@ -63,6 +68,141 @@ enum : LLVMOpcode
     LLVMPtrToInt        = 39,
     LLVMIntToPtr        = 40,
     LLVMBitCast         = 41,
+    LLVMICmp            = 42,
+    LLVMFCmp            = 43,
+    LLVMPHI             = 44,
+    LLVMCall            = 45,
+    LLVMSelect          = 46,
+    LLVMUserOp1         = 47,
+    LLVMUserOp2         = 48,
+    LLVMVAArg           = 49,
+    LLVMExtractElement  = 50,
+    LLVMInsertElement   = 51,
+    LLVMShuffleVector   = 52,
+    LLVMExtractValue    = 53,
+    LLVMInsertValue     = 54,
+    LLVMFence           = 55,
+    LLVMAtomicCmpXchg   = 56,
+    LLVMAtomicRMW       = 57,
+    LLVMResume          = 58,
+    LLVMLandingPad      = 59,
     LLVMAddrSpaceCast   = 60,
-    LLVMICmp            = 32,
+    LLVMCleanupRet      = 61,
+    LLVMCatchRet        = 62,
+    LLVMCatchPad        = 63,
+    LLVMCleanupPad      = 64,
+    LLVMCatchSwitch     = 65,
+    LLVMFNeg            = 66,
+    LLVMCallBr          = 67,
+    LLVMFreeze          = 68
+}
+
+enum : LLVMTypeKind
+{
+    /// Type with no size
+    LLVMVoidTypeKind,
+
+    /// 16 bit floating point type
+    LLVMHalfTypeKind,
+
+    /// 16 bit brain floating point type
+    LLVMBFloatTypeKind,
+
+    /// 32 bit floating point type
+    LLVMFloatTypeKind,
+
+    /// 64 bit floating point type
+    LLVMDoubleTypeKind,
+
+    /// 80 bit floating point type (X87)
+    LLVMX86_FP80TypeKind,
+
+    /// 128 bit floating point type (112-bit mantissa)
+    LLVMFP128TypeKind,
+
+    /// 128 bit floating point type (two 64-bits)
+    LLVMPPC_FP128TypeKind,
+
+    /// Labels
+    LLVMLabelTypeKind,
+
+    /// Arbitrary bit width integers
+    LLVMIntegerTypeKind,
+
+    /// Functions
+    LLVMFunctionTypeKind,
+
+    /// Structures
+    LLVMStructTypeKind,
+
+    /// Arrays
+    LLVMArrayTypeKind,
+
+    /// Pointers
+    LLVMPointerTypeKind,
+
+    /// Fixed width SIMD vector type
+    LLVMVectorTypeKind,
+
+    /// Metadata
+    LLVMMetadataTypeKind,
+
+    /// X86 MMX
+    LLVMX86_MMXTypeKind,
+
+    /// Tokens
+    LLVMTokenTypeKind,
+
+    /// Scalable SIMD vector type
+    LLVMScalableVectorTypeKind
+}
+
+enum : LLVMLinkage
+{
+    LLVMExternalLinkage
+}
+
+enum : LLVMVisibility
+{
+    /// The GV is visible
+    LLVMDefaultVisibility,
+
+    /// The GV is hidden
+    LLVMHiddenVisibility,
+
+    /// The GV is protected
+    LLVMProtectedVisibility
+}
+
+enum : LLVMUnnamedAddr
+{
+    /// Address of the GV is significant
+    LLVMNoUnnamedAddr,
+
+    /// Address of the GV is locally insignificant
+    LLVMLocalUnnamedAddr,
+
+    /// Address of the GV is globally insignificant
+    LLVMGlobalUnnamedAddr
+}
+
+enum : LLVMDLLStorageCall
+{
+    LLVMDefaultStorageClass,
+
+    /// Function to be imported from DLL
+    LLVMDLLImportStorageClass,
+
+    /// Function to be accessible from DLL
+    LLVMDLLExportStorageClass
+}
+
+enum : LLVMCallConv
+{
+    LLVMCCallConv = 0
+}
+
+enum : LLVMValueKind
+{
+    LLVMArgumentValueKind
 }
