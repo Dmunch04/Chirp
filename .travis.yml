@@ -1,10 +1,13 @@
 language: d
 d: dmd
 
-dist: bionic
 addons:
   apt:
-    - llvm-10
+    sources:
+      - llvm-toolchain-xenial-10
+
+    packages:
+      - llvm-10
 
 #script: sh build.sh
 script: dub build
