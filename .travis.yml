@@ -1,5 +1,6 @@
 language: d
 d: dmd
+dist: bionic
 
 #script: sh build.sh
-script: dub build -v
+script: dub build
