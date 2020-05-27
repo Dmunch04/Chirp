@@ -3,13 +3,11 @@ d: dmd
 
 os:
   - linux
+  - osx
+  - windows
 
 before_install:
   - wget https://apt.llvm.org/llvm.sh && chmod +x llvm.sh && sudo ./llvm.sh 10
-
-addons:
-  apt:
-    update: true
 
 #script: sh build.sh
 script: dub build
