@@ -2,4 +2,4 @@ language: d
 d: dmd
 
 #script: sh build.sh
-script: dub build
+script: dub build -v
