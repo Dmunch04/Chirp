@@ -3,8 +3,8 @@ d: dmd
 
 os:
   - linux
-  - osx
-  - windows
+  #- osx => fix the llvm install command
+  #- windows => doesn't support D yet
 
 before_install:
   - wget https://apt.llvm.org/llvm.sh && chmod +x llvm.sh && sudo ./llvm.sh 10
