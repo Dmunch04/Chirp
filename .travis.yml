@@ -4,7 +4,6 @@ d: dmd
 os:
   - linux
 
-# why does travis not update to this? instead of keep using 16.04. is travis dense?
 dist: bionic
 
 before_install:

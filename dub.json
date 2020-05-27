@@ -10,7 +10,7 @@
 			"mainSourceFile": "source/app.d",
 			"name": "application",
 			"targetType": "executable",
-			"sourceFiles": ["res/bin/llvm.so"]
+			"sourceFiles": ["/usr/lib/llvm-10/lib/libLLVM-10.so"]
 		}
 	],
 
