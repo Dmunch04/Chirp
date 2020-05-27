@@ -42,7 +42,6 @@ enum TokenType : ubyte
     dotDot,
 
     identifier = 50,
-    // TODO: Hmm
     stringLiteral,
     integerLiteral,
     longLiteral,

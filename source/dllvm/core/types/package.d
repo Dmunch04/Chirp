@@ -12,7 +12,7 @@ public import dllvm.core.types.structure;
 import dllvm.core.enums;
 import dllvm.ctypes;
 
-extern (C)
+extern(C)
 {
     /++
      +

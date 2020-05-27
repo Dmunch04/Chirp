@@ -4,7 +4,7 @@ module dllvm.core.types.other;
 
 import dllvm.ctypes;
 
-extern (C)
+extern(C)
 {
     /++
      + Create a void type in a context

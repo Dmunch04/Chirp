@@ -13,12 +13,12 @@ public import dllvm.core.modules;
 
 import dllvm.ctypes;
 
-extern (C)
+extern(C)
 {
     /++
      +
      +/
-    char* LLVMCreateMessage(const char* message);
+    char* LLVMCreateMessage(const(char*) message);
 
     /++
      +

@@ -4,7 +4,7 @@ module dllvm.core.types.functions;
 
 import dllvm.ctypes;
 
-extern (C)
+extern(C)
 {
     /++
      + Obtain a function type consisting of a specified signature

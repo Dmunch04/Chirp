@@ -4,7 +4,7 @@ module dllvm.core.types.floating;
 
 import dllvm.ctypes;
 
-extern (C)
+extern(C)
 {
     LLVMTypeRef LLVMHalfTypeInContext(LLVMContextRef ctx);
 

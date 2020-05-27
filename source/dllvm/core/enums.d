@@ -7,7 +7,7 @@ alias LLVMTypeKind = int;
 alias LLVMLinkage = int;
 alias LLVMVisibility = int;
 alias LLVMUnnamedAddr = int;
-alias LLVMDLLStorageCall = int;
+alias LLVMDLLStorageClass = int;
 alias LLVMCallConv = int;
 alias LLVMValueKind = int;
 alias LLVMIntPredicate = int;
@@ -234,7 +234,7 @@ enum : LLVMUnnamedAddr
     LLVMGlobalUnnamedAddr
 }
 
-enum : LLVMDLLStorageCall
+enum : LLVMDLLStorageClass
 {
     LLVMDefaultStorageClass,
 

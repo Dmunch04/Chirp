@@ -4,7 +4,7 @@ module dllvm.core.types.sequential;
 
 import dllvm.ctypes;
 
-extern (C)
+extern(C)
 {
     /++
      + Obtain the type of elements within a sequential type

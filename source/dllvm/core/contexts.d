@@ -4,10 +4,10 @@ module dllvm.core.contexts;
 
 import dllvm.ctypes;
 
-alias LLVMDiagnosticHandler = extern (C) void function(LLVMDiagnosticInfoRef, void*);
-alias LLVMYieldCallback = extern (C) void function(LLVMContextRef, void*);
+alias LLVMDiagnosticHandler = extern(C) void function(LLVMDiagnosticInfoRef, void*);
+alias LLVMYieldCallback = extern(C) void function(LLVMContextRef, void*);
 
-extern (C)
+extern(C)
 {
     /++
      +

@@ -4,7 +4,7 @@ module dllvm.core.types.structure;
 
 import dllvm.ctypes;
 
-extern (C)
+extern(C)
 {
     /++
      + Create a new structure type in a context

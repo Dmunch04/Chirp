@@ -4,8 +4,7 @@ module dllvm.core.types.integer;
 
 import dllvm.ctypes;
 
-// TODO: Is this supposed to be `extern (C)`? In llvm-d `__gshared extern(System) nothrow:` is being used
-extern (C)
+extern(C)
 {
     LLVMTypeRef LLVMInt1TypeInContext(LLVMContextRef ctx);
 

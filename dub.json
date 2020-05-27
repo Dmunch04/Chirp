@@ -5,6 +5,8 @@
 	"copyright": "Copyright © 2020, Munchii",
 	"authors": ["Munchii"],
 
+	"-ddoxTool": "scod",
+
 	"configurations": [
 		{
 			"name": "application-linux",
