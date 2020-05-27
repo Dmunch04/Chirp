@@ -1,11 +1,13 @@
 language: d
 d: dmd
 
+os:
+  - linux
+
 addons:
   apt:
     sources:
-      - llvm-toolchain-xenial-10
-
+      - sourceline: 'deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-10 main'
     packages:
       - llvm-10
 
