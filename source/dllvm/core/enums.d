@@ -159,7 +159,55 @@ enum : LLVMTypeKind
 
 enum : LLVMLinkage
 {
-    LLVMExternalLinkage
+    /// Externally visible function
+    LLVMExternalLinkage,
+
+    LLVMAvailableExternallyLinkage,
+
+    /// Keep one copy of function when linking (inline)
+    LLVMLinkOnceAnyLinkage,
+
+    /// Same, but only replaced by something equivalent
+    LLVMLinkOnceODRLinkage,
+
+    /// Obsolete
+    LLVMLinkOnceODRAutoHideLinkage,
+
+    /// Keep one copy of function when linking (weak)
+    LLVMWeakAnyLinkage,
+
+    /// Same as `LLVMWeakAnyLinkage`, but only replaced by something equivalent
+    LLVMWeakODRLinkage,
+
+    /// Special purpose, only applies to global arrays
+    LLVMAppendingLinkage,
+
+    /// Rename collisions when linking (static functions)
+    LLVMInternalLinkage,
+
+    /// Like Internal, but omit from symbol table
+    LLVMPrivateLinkage,
+
+    /// Obsolete
+    LLVMDLLImportLinkage,
+
+    /// Obsolete
+    LLVMDLLExportLinkage,
+
+    /// ExternalWeak linkage description
+    LLVMExternalWeakLinkage,
+
+    /// Obsolete
+    LLVMGhostLinkage,
+
+    /// Tentative definitions
+    LLVMCommonLinkage,
+
+    /// Like Private, but linker removes
+    LLVMLinkerPrivateLinkage,
+
+    /// Like LinkerPrivate, but is weak
+    LLVMLinkerPrivateWeakLinkage
 }
 
 enum : LLVMVisibility
@@ -199,7 +247,18 @@ enum : LLVMDLLStorageCall
 
 enum : LLVMCallConv
 {
-    LLVMCCallConv = 0
+    LLVMCCallConv               = 0,
+    LLVMFastCallConv            = 8,
+    LLVMColdCallConv            = 9,
+    LLVMGHCCallConv             = 10,
+    LLVMHiPECallConv            = 11,
+    LLVMWebKitJSCallConv        = 12,
+    LLVMAnyRegCallConv          = 13,
+    LLVMPreserveMostCallConv    = 14,
+    LLVMPreserveAllCallConv     = 15,
+    LLVMSwiftCallConv           = 16,
+    LLVMCXXFASTTLSCallConv      = 17,
+    LLVMX86StdcallCallConv      = 64
 }
 
 enum : LLVMValueKind
