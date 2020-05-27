@@ -1,5 +1,7 @@
 module dllvm.core.types.sequential;
 
+// Source: https://llvm.org/doxygen/group__LLVMCCoreTypeSequential.html
+
 import dllvm.ctypes;
 
 extern (C)

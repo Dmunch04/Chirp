@@ -9,6 +9,7 @@ import chirp.logging.color : Color;
  + The main class that handles the compilation of a file
  +/
 // TODO: Make better logging system. Both for compilation errors, but also CLI errors
+// TODO: Better memory management
 class Program
 {
     private {

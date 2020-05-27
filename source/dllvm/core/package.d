@@ -2,14 +2,14 @@ module dllvm.core;
 
 // Source: https://llvm.org/doxygen/group__LLVMCCore.html
 
+public import dllvm.core.types;
+public import dllvm.core.values;
 public import dllvm.core.basicBlock;
 public import dllvm.core.contexts;
 public import dllvm.core.enums;
 public import dllvm.core.instructions;
 public import dllvm.core.metadata;
 public import dllvm.core.modules;
-public import dllvm.core.types;
-public import dllvm.core.values;
 
 import dllvm.ctypes;
 

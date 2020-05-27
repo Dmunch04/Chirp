@@ -1,5 +1,7 @@
 module dllvm.core.types.functions;
 
+// Source: https://llvm.org/doxygen/group__LLVMCCoreTypeFunction.html
+
 import dllvm.ctypes;
 
 extern (C)

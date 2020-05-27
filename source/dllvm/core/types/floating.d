@@ -1,5 +1,7 @@
 module dllvm.core.types.floating;
 
+// Source: https://llvm.org/doxygen/group__LLVMCCoreTypeFloat.html
+
 import dllvm.ctypes;
 
 extern (C)

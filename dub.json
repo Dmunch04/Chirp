@@ -7,10 +7,18 @@
 
 	"configurations": [
 		{
+			"name": "application-linux",
 			"mainSourceFile": "source/app.d",
-			"name": "application",
 			"targetType": "executable",
-			"sourceFiles": ["/usr/lib/llvm-10/lib/libLLVM-10.so"]
+			"libs": ["/usr/lib/llvm-10/lib/libLLVM-10.so"],
+			"platforms": ["linux"]
+		},
+		{
+			"name": "application-macos",
+			"mainSourceFile": "source/app.d",
+			"targetType": "executable",
+			"libs": [""],
+			"platforms": ["macos"]
 		}
 	],
 

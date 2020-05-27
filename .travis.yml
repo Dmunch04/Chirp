@@ -3,11 +3,12 @@ d: dmd
 
 os:
   - linux
-  #- osx => fix the llvm install command
+  - osx
   #- windows => doesn't support D yet
 
 before_install:
-  - wget https://apt.llvm.org/llvm.sh && chmod +x llvm.sh && sudo ./llvm.sh 10
+  - if [ $TRAVIS_OS_NAME = "linux" ]; then wget https://apt.llvm.org/llvm.sh && chmod +x llvm.sh && sudo ./llvm.sh 10 ; fi
+  - if [ $TRAVIS_OS_NAME = "osx" ]; then brew install llvm; fi
 
 #script: sh build.sh
 script: dub build

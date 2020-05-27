@@ -1,5 +1,7 @@
 module dllvm.core.types.integer;
 
+// Source: https://llvm.org/doxygen/group__LLVMCCoreTypeInt.html
+
 import dllvm.ctypes;
 
 // TODO: Is this supposed to be `extern (C)`? In llvm-d `__gshared extern(System) nothrow:` is being used

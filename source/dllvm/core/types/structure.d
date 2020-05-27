@@ -1,5 +1,7 @@
 module dllvm.core.types.structure;
 
+// Source: https://llvm.org/doxygen/group__LLVMCCoreTypeStruct.html
+
 import dllvm.ctypes;
 
 extern (C)
