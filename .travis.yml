@@ -7,6 +7,7 @@ os:
 dist: bionic
 
 before_install:
+  - sudo apt install libncurses6
   - wget https://apt.llvm.org/llvm.sh && chmod +x llvm.sh && sudo ./llvm.sh 10
 
 #script: sh build.sh
