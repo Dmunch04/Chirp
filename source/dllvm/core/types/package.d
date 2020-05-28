@@ -1,6 +1,6 @@
 module dllvm.core.types;
 
-public import dllvm.core.types.integer;
+public import dllvm.core.types.floating;
 public import dllvm.core.types.functions;
 public import dllvm.core.types.integer;
 public import dllvm.core.types.other;
