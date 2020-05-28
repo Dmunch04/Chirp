@@ -37,7 +37,7 @@ class Program
             const auto timer = StopWatch(AutoStart.yes);
 
             //Lexer lexer = new Lexer(source);
-            Lexer lexer = new Lexer(logger, "()[]{} ,...:::?!|@&$ +-->*/% ===<<=>>=");
+            Lexer lexer = Lexer(logger, "()[]{} ,...:::?!|@&$ +-->*/% ===<<=>>=");
 
             import chirp.lexer.token : TokenType;
             import std.conv : to;

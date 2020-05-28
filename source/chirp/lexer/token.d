@@ -86,3 +86,15 @@ struct Token
     // TODO: Should this be a string? It would really be like `Object` or `any`
     string literal = "";
 }
+
+string toString(ref TokenType type)
+{
+    import std.conv : to;
+    return type.to!string;
+}
+
+string toString(ref Token token)
+{
+    import std.conv : to;
+    return token.type.toString() ~ "'" ~ token.lexeme ~ "'";
+}
