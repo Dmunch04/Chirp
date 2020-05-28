@@ -33,5 +33,9 @@ jobs:
         run: ${{matrix.install-llvm}}
 
       # Build dub project
-      - name: Run a multi-line script
+      - name: Build
         run: dub build
+        
+      # Run dub unittests
+      - name: Unittest
+        run: dub test
