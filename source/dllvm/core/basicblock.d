@@ -1,4 +1,4 @@
-module dllvm.core.basicBlock;
+module dllvm.core.basicblock;
 
 // Source: https://llvm.org/doxygen/group__LLVMCCoreValueBasicBlock.html
 

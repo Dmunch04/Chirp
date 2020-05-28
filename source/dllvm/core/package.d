@@ -5,7 +5,7 @@ module dllvm.core;
 public import dllvm.core.instructions;
 public import dllvm.core.types;
 public import dllvm.core.values;
-public import dllvm.core.basicBlock;
+public import dllvm.core.basicblock;
 public import dllvm.core.contexts;
 public import dllvm.core.enums;
 public import dllvm.core.metadata;
@@ -19,7 +19,7 @@ extern(C)
 
     void LLVMDisposeMessage(char* message);
 
-    void LLVMInitializeCore(LLVMPassRegistryRef r);
+    void LLVMInitializeCore(LLVMPassRegistryRef registry);
 
     /++
      + Deallocate and destroy all ManagedStatic variables.
