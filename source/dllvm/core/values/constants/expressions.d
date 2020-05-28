@@ -111,5 +111,36 @@ extern(C)
 
     LLVMValueRef LLVMConstBitCast(LLVMValueRef value, LLVMTypeRef toType);
 
-    // TODO: Add the few rest
+    LLVMValueRef LLVMConstAddrSpaceCast(LLVMValueRef value, LLVMTypeRef toType);
+
+    LLVMValueRef LLVMConstZExtOrBitCast(LLVMValueRef value, LLVMTypeRef toType);
+
+    LLVMValueRef LLVMConstSExtOrBitCast(LLVMValueRef value, LLVMTypeRef toType);
+
+    LLVMValueRef LLVMConstTruncOrBitCast(LLVMValueRef value, LLVMTypeRef toType);
+
+    LLVMValueRef LLVMConstPointerCast(LLVMValueRef value, LLVMTypeRef toType);
+
+    LLVMValueRef LLVMConstIntCast(LLVMValueRef value, LLVMTypeRef toType, LLVMBool isSigned);
+
+    LLVMValueRef LLVMConstFPCast(LLVMValueRef value, LLVMTypeRef toType);
+
+    LLVMValueRef LLVMConstSelect(LLVMValueRef condition, LLVMValueRef constantIfTrue, LLVMValueRef constantIfFalse);
+
+    LLVMValueRef LLVMConstExtractElement(LLVMValueRef vector, LLVMValueRef index);
+
+    LLVMValueRef LLVMConstInsertElement(LLVMValueRef vector, LLVMValueRef elementValue, LLVMValueRef index);
+
+    LLVMValueRef LLVMConstShuffleVector(LLVMValueRef vectorA, LLVMValueRef vectorB, LLVMValueRef maskConstant);
+
+    LLVMValueRef LLVMConstExtractValue(LLVMValueRef agg, uint* indexList, uint numIndex);
+
+    LLVMValueRef LLVMConstInsertValue(LLVMValueRef agg, LLVMValueRef elementValue, uint* indexList, uint numIndex);
+
+    LLVMValueRef LLVMBlockAddress(LLVMValueRef f, LLVMBasicBlockRef block);
+
+    /++
+     + Deprecated: Use `LLVMGetInlineAsm` instead
+     +/
+    deprecated LLVMValueRef LLVMConstInlineAsm(LLVMTypeRef ty, const(char*) asmString, const(char*) constraints, LLVMBool hasSideEffects, LLVMBool isAlignStack);
 }

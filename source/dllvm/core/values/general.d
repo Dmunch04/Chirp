@@ -61,10 +61,10 @@ extern(C)
     /++
      + Deprecated: Use `LLVMGetValueName2` instead
      +/
-    const(char*) LLVMGetValueName(LLVMValueRef value);
+    deprecated const(char*) LLVMGetValueName(LLVMValueRef value);
 
     /++
      + Deprecated: Use `LLVMSetValueName2` instead
      +/
-    void LLVMSetValueName(LLVMValueRef value, const(char*) name);
+    deprecated void LLVMSetValueName(LLVMValueRef value, const(char*) name);
 }

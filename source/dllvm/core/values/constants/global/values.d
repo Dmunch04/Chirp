@@ -32,7 +32,7 @@ extern(C)
     void LLVMSetUnnamedAddress(LLVMValueRef global, LLVMUnnamedAddr addr);
 
     /++
-     + Returns the "value type" of a global value.
+     + Returns the "value type" of a global value
      +
      + This differs from the formal type of a global value which is always a pointer type
      +/
@@ -41,12 +41,12 @@ extern(C)
     /++
      + Deprecated: Use `LLVMGetUnnamedAddress` instead
      +/
-    LLVMBool LLVMHasUnnamedAddr(LLVMValueRef global);
+    deprecated LLVMBool LLVMHasUnnamedAddr(LLVMValueRef global);
 
     /++
      + Deprecated: Use LLVMSetUnnamedAddress instead
      +/
-    void LLVMSetUnnamedAddr(LLVMValueRef global, LLVMBool hasUnnamedAddr);
+    deprecated void LLVMSetUnnamedAddr(LLVMValueRef global, LLVMBool hasUnnamedAddr);
 
     /++
      + Obtain the preferred alignment of the value
